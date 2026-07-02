@@ -6,42 +6,43 @@
 <title>Practice Tools | Scott's Piano Course</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;background:#f6f7f9;color:#22252b;line-height:1.6;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;background:#faf8f4;color:#22252b;line-height:1.6;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
 .wrap{max-width:800px;margin:0 auto;padding:18px 20px 80px}
-header.site{background:#1f4e8c;color:#fff}
+header.site{background:#15171d;color:#fff}
 header.site .wrap{padding:12px 20px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
-header.site a{color:#cfe3ff;text-decoration:none;font-size:14px;font-weight:600}
+header.site a{color:#e7d7ab;text-decoration:none;font-size:14px;font-weight:600}
 header.site a.cur{color:#fff;border-bottom:2px solid #fff}
-h1{font-size:30px;line-height:1.25;color:#16345c;margin:26px 0 6px}
+h1{font-family:ui-serif,'New York',Georgia,serif;font-size:30px;line-height:1.25;color:#1a1d24;margin:26px 0 6px}
 .sub{color:#5b6470;font-size:17px;margin:0 0 20px}
-h2{font-size:23px;color:#16345c;margin:40px 0 10px;padding-top:14px;border-top:1px solid #e2e5ea}
+h2{font-family:ui-serif,'New York',Georgia,serif;font-size:23px;color:#1a1d24;margin:40px 0 10px;padding-top:14px;border-top:1px solid #e2e5ea}
 p{margin:10px 0}
 .card{background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:16px 18px;margin:14px 0}
-a{color:#1f4e8c}
-.btn{display:inline-block;background:#eef4fc;color:#16345c;border:1.5px solid #c9d8ee;border-radius:10px;padding:10px 16px;font-size:16px;font-weight:700;margin:4px;cursor:pointer;user-select:none;min-width:48px;text-align:center}
-.btn.sel{background:#1f4e8c;color:#fff;border-color:#1f4e8c}
+a{color:#8a6a28}
+.btn{display:inline-block;background:#f5eedd;color:#1a1d24;border:1.5px solid #d9cba4;border-radius:10px;padding:10px 16px;font-size:16px;font-weight:700;margin:4px;cursor:pointer;user-select:none;min-width:48px;text-align:center}
+.btn.sel{background:#8a6a28;color:#fff;border-color:#8a6a28}
 .btn.big{padding:14px 26px;font-size:18px}
 .btn.go{background:#2e9e5b;color:#fff;border-color:#2e9e5b}
 .btn.stop{background:#c0392b;color:#fff;border-color:#c0392b}
-.tempo{font-size:52px;font-weight:800;color:#16345c;text-align:center;margin:4px 0;font-variant-numeric:tabular-nums}
+.tempo{font-size:52px;font-weight:800;color:#1a1d24;text-align:center;margin:4px 0;font-variant-numeric:tabular-nums}
 .tlabel{text-align:center;color:#5b6470;font-size:14px;margin-bottom:6px}
 input[type=range]{width:100%;height:34px}
 .dots{display:flex;gap:10px;justify-content:center;margin:12px 0}
 .dot{width:22px;height:22px;border-radius:50%;background:#dbe2ea}
-.dot.on{background:#1f4e8c;transform:scale(1.25)}
+.dot.on{background:#8a6a28;transform:scale(1.25)}
 .dot.acc.on{background:#d97a1a}
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
 .score{font-size:15px;color:#5b6470;text-align:center;margin-top:8px}
 .fb{text-align:center;font-size:18px;font-weight:700;min-height:28px;margin-top:6px}
 .fb.good{color:#2e9e5b}.fb.bad{color:#c0392b}
 .fig{overflow-x:auto;text-align:center}
-.notelist{text-align:center;font-size:20px;font-weight:700;color:#16345c;letter-spacing:2px;min-height:30px}
+.notelist{text-align:center;font-size:20px;font-weight:700;color:#1a1d24;letter-spacing:2px;min-height:30px}
 .next{display:flex;justify-content:flex-start;margin-top:50px}
-.next a{background:#e2e5ea;color:#16345c;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
+.next a{background:#e2e5ea;color:#1a1d24;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
 </style>
 </head>
 <body>
 <header class="site"><div class="wrap">
+<a href="Piano_App.html" style="font-weight:800">◆ App</a>
 <a href="00_Start_Here.html">Start</a>
 <a href="01_Foundations.html">1 Foundations</a>
 <a href="02_Reading_Music.html">2 Reading</a>
@@ -56,7 +57,7 @@ input[type=range]{width:100%;height:34px}
 <h1>Practice Tools</h1>
 <p class="sub">Metronome, flashcards, and quizzes. Keep this page open on the music rest. Tip: add it to your home screen from Safari's share menu.</p>
 
-<h2>Metronome</h2>
+<h2 id="s1">Metronome</h2>
 <div class="card">
 <div class="tempo" id="bpm">80</div>
 <div class="tlabel" id="bpmname">andante</div>
@@ -80,7 +81,7 @@ input[type=range]{width:100%;height:34px}
 <p style="font-size:13.5px;color:#5b6470;text-align:center">Speed ladder rule: three clean repetitions in a row = one notch up (+4). Any mistake or tension = one notch down.</p>
 </div>
 
-<h2>Note reading flashcards</h2>
+<h2 id="s2">Note reading flashcards</h2>
 <div class="card">
 <div class="row">
 <span class="btn fc-mode sel" data-m="land">Landmarks</span>
@@ -96,7 +97,7 @@ input[type=range]{width:100%;height:34px}
 <div class="score" id="fc-score">Streak 0 · Correct 0/0</div>
 </div>
 
-<h2>Key name quiz</h2>
+<h2 id="s3">Key name quiz</h2>
 <div class="card">
 <p style="font-size:14.5px;color:#5b6470;text-align:center">Which key is highlighted? Black keys accept either name.</p>
 <div class="fig"><div id="kq-kb" style="max-width:480px;margin:0 auto"></div></div>
@@ -107,7 +108,7 @@ input[type=range]{width:100%;height:34px}
 <div class="score" id="kq-score">Streak 0 · Correct 0/0</div>
 </div>
 
-<h2>Chord builder</h2>
+<h2 id="s4">Chord builder</h2>
 <div class="card">
 <div class="row">
 <span style="color:#5b6470;font-size:14px">Root:</span>
@@ -134,7 +135,7 @@ input[type=range]{width:100%;height:34px}
 var W=['C','D','E','F','G','A','B'];
 var FLAT={'Cb':['B',-1],'Db':['C#',0],'Eb':['D#',0],'Fb':['E',0],'Gb':['F#',0],'Ab':['G#',0],'Bb':['A#',0]};
 function pn(s){var m=/^([A-G])([#b]?)(-?\d)$/.exec(s);if(!m)return null;var name=m[1]+m[2],oct=parseInt(m[3],10);if(m[2]==='b'){var f=FLAT[name];oct+=f[1];name=f[0];}return{n:name,o:oct,letter:m[1],acc:m[2]};}
-window.drawKeyboard=function(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var octs=opts.octaves||2;var wW=46,wH=150,bW=27,bH=92;var count=opts.keys||octs*7+1;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var extra=opts.markCs?30:6;var s='<svg viewBox="0 0 '+width+' '+(wH+extra)+'" style="width:100%;max-width:'+Math.min(width,760)+'px" xmlns="http://www.w3.org/2000/svg">';whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#cfe3ff'):'#ffffff')+'" stroke="#8a8f98"/>';if(m){if(m.finger!==undefined)s+='<circle cx="'+(k.x+wW/2)+'" cy="'+(wH-40)+'" r="11.5" fill="#1f4e8c"/><text x="'+(k.x+wW/2)+'" y="'+(wH-35.3)+'" text-anchor="middle" font-size="13.5" fill="#fff" font-weight="700">'+m.finger+'</text>';var lab=(m.label!==undefined)?m.label:k.name;if(lab!=='')s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-12)+'" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2b45">'+lab+'</text>';}else if(opts.labelAll){s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-12)+'" text-anchor="middle" font-size="13" fill="#9aa1ab">'+k.name+'</text>';}});whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',key=bn+k.oct,m=marks[key];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#2f6fd0'):'#22252b')+'" stroke="#000"/>';if(m){var lab=(m.label!==undefined)?m.label:bn;if(m.finger!==undefined)s+='<circle cx="'+(x+bW/2)+'" cy="'+(bH-32)+'" r="10" fill="#fff"/><text x="'+(x+bW/2)+'" y="'+(bH-27.8)+'" text-anchor="middle" font-size="12" fill="#1f4e8c" font-weight="700">'+m.finger+'</text>';if(lab!=='')s+='<text x="'+(x+bW/2)+'" y="'+(bH-9)+'" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">'+lab+'</text>';}});if(opts.markCs){whites.forEach(function(k){if(k.name==='C')s+='<text x="'+(k.x+wW/2)+'" y="'+(wH+22)+'" text-anchor="middle" font-size="13" fill="#5b6470" font-weight="600">C'+k.oct+'</text>';});}s+='</svg>';el.innerHTML=s;};
+window.drawKeyboard=function(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var octs=opts.octaves||2;var wW=46,wH=150,bW=27,bH=92;var count=opts.keys||octs*7+1;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var extra=opts.markCs?30:6;var s='<svg viewBox="0 0 '+width+' '+(wH+extra)+'" style="width:100%;max-width:'+Math.min(width,760)+'px" xmlns="http://www.w3.org/2000/svg">';whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#e7d7ab'):'#ffffff')+'" stroke="#8a8f98"/>';if(m){if(m.finger!==undefined)s+='<circle cx="'+(k.x+wW/2)+'" cy="'+(wH-40)+'" r="11.5" fill="#8a6a28"/><text x="'+(k.x+wW/2)+'" y="'+(wH-35.3)+'" text-anchor="middle" font-size="13.5" fill="#fff" font-weight="700">'+m.finger+'</text>';var lab=(m.label!==undefined)?m.label:k.name;if(lab!=='')s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-12)+'" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2b45">'+lab+'</text>';}else if(opts.labelAll){s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-12)+'" text-anchor="middle" font-size="13" fill="#9aa1ab">'+k.name+'</text>';}});whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',key=bn+k.oct,m=marks[key];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#c49a3f'):'#22252b')+'" stroke="#000"/>';if(m){var lab=(m.label!==undefined)?m.label:bn;if(m.finger!==undefined)s+='<circle cx="'+(x+bW/2)+'" cy="'+(bH-32)+'" r="10" fill="#fff"/><text x="'+(x+bW/2)+'" y="'+(bH-27.8)+'" text-anchor="middle" font-size="12" fill="#8a6a28" font-weight="700">'+m.finger+'</text>';if(lab!=='')s+='<text x="'+(x+bW/2)+'" y="'+(bH-9)+'" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">'+lab+'</text>';}});if(opts.markCs){whites.forEach(function(k){if(k.name==='C')s+='<text x="'+(k.x+wW/2)+'" y="'+(wH+22)+'" text-anchor="middle" font-size="13" fill="#5b6470" font-weight="600">C'+k.oct+'</text>';});}s+='</svg>';el.innerHTML=s;};
 var CLEFS={treble:{sym:'𝄞',ref:'E4',size:62},bass:{sym:'𝄢',ref:'G2',size:44}};
 function stepOf(p){return p.o*7+W.indexOf(p.letter||p.n.charAt(0));}
 window.drawStaff=function(id,opts){var el=document.getElementById(id);if(!el)return;var clef=CLEFS[opts.clef||'treble'];var sp=11,top=34,bottom=top+4*sp;var refStep=stepOf(pn(clef.ref));var notes=opts.notes||[];var nw=opts.noteWidth||56;var x=64;var elems=[];notes.forEach(function(nt){elems.push({nt:nt,x:x});x+=nw;});var width=Math.max(x+26,200);var height=bottom+40;var s='<svg viewBox="0 0 '+width+' '+height+'" style="width:100%;max-width:'+Math.min(width,760)+'px" xmlns="http://www.w3.org/2000/svg">';var li;for(li=0;li<5;li++)s+='<line x1="14" y1="'+(top+li*sp)+'" x2="'+(width-14)+'" y2="'+(top+li*sp)+'" stroke="#3a3f47" stroke-width="1.1"/>';s+='<text x="20" y="'+bottom+'" font-size="'+clef.size+'" fill="#22252b">'+clef.sym+'</text>';elems.forEach(function(e){var nt=e.nt,nx=e.x;var p=pn(nt.p);var off=stepOf(p)-refStep;var ny=bottom-off*(sp/2);var lo,ly;for(lo=-2;lo>=off;lo-=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#3a3f47" stroke-width="1.1"/>';}for(lo=10;lo<=off;lo+=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#3a3f47" stroke-width="1.1"/>';}s+='<ellipse cx="'+nx+'" cy="'+ny+'" rx="7.6" ry="5.4" fill="none" stroke="#22252b" stroke-width="2" transform="rotate(-14 '+nx+' '+ny+')"/>';if(p.acc==='#')s+='<text x="'+(nx-19)+'" y="'+(ny+5)+'" font-size="17" fill="#22252b">♯</text>';});s+='</svg>';el.innerHTML=s;};

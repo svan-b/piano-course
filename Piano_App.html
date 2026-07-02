@@ -5,135 +5,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#1f4e8c">
+<meta name="theme-color" content="#0e1014">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <title>Piano</title>
 <style>
+:root{
+ --bg:#0e1014; --el:#171b22; --el2:#1e242e; --line:#2a313d;
+ --ink:#f0ebe0; --dim:#98a1ac; --dim2:#6b7480;
+ --brass:#d4a853; --brassd:#b08b3e; --green:#58c084; --red:#e0655a;
+ --serif:ui-serif,'New York',Georgia,'Times New Roman',serif;
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:#f6f7f9;color:#22252b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
-.app{max-width:820px;margin:0 auto;padding:14px 16px calc(84px + env(safe-area-inset-bottom))}
-h1{font-size:26px;color:#16345c;margin:10px 0 2px}
-h2{font-size:19px;color:#16345c;margin:22px 0 8px}
-.sub{color:#5b6470;font-size:15px;margin:0 0 12px}
-.card{background:#fff;border:1px solid #e2e5ea;border-radius:14px;padding:14px 16px;margin:10px 0}
-.key{border-left:4px solid #1f4e8c;background:#eef4fc;border-radius:10px;padding:10px 14px;margin:10px 0}
-.warnb{border-left:4px solid #d97a1a;background:#fdf6ec;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14px}
-a{color:#1f4e8c}
-.btn{display:inline-block;background:#eef4fc;color:#16345c;border:1.5px solid #c9d8ee;border-radius:12px;padding:11px 16px;font-size:16px;font-weight:700;margin:4px 4px 4px 0;cursor:pointer;user-select:none;text-align:center}
-.btn.sel{background:#1f4e8c;color:#fff;border-color:#1f4e8c}
-.btn.go{background:#2e9e5b;color:#fff;border-color:#2e9e5b}
-.btn.stop{background:#c0392b;color:#fff;border-color:#c0392b}
-.btn.big{display:block;width:100%;padding:16px;font-size:19px}
-.btn.small{padding:7px 12px;font-size:13.5px;border-radius:9px}
-.tabs{position:fixed;left:0;right:0;bottom:0;background:#ffffff;border-top:1px solid #e2e5ea;display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
-.tab{flex:1;text-align:center;padding:12px 2px 10px;font-size:13.5px;font-weight:700;color:#7a8494;cursor:pointer;user-select:none}
-.tab.sel{color:#1f4e8c;border-top:3px solid #1f4e8c;margin-top:-1px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+.app{max-width:760px;margin:0 auto;padding:20px 18px calc(92px + env(safe-area-inset-bottom))}
+.eyebrow{font-size:12px;letter-spacing:2.2px;font-weight:800;color:var(--brass);text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;margin:6px 0 4px;letter-spacing:.2px}
+h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:28px 0 10px}
+.sub{color:var(--dim);font-size:15px;margin:0 0 14px}
+.card{background:var(--el);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;border-radius:16px;border:none;
+ background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;font-size:18px;font-weight:800;cursor:pointer;user-select:none;letter-spacing:.2px}
+.ghost{display:flex;align-items:center;justify-content:center;width:100%;padding:14px;border-radius:16px;background:transparent;
+ border:1.5px solid var(--line);color:var(--dim);font-size:15px;font-weight:700;cursor:pointer;user-select:none;margin-top:10px}
+.btn{display:inline-block;background:var(--el2);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 15px;font-size:15px;font-weight:700;margin:3px 4px 3px 0;cursor:pointer;user-select:none;text-align:center;text-decoration:none}
+.btn.sel{background:var(--brass);color:#15130c;border-color:var(--brass)}
+.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
+.btn.link{background:transparent;border-color:var(--brassd);color:var(--brass)}
+.statrow{display:flex;gap:10px}
+.stat{flex:1;background:var(--el);border:1px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink)}
+.stat span{font-size:11.5px;color:var(--dim2);font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.days{display:flex;gap:8px;justify-content:space-between;margin-top:12px}
+.day{flex:1;text-align:center}
+.day .b{width:30px;height:30px;border-radius:50%;background:var(--el2);border:1px solid var(--line);margin:0 auto 4px}
+.day.on .b{background:var(--brass);border-color:var(--brass)}
+.day.today .b{outline:2px solid var(--brass);outline-offset:2px}
+.day span{font-size:10.5px;color:var(--dim2);font-weight:700}
+.blockrow{display:flex;align-items:center;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line)}
+.blockrow:last-child{border-bottom:none}
+.blockrow .min{font-family:var(--serif);font-size:17px;color:var(--brass);min-width:52px;font-weight:700}
+.blockrow .bt{font-weight:700;font-size:15.5px}
+.blockrow .bs{color:var(--dim);font-size:13.5px}
+.mile{background:linear-gradient(135deg,#241f12,#1c1a12);border:1px solid #4d4020;border-radius:18px;padding:15px 18px;margin:12px 0}
+.mile b{color:var(--brass)}
+.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(14,16,20,.92);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+.tab{flex:1;text-align:center;padding:10px 0 8px;color:var(--dim2);cursor:pointer;user-select:none}
+.tab svg{width:24px;height:24px;display:block;margin:0 auto 2px}
+.tab span{font-size:10.5px;font-weight:800;letter-spacing:.4px}
+.tab.sel{color:var(--brass)}
 .scr{display:none}
 .scr.sel{display:block}
-.statrow{display:flex;gap:8px;flex-wrap:wrap}
-.stat{flex:1;min-width:70px;background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:10px 6px;text-align:center}
-.stat b{display:block;font-size:24px;color:#16345c}
-.stat span{font-size:12px;color:#7a8494;font-weight:600}
-.blocks .bl{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e2e5ea;border-radius:11px;padding:9px 12px;margin:6px 0;font-size:14.5px}
-.blocks .bl b.min{background:#1f4e8c;color:#fff;border-radius:7px;padding:2px 8px;font-size:12.5px;white-space:nowrap;margin-top:2px}
-.blocks .bl.done{opacity:.45}
-.wk{border:1px solid #e2e5ea;background:#fff;border-radius:12px;padding:10px 12px;margin:7px 0;font-size:14.5px}
-.wk.cur{border-color:#1f4e8c;border-width:2px;background:#eef4fc}
-.wk.done{opacity:.55}
-.wk .whead{display:flex;align-items:center;gap:8px;font-weight:700;color:#16345c}
-.wk .ms{background:#d97a1a;color:#fff;border-radius:99px;font-size:11px;padding:1px 9px}
-.wk .body{color:#4a5260;margin-top:3px}
+.wk{border:1px solid var(--line);background:var(--el);border-radius:16px;padding:13px 15px;margin:8px 0;cursor:pointer}
+.wk .head{display:flex;align-items:center;gap:11px}
+.wk .st{width:26px;height:26px;border-radius:50%;border:2px solid var(--dim2);flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;color:#15130c;font-weight:900}
+.wk.done .st{background:var(--brass);border-color:var(--brass)}
+.wk.cur{border-color:var(--brassd)}
+.wk.cur .st{border-color:var(--brass)}
+.wk .ttl{font-weight:800;font-size:15.5px}
+.wk .foc{color:var(--dim);font-size:13px}
+.wk .detail{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:10px;font-size:14px;color:var(--dim)}
+.wk.open .detail{display:block}
+.wk .detail b{color:var(--ink)}
+.phasehead{display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 6px}
+.phasehead h2{margin:0}
+.phasehead span{color:var(--dim2);font-size:13px;font-weight:700}
+.pbar{height:5px;background:var(--el2);border-radius:4px;margin:6px 0 12px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--brass);border-radius:4px}
 .grid{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin:10px 0}
-.cell{aspect-ratio:1;border-radius:4px;background:#e6e9ee}
-.cell.on{background:#2e9e5b}
-.cell.today{outline:2px solid #1f4e8c}
-.logrow{border-bottom:1px solid #eef0f3;padding:8px 2px;font-size:14px}
-.logrow b{color:#16345c}
-.logrow .del{float:right;color:#c0392b;font-weight:700;cursor:pointer;padding:0 6px}
-details{background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:8px 14px;margin:8px 0}
-summary{font-weight:700;color:#1f4e8c;cursor:pointer;padding:4px 0}
-input[type=text],textarea,input[type=number]{width:100%;border:1.5px solid #c9d8ee;border-radius:10px;padding:10px;font-size:16px;font-family:inherit;background:#fff;color:#22252b}
-label{font-size:13.5px;font-weight:700;color:#5b6470;display:block;margin:10px 0 4px}
-.tempo{font-size:54px;font-weight:800;color:#16345c;text-align:center;font-variant-numeric:tabular-nums}
-.tlabel{text-align:center;color:#5b6470;font-size:13px;margin-bottom:4px}
-input[type=range]{width:100%;height:34px}
+.cell{aspect-ratio:1;border-radius:4px;background:var(--el2)}
+.cell.on{background:var(--brass)}
+.cell.today{outline:1.5px solid var(--ink)}
+.logrow{border-bottom:1px solid var(--line);padding:10px 2px;font-size:14px;color:var(--dim)}
+.logrow b{color:var(--ink)}
+.logrow .del{float:right;color:var(--red);font-weight:800;cursor:pointer;padding:0 8px}
+input[type=text],textarea,input[type=number]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:16px;font-family:inherit;background:var(--el2);color:var(--ink)}
+input::placeholder,textarea::placeholder{color:var(--dim2)}
+label{font-size:12px;font-weight:800;color:var(--dim);display:block;margin:12px 0 5px;letter-spacing:1px;text-transform:uppercase}
+.volcard{display:block;background:var(--el);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:9px 0;text-decoration:none;color:var(--ink)}
+.volcard b{font-family:var(--serif);font-size:17px}
+.volcard span{display:block;color:var(--dim);font-size:13.5px;margin-top:2px}
+/* metronome + tools */
+.tempo{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--ink);text-align:center;font-variant-numeric:tabular-nums;line-height:1}
+.tlabel{text-align:center;color:var(--dim2);font-size:12px;margin:2px 0 6px;letter-spacing:2px;text-transform:uppercase}
+input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 .dots{display:flex;gap:10px;justify-content:center;margin:10px 0}
-.dot{width:20px;height:20px;border-radius:50%;background:#dbe2ea}
-.dot.on{background:#1f4e8c;transform:scale(1.25)}
-.dot.acc.on{background:#d97a1a}
+.dot{width:18px;height:18px;border-radius:50%;background:var(--el2);border:1px solid var(--line)}
+.dot.on{background:var(--brass);transform:scale(1.3)}
+.dot.acc.on{background:#e0655a}
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
-.fb{text-align:center;font-size:17px;font-weight:700;min-height:26px;margin-top:4px}
-.fb.good{color:#2e9e5b}.fb.bad{color:#c0392b}
-.score{font-size:14px;color:#5b6470;text-align:center;margin-top:6px}
-.overlay{position:fixed;inset:0;background:#16345c;color:#fff;z-index:100;display:none;padding:20px 18px calc(20px + env(safe-area-inset-bottom));overflow-y:auto}
-.overlay.sel{display:block}
-.overlay .big-time{font-size:76px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;margin:6px 0}
-.overlay .bname{text-align:center;font-size:24px;font-weight:800}
-.overlay .bdesc{text-align:center;font-size:16.5px;color:#cfe3ff;max-width:560px;margin:8px auto}
-.overlay .prog{display:flex;gap:6px;margin:14px auto;max-width:420px}
-.overlay .p{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.25)}
-.overlay .p.done{background:#2e9e5b}
-.overlay .p.now{background:#fff}
-.obtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.obtn{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:12px;padding:13px 20px;font-size:17px;font-weight:700;cursor:pointer;user-select:none}
-.obtn.go{background:#2e9e5b;border-color:#2e9e5b}
-.notelist{text-align:center;font-size:18px;font-weight:700;color:#16345c;min-height:26px}
+.fb{text-align:center;font-size:16px;font-weight:800;min-height:24px;margin-top:4px}
+.fb.good{color:var(--green)}.fb.bad{color:var(--red)}
+.score{font-size:13px;color:var(--dim2);text-align:center;margin-top:6px}
 .fig{overflow-x:auto;text-align:center}
-.linkcard{display:block;background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:12px 15px;margin:8px 0;text-decoration:none;color:#16345c;font-weight:700}
-.linkcard span{display:block;font-weight:400;color:#5b6470;font-size:13.5px}
+.notelist{text-align:center;font-size:17px;font-weight:800;color:var(--brass);min-height:24px}
+/* session overlay */
+.ov{position:fixed;inset:0;background:linear-gradient(180deg,#101319,#0b0d11);z-index:100;display:none;padding:18px 18px calc(24px + env(safe-area-inset-bottom));overflow-y:auto}
+.ov.sel{display:block}
+.ovwrap{max-width:640px;margin:0 auto}
+.seg{display:flex;gap:6px;margin:6px 0 18px}
+.seg i{flex:1;height:5px;border-radius:4px;background:var(--el2)}
+.seg i.done{background:var(--brassd)}
+.seg i.now{background:var(--brass)}
+.ring{position:relative;width:210px;height:210px;margin:6px auto}
+.ring svg{transform:rotate(-90deg)}
+.ring .tm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .tm b{font-family:var(--serif);font-size:52px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.ring .tm span{font-size:11px;color:var(--dim2);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.ov .bt{font-family:var(--serif);font-size:27px;text-align:center;margin:4px 0 2px}
+.ov .bd{color:var(--dim);font-size:15.5px;text-align:center;max-width:520px;margin:6px auto 4px}
+.ov .lessons{text-align:center;margin:10px 0}
+.toolhost{margin:14px 0}
+.octl{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.ob{background:var(--el2);border:1px solid var(--line);color:var(--ink);border-radius:13px;padding:13px 20px;font-size:15.5px;font-weight:800;cursor:pointer;user-select:none}
+.ob.gold{background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;border:none}
+.donebig{font-family:var(--serif);font-size:34px;text-align:center;margin:30px 0 8px}
+.center{text-align:center}
+.notice{background:var(--el);border:1px solid #4d4020;border-radius:14px;padding:12px 15px;margin:10px 0;font-size:13.5px;color:var(--dim)}
 </style>
 </head>
 <body>
 <div class="app">
 
-<!-- ============ TODAY ============ -->
-<div class="scr sel" id="scr-today">
-<h1 id="t-date">Today</h1>
-<p class="sub" id="t-week">Week 1 of 48</p>
-<div class="statrow">
-<div class="stat"><b id="t-streak">0</b><span>day streak</span></div>
-<div class="stat"><b id="t-sessions">0</b><span>sessions</span></div>
-<div class="stat"><b id="t-hours">0</b><span>hours total</span></div>
-<div class="stat"><b id="t-pct">0%</b><span>plan done</span></div>
+<!-- ================= HOME ================= -->
+<div class="scr sel" id="scr-home">
+<div class="eyebrow" id="h-eyebrow">WEEK 1 · PHASE 1</div>
+<h1 id="h-greet">Good morning.</h1>
+<p class="sub" id="h-date"></p>
+
+<div class="card" id="h-sessioncard">
+<div id="h-notdone">
+<div style="display:flex;align-items:center;gap:16px">
+<div style="flex:1">
+<div style="font-family:var(--serif);font-size:21px" id="h-focustitle">Today's practice</div>
+<div style="color:var(--dim);font-size:14px;margin-top:2px">30 minutes · 5 blocks · everything you need is inside</div>
 </div>
-<div class="key" id="t-ms" style="display:none"></div>
-<h2>This morning's 30 minutes</h2>
-<div class="blocks" id="t-blocks"></div>
-<div style="margin-top:14px">
-<span class="btn big go" id="t-start">Start guided session</span>
-<span class="btn big" id="t-quick" style="margin-top:8px">Log a session without the timer</span>
 </div>
-<div class="card" id="t-donecard" style="display:none"><b style="color:#2e9e5b">Practiced today.</b> <span id="t-donemsg"></span></div>
+<button class="cta" id="h-begin" style="margin-top:14px">Begin practice</button>
+<div class="ghost" id="h-quick">Log practice done away from the app</div>
+</div>
+<div id="h-done" style="display:none">
+<div style="font-family:var(--serif);font-size:22px;color:var(--green)">Practiced today.</div>
+<div style="color:var(--dim);font-size:14.5px;margin-top:4px" id="h-donemsg"></div>
+<div class="ghost" id="h-again">Practice again</div>
+</div>
 </div>
 
-<!-- ============ PLAN ============ -->
-<div class="scr" id="scr-plan">
-<h1>The 48 week plan</h1>
-<p class="sub">Tap a week to set it current or mark it complete. Weeks are difficulty grades, not deadlines, repeat freely.</p>
-<div id="plan-list"></div>
-</div>
+<div class="mile" id="h-mile" style="display:none"></div>
 
-<!-- ============ LOG ============ -->
-<div class="scr" id="scr-log">
-<h1>Practice log</h1>
-<div class="statrow">
-<div class="stat"><b id="l-streak">0</b><span>streak</span></div>
-<div class="stat"><b id="l-best">0</b><span>best streak</span></div>
-<div class="stat"><b id="l-count">0</b><span>sessions</span></div>
-<div class="stat"><b id="l-hours">0</b><span>hours</span></div>
-</div>
-<h2>Last 12 weeks</h2>
-<div class="grid" id="l-grid"></div>
-<h2>Entries</h2>
-<div id="l-list"></div>
-</div>
-
-<!-- ============ TOOLS ============ -->
-<div class="scr" id="scr-tools">
-<h1>Tools</h1>
-<h2>Metronome</h2>
 <div class="card">
+<div class="eyebrow" style="margin-bottom:6px" id="h-wkname">THIS WEEK</div>
+<div id="h-blocks"></div>
+<div style="margin-top:10px" id="h-lessons"></div>
+</div>
+
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<div class="eyebrow">Streak</div>
+<div style="font-family:var(--serif);font-size:20px"><span id="h-streak">0</span> <span style="font-size:13px;color:var(--dim2)">days</span></div>
+</div>
+<div class="days" id="h-days"></div>
+</div>
+</div>
+
+<!-- ================= JOURNEY ================= -->
+<div class="scr" id="scr-journey">
+<div class="eyebrow">The 48 week journey</div>
+<h1>Your path</h1>
+<p class="sub">Tap a week for its full plan and lessons. Weeks are grades of difficulty, not deadlines, repeat any of them freely.</p>
+<div id="j-list"></div>
+</div>
+
+<!-- ================= TOOLS ================= -->
+<div class="scr" id="scr-tools">
+<div class="eyebrow">Practice tools</div>
+<h1>Tools</h1>
+<div class="card" id="tool-met">
 <div class="tempo" id="bpm">80</div>
 <div class="tlabel" id="bpmname">andante</div>
 <input type="range" id="slider" min="40" max="208" value="80" step="1">
@@ -141,29 +188,30 @@ input[type=range]{width:100%;height:34px}
 <span class="btn" data-d="-4">−4</span><span class="btn" data-d="-1">−1</span><span class="btn" data-d="1">+1</span><span class="btn" data-d="4">+4</span>
 </div>
 <div class="row" style="margin-top:6px">
-<span style="color:#5b6470;font-size:13px">Beats:</span>
-<span class="btn small bpb" data-b="0">none</span><span class="btn small bpb" data-b="2">2</span><span class="btn small bpb sel" data-b="3">3</span><span class="btn small bpb" data-b="4">4</span><span class="btn small bpb" data-b="6">6</span>
+<span style="color:var(--dim2);font-size:13px">Beats</span>
+<span class="btn sm bpb" data-b="0">none</span><span class="btn sm bpb" data-b="2">2</span><span class="btn sm bpb sel" data-b="3">3</span><span class="btn sm bpb" data-b="4">4</span><span class="btn sm bpb" data-b="6">6</span>
 </div>
 <div class="dots" id="dots"></div>
-<div class="row"><span class="btn big go" id="startstop" style="max-width:280px">Start</span></div>
+<div class="row"><span class="btn" id="startstop" style="min-width:170px;background:var(--brass);color:#15130c;border-color:var(--brass)">Start</span></div>
+<p style="font-size:12.5px;color:var(--dim2);text-align:center;margin:8px 0 0">Ladder rule: 3 clean reps = +4. Any flaw = −4.</p>
 </div>
-<h2>Note flashcards</h2>
-<div class="card">
+<div class="card" id="tool-fc">
+<div class="eyebrow" style="margin-bottom:8px">Note flashcards</div>
 <div class="row">
-<span class="btn small fc-mode sel" data-m="land">Landmarks</span><span class="btn small fc-mode" data-m="treble">Treble</span><span class="btn small fc-mode" data-m="bass">Bass</span><span class="btn small fc-mode" data-m="both">Both</span>
+<span class="btn sm fc-mode sel" data-m="land">Landmarks</span><span class="btn sm fc-mode" data-m="treble">Treble</span><span class="btn sm fc-mode" data-m="bass">Bass</span><span class="btn sm fc-mode" data-m="both">Both</span>
 </div>
-<div class="fig"><div id="fc-staff" style="max-width:300px;margin:0 auto"></div></div>
+<div class="fig"><div id="fc-staff" style="max-width:280px;margin:0 auto"></div></div>
 <div class="row"><span class="btn fc-a">A</span><span class="btn fc-a">B</span><span class="btn fc-a">C</span><span class="btn fc-a">D</span><span class="btn fc-a">E</span><span class="btn fc-a">F</span><span class="btn fc-a">G</span></div>
 <div class="fb" id="fc-fb">&nbsp;</div>
 <div class="score" id="fc-score"></div>
 </div>
-<h2>Chord builder</h2>
-<div class="card">
+<div class="card" id="tool-cb">
+<div class="eyebrow" style="margin-bottom:8px">Chord builder</div>
 <div class="row">
-<span class="btn small cb-root sel">C</span><span class="btn small cb-root">C#</span><span class="btn small cb-root">D</span><span class="btn small cb-root">Eb</span><span class="btn small cb-root">E</span><span class="btn small cb-root">F</span><span class="btn small cb-root">F#</span><span class="btn small cb-root">G</span><span class="btn small cb-root">Ab</span><span class="btn small cb-root">A</span><span class="btn small cb-root">Bb</span><span class="btn small cb-root">B</span>
+<span class="btn sm cb-root sel">C</span><span class="btn sm cb-root">C#</span><span class="btn sm cb-root">D</span><span class="btn sm cb-root">Eb</span><span class="btn sm cb-root">E</span><span class="btn sm cb-root">F</span><span class="btn sm cb-root">F#</span><span class="btn sm cb-root">G</span><span class="btn sm cb-root">Ab</span><span class="btn sm cb-root">A</span><span class="btn sm cb-root">Bb</span><span class="btn sm cb-root">B</span>
 </div>
 <div class="row" style="margin-top:4px">
-<span class="btn small cb-q sel" data-q="maj">major</span><span class="btn small cb-q" data-q="min">minor</span><span class="btn small cb-q" data-q="dim">dim</span><span class="btn small cb-q" data-q="maj7">maj7</span><span class="btn small cb-q" data-q="m7">m7</span><span class="btn small cb-q" data-q="7">7</span><span class="btn small cb-q" data-q="sus2">sus2</span><span class="btn small cb-q" data-q="sus4">sus4</span>
+<span class="btn sm cb-q sel" data-q="maj">major</span><span class="btn sm cb-q" data-q="min">minor</span><span class="btn sm cb-q" data-q="dim">dim</span><span class="btn sm cb-q" data-q="maj7">maj7</span><span class="btn sm cb-q" data-q="m7">m7</span><span class="btn sm cb-q" data-q="7">7</span><span class="btn sm cb-q" data-q="sus2">sus2</span><span class="btn sm cb-q" data-q="sus4">sus4</span>
 </div>
 <div class="fig"><div id="cb-kb" style="margin-top:8px"></div></div>
 <div class="notelist" id="cb-notes"></div>
@@ -172,406 +220,443 @@ input[type=range]{width:100%;height:34px}
 </div>
 </div>
 
-<!-- ============ MORE ============ -->
-<div class="scr" id="scr-more">
-<h1>Course and settings</h1>
-<h2>The books</h2>
-<a class="linkcard" href="00_Start_Here.html">Start Here<span>Method, setup, your P-525, the road to the U1</span></a>
-<a class="linkcard" href="01_Foundations.html">Volume 1: Foundations<span>Posture, hands, keyboard, first tunes</span></a>
-<a class="linkcard" href="02_Reading_Music.html">Volume 2: Reading Music<span>Landmarks, intervals, rhythm, sight reading</span></a>
-<a class="linkcard" href="03_Technique_Scales_Arpeggios.html">Volume 3: Technique<span>Scales, arpeggios, exercise bank</span></a>
-<a class="linkcard" href="04_Chords_and_Harmony.html">Volume 4: Chords and Harmony<span>Triads to lead sheets to production</span></a>
-<a class="linkcard" href="05_Repertoire.html">Volume 5: Repertoire<span>Graded pieces with practice notes</span></a>
-<a class="linkcard" href="06_Practice_System.html">Volume 6: Practice System<span>The full written plan this app follows</span></a>
-<a class="linkcard" href="07_Practice_Tools.html">Practice Tools page<span>Browser version of the tools, plus key quiz</span></a>
+<!-- ================= PROGRESS ================= -->
+<div class="scr" id="scr-progress">
+<div class="eyebrow">Progress</div>
+<h1>The record</h1>
+<div class="statrow">
+<div class="stat"><b id="p-streak">0</b><span>streak</span></div>
+<div class="stat"><b id="p-best">0</b><span>best</span></div>
+<div class="stat"><b id="p-count">0</b><span>sessions</span></div>
+<div class="stat"><b id="p-hours">0</b><span>hours</span></div>
+</div>
+<h2>Last 12 weeks</h2>
+<div class="grid" id="p-grid"></div>
+<h2>Tempo ladder</h2>
+<div class="card" id="p-tempos" style="font-size:14px;color:var(--dim)"></div>
+<h2>Sessions</h2>
+<div id="p-list"></div>
+</div>
+
+<!-- ================= LIBRARY ================= -->
+<div class="scr" id="scr-library">
+<div class="eyebrow">Library</div>
+<h1>The books</h1>
+<p class="sub">The full course text. Lessons open from your sessions too, right where you need them.</p>
+<a class="volcard" href="00_Start_Here.html" target="_blank" rel="noopener"><b>Start Here</b><span>The method, your P-525 setup, the road to the U1</span></a>
+<a class="volcard" href="01_Foundations.html" target="_blank" rel="noopener"><b>Volume 1 · Foundations</b><span>Posture, hands, keyboard geography, first tunes</span></a>
+<a class="volcard" href="02_Reading_Music.html" target="_blank" rel="noopener"><b>Volume 2 · Reading Music</b><span>Landmarks, intervals, rhythm, sight reading</span></a>
+<a class="volcard" href="03_Technique_Scales_Arpeggios.html" target="_blank" rel="noopener"><b>Volume 3 · Technique</b><span>Every scale and arpeggio, healthy mechanics</span></a>
+<a class="volcard" href="04_Chords_and_Harmony.html" target="_blank" rel="noopener"><b>Volume 4 · Chords and Harmony</b><span>Triads to lead sheets to electronic production</span></a>
+<a class="volcard" href="05_Repertoire.html" target="_blank" rel="noopener"><b>Volume 5 · Repertoire</b><span>Graded pieces, from first tunes to Bach and Satie</span></a>
+<a class="volcard" href="06_Practice_System.html" target="_blank" rel="noopener"><b>Volume 6 · The Practice System</b><span>The written 48 week plan this app runs</span></a>
+<a class="volcard" href="07_Practice_Tools.html" target="_blank" rel="noopener"><b>Practice Tools page</b><span>Browser tools, includes the key name quiz</span></a>
 <h2>Your data</h2>
 <div class="card">
 <span class="btn" id="m-export">Export backup</span>
 <span class="btn" id="m-import">Import backup</span>
-<textarea id="m-data" rows="4" style="margin-top:8px" placeholder="Backup JSON appears here. Copy it somewhere safe (Notes). To restore, paste it here and tap Import."></textarea>
-<p style="font-size:13px;color:#5b6470">Progress saves automatically on this device. Export a backup weekly, especially before iOS updates or if you use this over file sharing rather than hosted.</p>
+<textarea id="m-data" rows="3" style="margin-top:10px" placeholder="Backup appears here. Keep a copy in Notes. Paste and tap Import to restore."></textarea>
 </div>
 <div class="card">
-<label>Current week (1 to 48)</label>
-<input type="number" id="m-week" min="1" max="48" value="1">
+<label>Current week</label>
+<input type="number" id="m-week" min="1" max="48" value="1" style="max-width:110px;display:inline-block">
 <span class="btn" id="m-setweek">Set</span>
-<span class="btn stop" id="m-reset" style="float:right">Reset all data</span>
-</div>
-<h2>Make it a real home screen app</h2>
-<div class="card" style="font-size:14.5px">
-<p><b>Hosted (best):</b> put this whole folder on any free static host (GitHub Pages: new repository, upload files, Settings, Pages, deploy from main). Open the URL in Safari on the iPad, tap Share, then Add to Home Screen. You get a fullscreen app with an icon, offline support, and reliable saved progress.</p>
-<p><b>Local (works now):</b> open this file from the Files app. Progress saves in this viewer, but iOS treats local files more casually than websites, so use Export backup weekly.</p>
+<span class="btn" id="m-reset" style="float:right;color:var(--red);border-color:var(--red)">Reset</span>
 </div>
 </div>
 
 </div>
 
-<!-- ============ SESSION OVERLAY ============ -->
-<div class="overlay" id="ov">
+<!-- ================= SESSION OVERLAY ================= -->
+<div class="ov" id="ov">
+<div class="ovwrap">
 <div id="ov-run">
-<div class="prog" id="ov-prog"></div>
-<div class="bname" id="ov-name"></div>
-<div class="big-time" id="ov-time">2:00</div>
-<div class="bdesc" id="ov-desc"></div>
-<div class="obtns">
-<span class="obtn" id="ov-pause">Pause</span>
-<span class="obtn" id="ov-next">Next block</span>
-<span class="obtn" id="ov-end">End session</span>
+<div class="eyebrow center" id="ov-step">BLOCK 1 OF 5</div>
+<div class="seg" id="ov-seg"></div>
+<div class="ring">
+<svg width="210" height="210" viewBox="0 0 210 210">
+<circle cx="105" cy="105" r="94" fill="none" stroke="#232a35" stroke-width="9"/>
+<circle id="ov-arc" cx="105" cy="105" r="94" fill="none" stroke="#d4a853" stroke-width="9" stroke-linecap="round" stroke-dasharray="590.6" stroke-dashoffset="0"/>
+</svg>
+<div class="tm"><b id="ov-time">2:00</b><span id="ov-min">2 minutes</span></div>
+</div>
+<div class="bt" id="ov-name">Arrive</div>
+<div class="bd" id="ov-desc"></div>
+<div class="lessons" id="ov-lessons"></div>
+<div class="toolhost" id="ov-tool"></div>
+<div class="octl">
+<span class="ob" id="ov-pause">Pause</span>
+<span class="ob gold" id="ov-next">Done, next</span>
+<span class="ob" id="ov-end">End</span>
 </div>
 </div>
-<div id="ov-form" style="display:none;max-width:560px;margin:0 auto">
-<h2 style="color:#fff;font-size:24px">Session done. Log it.</h2>
-<label style="color:#cfe3ff">Top clean tempo today (optional)</label>
-<input type="text" id="f-tempo" placeholder="e.g. G major HT at 76">
-<label style="color:#cfe3ff">Today's win</label>
-<input type="text" id="f-win" placeholder="e.g. pedal finally smooth in bar 7">
-<label style="color:#cfe3ff">Tomorrow's first target</label>
-<input type="text" id="f-next" placeholder="e.g. Grace bars 5 to 8, LH alone">
-<div class="obtns"><span class="obtn go" id="f-save">Save session</span></div>
+<div id="ov-form" style="display:none">
+<div class="donebig">Well played.</div>
+<p class="center" style="color:var(--dim)" id="ov-formsub">Thirty seconds of logging makes tomorrow better.</p>
+<label>Top clean tempo today</label>
+<input type="text" id="f-tempo" placeholder="G major, hands together, 76">
+<label>Today's win</label>
+<input type="text" id="f-win" placeholder="Pedal finally smooth in bar 7">
+<label>Tomorrow's first target</label>
+<input type="text" id="f-next" placeholder="Grace bars 5 to 8, left hand alone">
+<div class="octl"><span class="ob gold" id="f-save">Save session</span></div>
+</div>
+<div id="ov-fin" style="display:none">
+<div class="donebig" id="fin-title">Session 1 complete.</div>
+<p class="center" style="color:var(--dim);font-size:16px" id="fin-sub"></p>
+<div class="octl"><span class="ob gold" id="fin-close">Close</span></div>
+</div>
 </div>
 </div>
 
 <div class="tabs">
-<div class="tab sel" data-s="today">Today</div>
-<div class="tab" data-s="plan">Plan</div>
-<div class="tab" data-s="log">Log</div>
-<div class="tab" data-s="tools">Tools</div>
-<div class="tab" data-s="more">More</div>
+<div class="tab sel" data-s="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M6 10v10h12V10"/></svg><span>Home</span></div>
+<div class="tab" data-s="journey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 5h11l-3.5 4L17 13H6"/></svg><span>Journey</span></div>
+<div class="tab" data-s="tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21 12 4l4 17z"/><path d="M12 14l4.5-7"/><path d="M6.5 17h11"/></svg><span>Tools</span></div>
+<div class="tab" data-s="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11"/><path d="M10 20V5"/><path d="M16 20v-7"/><path d="M2 20h20"/></svg><span>Progress</span></div>
+<div class="tab" data-s="library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.6-4.8-2.2-8-2.2v14.4c3.2 0 6 .6 8 2.2 2-1.6 4.8-2.2 8-2.2V3.8C16.8 3.8 14 4.4 12 6z"/><path d="M12 6v14.4"/></svg><span>Library</span></div>
 </div>
 
 <script>
 (function(){
 'use strict';
-/* ================= WEEK DATA (from Volume 6) ================= */
-var WEEKS=[
-{t:'Posture, arm drops, keyboard geography (Vol 1, sections 1 to 6)',r:'Finger number drills, key naming games',p:'Hot Cross Buns by finger numbers'},
-{t:'Five finger walks in C position, evenness',r:'Vol 2 sections 1 and 2: staff, three landmarks, flashcards begin',p:'Mary Had a Little Lamb'},
-{t:'Walks plus skips, hands together slowly',r:'Steps and skips, drill 1',p:'Ode to Joy, right hand'},
-{t:'Consolidate weeks 1 to 3',r:'Review landmarks and steps',p:'Ode to Joy with LH held notes',m:'Milestone 1: Volume 1 exit checklist, every box'},
-{t:'Pentascales C and G, contrary motion',r:'Secondary landmarks, drill 2',p:'Frère Jacques, right hand'},
-{t:'Pentascales D and A (first black key)',r:'Rhythm counting drills, Vol 2 section 5',p:'Frère Jacques plus LH open fifth'},
-{t:'Pentascale E, accent shifts',r:'Eighth notes, drill 5',p:'Jingle Bells'},
-{t:'Pentascale review, all five keys',r:'Note values review',p:'Au Clair de la Lune, hands together',m:'Milestone 2: pentascales C G D A E from memory, drills 1 and 2 cold'},
-{t:'Thumb pivot drill, C major scale hands separate',r:'Daily sight reading habit begins, bass drills 3 and 4',p:'When the Saints, right hand'},
-{t:'C major hands separate, contrary motion scale',r:'Sight reading, flashcards full staff',p:'Saints plus LH roots'},
-{t:'C major hands together, very slow',r:'Triads C F G intro (Vol 4 sections 1 and 2)',p:'Saints polish'},
-{t:'C major hands together, even',r:'Volume 2 exit checklist',p:'Record recital 1: any three tunes',m:'Phase 1 milestone: C major HT plus recital 1. You read music now.'},
-{t:'G major hands separate then together',r:'All white key triads',p:'Frère Jacques as a canon'},
-{t:'G major HT, speed ladder begins',r:'Inversions of C',p:'Amazing Grace level 1'},
-{t:'D major hands separate, pedal technique begins (Vol 3 section 11)',r:'Inversion drill C and F',p:'Amazing Grace level 2 with pedal'},
-{t:'Review C and G at tempo',r:'Inversions consolidated',p:'Grace with smooth pedal',m:'Milestone 4: C and G hands together at 72, all 12 pentascales'},
-{t:'D major HT, A major hands separate',r:'I IV V I in C, voice led',p:'Grace with pattern 2 accompaniment'},
-{t:'A major hands together',r:'I V vi IV in C',p:'House of the Rising Sun, LH pattern'},
-{t:'E major hands separate',r:'Progressions in G, ear game',p:'Rising Sun, assemble hands'},
-{t:'E major consolidate, C arpeggio one octave',r:'Progression review',p:'Rising Sun flowing with pedal',m:'Milestone 5: C G D A hands together, C arpeggio'},
-{t:'E major HT, C arpeggio',r:'vi IV I V, and minor i VI III VII',p:'Rising Sun polish, record it'},
-{t:'F major hands separate (new RH fingering)',r:'G arpeggio, patterns 1 and 2',p:'Greensleeves begins (6/8)'},
-{t:'F major hands together',r:'Lead sheet loop, levels 2 and 3',p:'Greensleeves'},
-{t:'Six scales review',r:'Volume 4 first five checkboxes',p:'Recital 2, first loop recorded in DAW',m:'Phase 2 milestone: 6 scales HT, lead sheet level 3, own loop'},
-{t:'A minor natural and harmonic, hands separate',r:'maj7 and m7 chords',p:'Minuet in G, RH bars 1 to 8'},
-{t:'A minor hands together',r:'Dominant 7ths on white roots',p:'Minuet, LH bars 1 to 8 from the score'},
-{t:'E minor hands separate and together',r:'ii V I with sevenths, in C and G',p:'Minuet, hands together bars 1 to 8'},
-{t:'Minor scale review',r:'sus2 and sus4 chords',p:'Minuet bars 9 to 16',m:'Milestone 7: Am and Em harmonic HT, first Minuet section solid'},
-{t:'D minor, two octave C major HT',r:'Sixteenth note counting (1 e and a)',p:'Minuet continues'},
-{t:'D minor HT, two octave G',r:'Syncopation clapping drills',p:'Minuet, full draft'},
-{t:'B flat major (new fingering), chromatic scale',r:'Sight reading two lines daily',p:'Burgmüller La Candeur begins'},
-{t:'Two octave C and G at 69 eighths',r:'Review',p:'Minuet end to end, slowly',m:'Milestone 8: Minuet performable slow, chromatic smooth'},
-{t:'E flat major, arpeggios two octaves C and G',r:'Spread pad voicings (Vol 4 section 9)',p:'Gymnopédie, LH alone'},
-{t:'E flat HT, A minor arpeggio',r:'Minor progressions, ear: progression spotting',p:'Gymnopédie, melody joins'},
-{t:'Two octaves D A E hands together',r:'Dorian mode exploration',p:'Gymnopédie assembled'},
-{t:'Phase standards check (Vol 3)',r:'Review',p:'Recital 3: Minuet plus one. Second loop with voicings and bassline',m:'Phase 3 milestone. Optional teacher checkup.'},
-{t:'A flat major',r:'Circle of fifths drills, one key daily',p:'Prelude in C as blocked chords'},
-{t:'B major (the comfortable one)',r:'Melodic minor intro',p:'Prelude, unroll bars 1 to 8'},
-{t:'D flat major',r:'Slash chords in lead sheets',p:'Prelude continues'},
-{t:'B minor scale',r:'Review',p:'Arabesque begins, Prelude halfway',m:'Milestone 10: nine majors hands together, two octaves'},
-{t:'G flat major, minor arpeggios Am Em',r:'Transpose a loop to three keys',p:'Arabesque'},
-{t:'G minor and C minor',r:'Ear: hear I IV V vi in real songs',p:'Prelude full draft, Arabesque'},
-{t:'All 12 majors rotation, three keys per day',r:'Chopin E minor prelude as chord study',p:'Chopin Prelude begins'},
-{t:'Full rotation from memory',r:'Chopin LH progression fluent',p:'Clementi Sonatina surveyed and begun',m:'Milestone 11'},
-{t:'Speed ladders toward 80 eighths',r:'Improvise melodies over LH loops',p:'Clementi, Alberti bass sections'},
-{t:'Weak key focus (check your log)',r:'Improvisation, add dorian color',p:'Clementi HT, Gymnopédie repolish'},
-{t:'Maintenance rotation',r:'Any chord, any key, on demand',p:'Program run throughs, record takes'},
-{t:'Final standards (Vol 3 phase 4)',r:'Exit checklists, Volumes 4 and 5',p:'Recital 4: Minuet, Gymnopédie, Prelude, optional Chopin',m:'Final milestone. Then read After Week 48 in Volume 6.'}
+/* ============ LESSON LINKS ============ */
+var LFILE={V1:'01_Foundations.html',V2:'02_Reading_Music.html',V3:'03_Technique_Scales_Arpeggios.html',V4:'04_Chords_and_Harmony.html',V5:'05_Repertoire.html',V6:'06_Practice_System.html'};
+var LNAME={V1:'Vol 1',V2:'Vol 2',V3:'Vol 3',V4:'Vol 4',V5:'Vol 5',V6:'Vol 6'};
+function lessonBtns(links,dark){
+ if(!links||!links.length)return '';
+ return links.map(function(lk){
+   var f=lk.split('#')[0],a=lk.split('#')[1];
+   return '<a class="btn sm link" target="_blank" rel="noopener" href="'+LFILE[f]+'#'+a+'">Open lesson · '+LNAME[f]+'</a>';
+ }).join(' ');
+}
+/* ============ 48 WEEKS ============ */
+var WKS=[
+{n:'First contact',t:{d:'Posture reset, then ten arm weight drops per hand on finger 3, then fingers 2 and 4. Full warm tone, zero effort. Then geography: find and name every C, D and F on the piano. Eyes closed for the D drill.',l:['V1#s6','V1#s5']},r:{d:'Finger numbers until instant: call a number out loud, press that finger, both hands.',l:['V1#s4']},p:{d:'Hot Cross Buns by finger numbers: 3 2 1, 3 2 1. Right hand, then left.',l:['V1#s8']}},
+{n:'Home position',t:{d:'Five finger walks in C position, each hand alone: up, down, then the skips exercise. Listen for a weak finger 4 and feed it more arm weight.',l:['V1#s7']},r:{d:'Meet the staff and your three landmarks: Middle C, Treble G, Bass F. Then three minutes of flashcards below, landmarks mode.',l:['V2#s2'],tool:'fc:land'},p:{d:'Mary Had a Little Lamb, RH. From the numbers first, then following the notation as you play.',l:['V1#s8']}},
+{n:'Hands together',t:{d:'Walks hands together, embarrassingly slow, both hands mirroring. Then skips: 1 3 5 3 1.',l:['V1#s7']},r:{d:'Read by shape: repeat, step, or skip. Work drill 1 until you read it cold.',l:['V2#s3'],tool:'fc:land'},p:{d:'Ode to Joy, right hand. Shape the phrase so it rises and falls like a sentence.',l:['V1#s8']}},
+{n:'Milestone: foundations',m:'Milestone week: pass the Volume 1 exit checklist, every box, honestly.',t:{d:'Review week. Drops, walks, geography, all relaxed and even.',l:['V1#s10']},r:{d:'Landmarks under one second each. Twenty in a row.',l:['V2#s2'],tool:'fc:land'},p:{d:'Ode to Joy with LH held notes: C3 for two bars, G3, then C3.',l:['V1#s8']}},
+{n:'New territories',t:{d:'Pentascales C and G, hands separate: up, down, then broken 1 3 5 3 1. Then contrary motion from middle C, both thumbs sharing the same start.',l:['V3#s3']},r:{d:'Add the secondary landmarks: Treble C and Bass C. Then drill 2 with skips.',l:['V2#s2'],tool:'fc:land'},p:{d:'Frère Jacques, right hand. The G A G F run in bar 5 is your first four note run, keep it even.',l:['V5#s2']}},
+{n:'First black key',t:{d:'Pentascales D and A. Reach F sharp and C sharp with a relaxed hand drifting slightly into the black key area, wrist level.',l:['V3#s3']},r:{d:'Counting drills: clap and count bars of quarters, halves and dotted halves, out loud, no piano.',l:['V2#s5']},p:{d:'Frère Jacques plus a held LH open fifth: C3 and G3 together, once per two bars.',l:['V5#s2']}},
+{n:'Subdividing',t:{d:'Pentascale E, then accent shifting on C: accent every 2nd note, then every 3rd. Every finger learns to be strong and light.',l:['V3#s3','V3#s10']},r:{d:'Eighth notes: count "1 and 2 and" out loud. Drill 5, tap the rhythm on your knee before playing it.',l:['V2#s5'],tool:'fc:land'},p:{d:'Jingle Bells. Loose wrist on the repeated notes, one relaxed impulse each, no grabbing.',l:['V5#s2']}},
+{n:'Milestone: five keys',m:'Milestone week: pentascales C G D A E from memory, and drills 1 and 2 read cold.',t:{d:'Pentascale tour: all five keys, one flowing take each, hands separate.',l:['V3#s3']},r:{d:'Note values review, then flashcards.',l:['V2#s5'],tool:'fc:land'},p:{d:'Au Clair de la Lune, hands together from the notation, counting out loud.',l:['V2#s6']}},
+{n:'The thumb travels',t:{d:'Thumb pivot drill: 3 1 3 1 on E and F, ten slow reps per hand, elbow drifting to help. Then C major scale, hands separate.',l:['V3#s5','V3#s6']},r:{d:'The sight reading habit starts today: one new line, once, no stopping, eyes ahead. Bass drills 3 and 4 this week.',l:['V2#s8'],tool:'fc:both'},p:{d:'When the Saints, right hand. The rests are played too: count them.',l:['V5#s2']}},
+{n:'Scaling up',t:{d:'C major hands separate with the metronome at 60, quarter notes. Contrary motion scale as dessert.',l:['V3#s6']},r:{d:'Flashcards across the full staff, both clefs. Then one line of sight reading.',l:['V2#s8'],tool:'fc:both'},p:{d:'Saints with LH roots: C3 on the downbeats, G3 where your ear asks for it.',l:['V5#s2']}},
+{n:'First chords',t:{d:'C major hands together, one octave, painfully slow, perfectly even. Three clean takes.',l:['V3#s6']},r:{d:'Build C, F and G major triads. Shape in the air first, then one soft relaxed drop per chord.',l:['V4#s2'],tool:'cb'},p:{d:'Saints, polish. Record a phone take and listen back once.',l:['V5#s2']}},
+{n:'Milestone: you read music',m:'Phase 1 complete: C major hands together, Volume 2 exit checklist, and recital 1.',t:{d:'C major HT, three clean consecutive takes.',l:['V3#s6']},r:{d:'The Volume 2 exit checklist, box by box.',l:['V2#s10'],tool:'fc:both'},p:{d:'Recital 1: three tunes, one take each, no stopping. Phone on the music rest.',l:['V5#s7']}},
+{n:'Second key',t:{d:'G major scale, hands separate then together. Identical fingering to C.',l:['V3#s6']},r:{d:'Build all seven white key triads, naming each out loud: C major, D minor, E minor...',l:['V4#s2'],tool:'cb'},p:{d:'Frère Jacques as a canon: LH starts the tune two bars after the RH. Your first counterpoint.',l:['V5#s2']}},
+{n:'Turning chords over',t:{d:'G major HT on the ladder: three clean reps earns +4 bpm. Log your top tempo tonight.',l:['V3#s6']},r:{d:'Inversions of C: root, first, second, root on top. Feel how little the hand moves.',l:['V4#s3'],tool:'cb'},p:{d:'Amazing Grace level 1: RH melody, LH plays just the chord roots.',l:['V5#s3']}},
+{n:'The pedal',t:{d:'D major hands separate. Then the pedal drill: press just after the note sounds, change cleanly on the join. Ear is the referee.',l:['V3#s11','V3#s6']},r:{d:'Inversion drill on C and F. Small moves, smooth connections.',l:['V4#s3'],tool:'cb'},p:{d:'Amazing Grace level 2: LH triads, pedal change per chord.',l:['V5#s3']}},
+{n:'Milestone: twelve homes',m:'Milestone week: C and G hands together at 72, and all 12 major pentascales.',t:{d:'C and G at 72. Pentascale tour through all twelve keys across the week.',l:['V3#s3']},r:{d:'Inversions eyes closed on C major.',l:['V4#s3'],tool:'cb'},p:{d:'Grace with seamless pedal. Listen hard for smears and gaps.',l:['V5#s3']}},
+{n:'Progressions begin',t:{d:'D major hands together. A major hands separate.',l:['V3#s6']},r:{d:'I IV V I in C: blocked first, then voice led so no finger moves more than a step.',l:['V4#s4'],tool:'cb'},p:{d:'Grace with broken chord accompaniment, pattern 2.',l:['V5#s3','V4#s5']}},
+{n:'The pop engine',t:{d:'A major hands together.',l:['V3#s6']},r:{d:'I V vi IV in C. Loop it until it stops being homework and starts being a song.',l:['V4#s4'],tool:'cb'},p:{d:'House of the Rising Sun: the LH broken shape on Am and C, slow and hypnotic.',l:['V5#s3']}},
+{n:'Minor colors',t:{d:'E major hands separate.',l:['V3#s6']},r:{d:'Progressions in G. Then the ear game: eyes closed, major or minor, ten chords.',l:['V4#s4','V4#s10'],tool:'cb'},p:{d:'Rising Sun: assemble both hands at half speed.',l:['V5#s3']}},
+{n:'Milestone: arpeggios',m:'Milestone week: C G D A hands together, and the C arpeggio.',t:{d:'C major arpeggio: block C E G C, feel the spacing, then break it. RH 1 2 3 5, LH 5 4 2 1.',l:['V3#s9']},r:{d:'Progression review in two keys.',l:['V4#s4'],tool:'cb'},p:{d:'Rising Sun flowing with pedal.',l:['V5#s3']}},
+{n:'Recording artist',t:{d:'E major hands together. C arpeggio daily.',l:['V3#s6','V3#s9']},r:{d:'vi IV I V, then i VI III VII in A minor. Feel the mood flip between them.',l:['V4#s4'],tool:'cb'},p:{d:'Rising Sun: polish it and record it. This one is for playing to people.',l:['V5#s3']}},
+{n:'New fingering',t:{d:'F major hands separate: RH 1234 1234, finger 4 lands on B flat.',l:['V3#s6']},r:{d:'G arpeggio. Then run patterns 1 and 2 through I V vi IV.',l:['V4#s5'],tool:'cb'},p:{d:'Greensleeves begins: 6/8 time, two big pulses per bar.',l:['V5#s3']}},
+{n:'Lead sheets',t:{d:'F major hands together.',l:['V3#s6']},r:{d:'The practice lead sheet at level 2, then level 3. Then transpose the whole loop to G.',l:['V4#s8'],tool:'cb'},p:{d:'Greensleeves, first half smooth.',l:['V5#s3']}},
+{n:'Milestone: producer',m:'Phase 2 complete: six scales hands together, a lead sheet at level 3, your first loop in the DAW, recital 2.',t:{d:'Six scales, one clean take each.',l:['V3#s6']},r:{d:'Record your first 8 bar loop: minor key, four chords, LH roots, RH voiced with inversions.',l:['V4#s9']},p:{d:'Recital 2: Grace or Rising Sun, plus one more.',l:['V5#s7']}},
+{n:'The minor mode',t:{d:'A minor scale, natural then harmonic, hands separate. Same fingering as C major.',l:['V3#s7']},r:{d:'maj7 and m7 chords on white roots. Dreamy versus mellow: listen for it.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet in G: right hand only, bars 1 to 8. Elegant, unhurried.',l:['V5#s4']}},
+{n:'Bach’s left hand',t:{d:'A minor hands together.',l:['V3#s7']},r:{d:'Dominant sevenths: build G7, C7, D7 and hear how each one leans forward.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet: left hand alone, bars 1 to 8, from the score.',l:['V5#s4']}},
+{n:'Counterpoint',t:{d:'E minor, hands separate then together.',l:['V3#s7']},r:{d:'ii V I with sevenths in C and G. The engine of jazz under your fingers.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet hands together, bars 1 to 8, half speed, counting.',l:['V5#s4']}},
+{n:'Milestone: minor keys',m:'Milestone week: A and E harmonic minor hands together, Minuet section one solid.',t:{d:'Minor scale review on the ladder.',l:['V3#s7']},r:{d:'sus2 and sus4: build them, resolve them, enjoy them.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet, bars 9 to 16.',l:['V5#s4']}},
+{n:'Sixteenths',t:{d:'D minor scales. Two octave C major, hands together.',l:['V3#s7','V3#s6']},r:{d:'Sixteenth notes: count "1 e and a", clap before you play.',l:['V2#s5']},p:{d:'Minuet, keep building sections.',l:['V5#s4']}},
+{n:'Two octaves',t:{d:'D minor hands together. Two octave G major.',l:['V3#s6']},r:{d:'Syncopation: clap the offbeats, accent the "and".',l:['V2#s5']},p:{d:'Minuet: full piece draft, slow.',l:['V5#s4']}},
+{n:'Flat keys',t:{d:'B flat major: thumbs on white keys only. Then the chromatic scale, one octave, fingers close.',l:['V3#s6','V3#s8']},r:{d:'Sight reading doubles: two lines daily from here on.',l:['V2#s8'],tool:'fc:both'},p:{d:'Burgmüller La Candeur begins: singing legato tone.',l:['V5#s4']}},
+{n:'Milestone: Minuet lives',m:'Milestone week: Minuet end to end slowly, two octave C and G at 69.',t:{d:'Two octave C and G on the ladder.',l:['V3#s6']},r:{d:'Light review week for the eyes.',l:['V2#s8'],tool:'fc:both'},p:{d:'Minuet end to end, every day, tempo rising gently.',l:['V5#s4']}},
+{n:'Painting with pads',t:{d:'E flat major. Arpeggios two octaves, C and G, hands separate.',l:['V3#s6','V3#s9']},r:{d:'Spread voicings: build the A minor pad, root and fifth low, triad above. Sustain it with pedal.',l:['V4#s9'],tool:'cb'},p:{d:'Gymnopédie: left hand alone until the bass-chord swing is calm and automatic.',l:['V5#s4']}},
+{n:'The floating melody',t:{d:'E flat hands together. A minor arpeggio.',l:['V3#s9']},r:{d:'Minor progressions in Am and Em. Today, spot the IV and V chords in songs you hear.',l:['V4#s10'],tool:'cb'},p:{d:'Gymnopédie: float the melody over the LH, melody louder than accompaniment.',l:['V5#s4']}},
+{n:'Modes',t:{d:'Two octaves D, A and E, hands together.',l:['V3#s6']},r:{d:'Dorian: D to D on white keys. Improvise over a held D minor chord, land on chord tones.',l:['V4#s9']},p:{d:'Gymnopédie assembled, deep pedal, no hurry at all.',l:['V5#s4']}},
+{n:'Milestone: performer',m:'Phase 3 complete: recital 3, and a second loop with spread voicings and a bassline.',t:{d:'Phase standards check against Volume 3.',l:['V3#s12']},r:{d:'Loop 2 in the DAW: spread voicings plus a root-fifth-octave bassline.',l:['V4#s9']},p:{d:'Recital 3: the Minuet plus one. Record it.',l:['V5#s7']}},
+{n:'The prelude as chords',t:{d:'A flat major scale.',l:['V3#s6']},r:{d:'Circle of fifths: play I IV V I in one key daily, moving clockwise.',l:['V4#s7'],tool:'cb'},p:{d:'Prelude in C: block every bar into one chord. Whole piece as chords first.',l:['V5#s5']}},
+{n:'The comfortable key',t:{d:'B major: Chopin taught it early because the hand fits it best. Enjoy.',l:['V3#s6']},r:{d:'Melodic minor: raised 6 and 7 going up, natural coming down.',l:['V3#s7']},p:{d:'Prelude: unroll the ripple, bars 1 to 8.',l:['V5#s5']}},
+{n:'Five flats',t:{d:'D flat major: mostly black keys, easier than it looks.',l:['V3#s6']},r:{d:'Slash chords: C/E, G/B. Rebuild both your loops using them.',l:['V4#s8'],tool:'cb'},p:{d:'Prelude continues. Calm, even, let the harmony do the emoting.',l:['V5#s5']}},
+{n:'Milestone: nine keys',m:'Milestone week: nine major scales hands together, two octaves. B minor joins.',t:{d:'B minor scale. Rotate all nine majors this week.',l:['V3#s7']},r:{d:'Review and breathe.',l:['V4#s7'],tool:'cb'},p:{d:'Arabesque begins. Prelude reaches halfway.',l:['V5#s4','V5#s5']}},
+{n:'Full circle',t:{d:'G flat major: thumbs on the two white keys. Minor arpeggios, Am and Em.',l:['V3#s6','V3#s9']},r:{d:'Transpose one loop to three keys around the circle.',l:['V4#s7']},p:{d:'Arabesque: drama, staccato chords, A minor runs.',l:['V5#s4']}},
+{n:'Dark keys',t:{d:'G minor and C minor scales.',l:['V3#s7']},r:{d:'Ear training: name I, IV, V or vi in three songs you hear today.',l:['V4#s10']},p:{d:'Prelude full draft. Arabesque continues.',l:['V5#s5']}},
+{n:'Chopin',t:{d:'All twelve majors in rotation: three keys per day.',l:['V3#s6']},r:{d:'Chopin E minor prelude, LH only: read it as a chord chart, name every chord.',l:['V5#s5'],tool:'cb'},p:{d:'Chopin prelude begins: the lament over sinking chords.',l:['V5#s5']}},
+{n:'Milestone: every key',m:'Milestone week: full major rotation from memory. Clementi begins.',t:{d:'Rotation from memory, no chart on the stand.',l:['V3#s6']},r:{d:'Chopin LH fluent, chords named as you play.',l:['V5#s5'],tool:'cb'},p:{d:'Clementi Sonatina: survey it, then the RH exposition.',l:['V5#s5']}},
+{n:'Velocity',t:{d:'Speed ladders: scales climbing toward eighth notes at 80.',l:['V3#s10']},r:{d:'Improvise: RH melody over your LH loop. Scale tones, land on chord notes.',l:['V4#s9']},p:{d:'Clementi: the Alberti bass sections, slow then sparkling.',l:['V5#s5']}},
+{n:'Weak spots',t:{d:'Your two weakest keys get the whole slot. The log knows which they are.',l:['V3#s6']},r:{d:'Improvisation with dorian color. One loop, one solo, daily.',l:['V4#s9']},p:{d:'Clementi hands together. Gymnopédie repolish for the recital.',l:['V5#s5']}},
+{n:'Dress rehearsal',t:{d:'Maintenance rotation, light and clean, nothing forced.',l:['V3#s6']},r:{d:'Any chord, any key, on demand. Quiz yourself with the builder below.',l:['V4#s6'],tool:'cb'},p:{d:'Program run throughs. Record practice takes, watch your wrists.',l:['V5#s7']}},
+{n:'The recital',m:'Final milestone: recital 4, the exit checklists, and then Year Two begins.',t:{d:'Final standards: Volume 3, phase 4 list.',l:['V3#s12']},r:{d:'Exit checklists for Volumes 4 and 5.',l:['V4#s11']},p:{d:'Recital 4: Minuet, Gymnopédie, Prelude in C, and the Chopin if it is ready. One year. Listen back to recital 1.',l:['V5#s7']}}
 ];
-function phaseOf(w){return w<=12?'Phase 1: Foundations':w<=24?'Phase 2: Building':w<=36?'Phase 3: Expanding':'Phase 4: Consolidating';}
+function phaseOf(w){return w<=12?'Phase 1 · Foundations':w<=24?'Phase 2 · Building':w<=36?'Phase 3 · Expanding':'Phase 4 · Consolidating';}
 
-/* ================= STATE ================= */
-var mem={};
-var storeOK=true;
-try{localStorage.setItem('pc_test','1');localStorage.removeItem('pc_test');}catch(e){storeOK=false;}
-function load(){
-  if(!storeOK)return mem.s||null;
-  try{return JSON.parse(localStorage.getItem('pc_state'));}catch(e){return null;}
-}
-function save(){
-  if(!storeOK){mem.s=S;return;}
-  try{localStorage.setItem('pc_state',JSON.stringify(S));}catch(e){}
-}
+/* ============ STATE ============ */
+var mem={};var storeOK=true;
+try{localStorage.setItem('pc_t','1');localStorage.removeItem('pc_t');}catch(e){storeOK=false;}
+function load(){if(!storeOK)return mem.s||null;try{return JSON.parse(localStorage.getItem('pc_state'));}catch(e){return null;}}
 var S=load()||{week:1,doneWeeks:[],sessions:[]};
-if(!storeOK){
-  var w=document.createElement('div');w.className='warnb';w.style.margin='10px 16px';
-  w.textContent='This viewer cannot save data between opens. Your session still works, but export a backup from More before closing, or use the hosted version.';
-  document.querySelector('.app').prepend(w);
-}
-function todayISO(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function save(){if(!storeOK){mem.s=S;return;}try{localStorage.setItem('pc_state',JSON.stringify(S));}catch(e){}}
+if(!storeOK){var wEl=document.createElement('div');wEl.className='notice';wEl.textContent='This viewer cannot keep data between opens. Use the hosted version for reliable tracking, or export a backup from Library before closing.';document.querySelector('.app').prepend(wEl);}
 function dayISO(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function todayISO(){return dayISO(new Date());}
 function daySet(){var s={};S.sessions.forEach(function(x){s[x.d]=1;});return s;}
-function streak(){
-  var s=daySet(),n=0,d=new Date();
-  if(!s[dayISO(d)])d.setDate(d.getDate()-1);
-  while(s[dayISO(d)]){n++;d.setDate(d.getDate()-1);}
-  return n;
-}
-function bestStreak(){
-  var days=Object.keys(daySet()).sort();var best=0,run=0,prev=null;
-  days.forEach(function(ds){
-    if(prev){var a=new Date(prev),b=new Date(ds);run=((b-a)/86400000===1)?run+1:1;}else run=1;
-    if(run>best)best=run;prev=ds;
-  });
-  return best;
-}
+function streak(){var s=daySet(),n=0,d=new Date();if(!s[dayISO(d)])d.setDate(d.getDate()-1);while(s[dayISO(d)]){n++;d.setDate(d.getDate()-1);}return n;}
+function bestStreak(){var days=Object.keys(daySet()).sort(),best=0,run=0,prev=null;days.forEach(function(ds){if(prev){var a=new Date(prev),b=new Date(ds);run=((b-a)/86400000===1)?run+1:1;}else run=1;if(run>best)best=run;prev=ds;});return best;}
 function hours(){var m=0;S.sessions.forEach(function(x){m+=x.min||30;});return Math.round(m/6)/10;}
 
-/* ================= TABS ================= */
+/* ============ NAV ============ */
 function show(s){
-  document.querySelectorAll('.scr').forEach(function(e){e.classList.remove('sel');});
-  document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('sel');});
-  document.getElementById('scr-'+s).classList.add('sel');
-  document.querySelector('.tab[data-s="'+s+'"]').classList.add('sel');
-  if(s==='today')renderToday();if(s==='plan')renderPlan();if(s==='log')renderLog();
-  window.scrollTo(0,0);
+ document.querySelectorAll('.scr').forEach(function(e){e.classList.remove('sel');});
+ document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('sel');});
+ document.getElementById('scr-'+s).classList.add('sel');
+ document.querySelector('.tab[data-s="'+s+'"]').classList.add('sel');
+ if(s==='home')renderHome();if(s==='journey')renderJourney();if(s==='progress')renderProgress();
+ window.scrollTo(0,0);
 }
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){show(t.dataset.s);});});
 
-/* ================= TODAY ================= */
+/* ============ SESSION BLOCKS ============ */
 function blocksFor(w){
-  var wk=WEEKS[w-1];
-  return [
-    {min:2,name:'Arrive',desc:'Posture reset, shoulders drop, 6 to 8 arm weight drops per hand.'},
-    {min:8,name:'Technique',desc:wk.t},
-    {min:6,name:'Reading and harmony',desc:wk.r+' (3 min reading, 3 min chords). Flashcards are on the Tools tab.'},
-    {min:12,name:'Repertoire',desc:wk.p+'. Hardest bars first, hands separate before together.'},
-    {min:2,name:'Close',desc:'Play something you love. Then save the log.'}
-  ];
-}
-function renderToday(){
-  var d=new Date();
-  document.getElementById('t-date').textContent=d.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
-  document.getElementById('t-week').textContent='Week '+S.week+' of 48 · '+phaseOf(S.week);
-  document.getElementById('t-streak').textContent=streak();
-  document.getElementById('t-sessions').textContent=S.sessions.length;
-  document.getElementById('t-hours').textContent=hours();
-  document.getElementById('t-pct').textContent=Math.round(S.doneWeeks.length/48*100)+'%';
-  var ms=WEEKS[S.week-1].m;
-  var msEl=document.getElementById('t-ms');
-  if(ms){msEl.style.display='block';msEl.innerHTML='<b>This week: '+ms+'</b>';}else msEl.style.display='none';
-  var bl=document.getElementById('t-blocks');bl.innerHTML='';
-  blocksFor(S.week).forEach(function(b){
-    var e=document.createElement('div');e.className='bl';
-    e.innerHTML='<b class="min">'+b.min+' min</b><div><b>'+b.name+'.</b> '+b.desc+'</div>';
-    bl.appendChild(e);
-  });
-  var done=daySet()[todayISO()];
-  document.getElementById('t-donecard').style.display=done?'block':'none';
-  if(done){
-    var last=S.sessions[S.sessions.length-1];
-    document.getElementById('t-donemsg').textContent=(last&&last.next)?('Tomorrow’s first target: '+last.next):'See you tomorrow morning.';
-  }
+ var wk=WKS[w-1];
+ return [
+  {min:2,name:'Arrive',desc:'Sit tall, shoulders up to your ears and drop them heavy. Six arm weight drops per hand, listening for a full round tone.',links:['V1#s6'],tool:null},
+  {min:8,name:'Technique',desc:wk.t.d,links:wk.t.l,tool:'met'},
+  {min:6,name:'Reading & harmony',desc:wk.r.d,links:wk.r.l,tool:wk.r.tool||null},
+  {min:12,name:'Repertoire',desc:wk.p.d,links:wk.p.l,tool:'met'},
+  {min:2,name:'Close',desc:'Play anything you love, any standard. End on music, not on work.',links:[],tool:null}
+ ];
 }
 
-/* ================= SESSION RUNNER ================= */
-var run={on:false,blocks:[],i:0,left:0,timer:null,paused:false,startedAt:null};
-function fmt(sec){var m=Math.floor(sec/60),s=sec%60;return m+':'+String(s).padStart(2,'0');}
+/* ============ HOME ============ */
+function greet(){var h=new Date().getHours();return h<12?'Good morning.':h<18?'Good afternoon.':'Good evening.';}
+function renderHome(){
+ var wk=WKS[S.week-1];
+ document.getElementById('h-eyebrow').textContent='WEEK '+S.week+' OF 48 · '+phaseOf(S.week).toUpperCase();
+ document.getElementById('h-greet').textContent=greet();
+ document.getElementById('h-date').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+ document.getElementById('h-focustitle').textContent='Week '+S.week+' · '+wk.n;
+ var mile=document.getElementById('h-mile');
+ if(wk.m){mile.style.display='block';mile.innerHTML='<b>Milestone week.</b> <span style="color:var(--dim)">'+wk.m+'</span>';}else mile.style.display='none';
+ document.getElementById('h-wkname').textContent='THIS WEEK · '+wk.n.toUpperCase();
+ var bl=document.getElementById('h-blocks');bl.innerHTML='';
+ blocksFor(S.week).forEach(function(b){
+  var e=document.createElement('div');e.className='blockrow';
+  e.innerHTML='<div class="min">'+b.min+'′</div><div><div class="bt">'+b.name+'</div><div class="bs">'+b.desc+'</div></div>';
+  bl.appendChild(e);
+ });
+ var seen={},ls='';(wk.t.l||[]).concat(wk.r.l||[],wk.p.l||[]).forEach(function(lk){if(!seen[lk]){seen[lk]=1;}});
+ ls=lessonBtns(Object.keys(seen));
+ document.getElementById('h-lessons').innerHTML=ls?'<div class="eyebrow" style="margin-bottom:4px">This week’s lessons</div>'+ls:'';
+ var done=daySet()[todayISO()];
+ document.getElementById('h-notdone').style.display=done?'none':'block';
+ document.getElementById('h-done').style.display=done?'block':'none';
+ if(done){var last=S.sessions[S.sessions.length-1];document.getElementById('h-donemsg').textContent=(last&&last.next)?('Tomorrow’s first target: '+last.next):'Rest well. Tomorrow builds on today.';}
+ document.getElementById('h-streak').textContent=streak();
+ var days=document.getElementById('h-days');days.innerHTML='';
+ var s=daySet();var names=['S','M','T','W','T','F','S'];
+ for(var i=6;i>=0;i--){
+  var d=new Date();d.setDate(d.getDate()-i);var iso=dayISO(d);
+  var e=document.createElement('div');e.className='day'+(s[iso]?' on':'')+(i===0?' today':'');
+  e.innerHTML='<div class="b"></div><span>'+names[d.getDay()]+'</span>';
+  days.appendChild(e);
+ }
+}
+document.getElementById('h-begin').addEventListener('click',startSession);
+document.getElementById('h-again').addEventListener('click',startSession);
+document.getElementById('h-quick').addEventListener('click',function(){openForm(null);});
+
+/* ============ SESSION RUNNER ============ */
+var run={blocks:[],i:0,left:0,total:0,timer:null,paused:false,startedAt:null,lock:null};
+var CIRC=590.6;
+function fmt(sec){return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');}
+function mountTool(tool){
+ var host=document.getElementById('ov-tool');
+ // return all tools to library first
+ ['tool-met','tool-fc','tool-cb'].forEach(function(id){var lib=document.getElementById('scr-tools');var el=document.getElementById(id);if(el&&el.parentNode===host)lib.appendChild(el);});
+ if(!tool)return;
+ if(tool==='met')host.appendChild(document.getElementById('tool-met'));
+ else if(tool.indexOf('fc')===0){host.appendChild(document.getElementById('tool-fc'));var mode=tool.split(':')[1]||'land';setFcMode(mode);}
+ else if(tool==='cb')host.appendChild(document.getElementById('tool-cb'));
+}
 function ovRender(){
-  var b=run.blocks[run.i];
-  document.getElementById('ov-name').textContent='Block '+(run.i+1)+' of '+run.blocks.length+': '+b.name;
-  document.getElementById('ov-time').textContent=fmt(run.left);
-  document.getElementById('ov-desc').textContent=b.desc;
-  var pr=document.getElementById('ov-prog');pr.innerHTML='';
-  run.blocks.forEach(function(x,j){var p=document.createElement('div');p.className='p'+(j<run.i?' done':j===run.i?' now':'');pr.appendChild(p);});
+ var b=run.blocks[run.i];
+ document.getElementById('ov-step').textContent='BLOCK '+(run.i+1)+' OF '+run.blocks.length+' · '+b.min+' MIN';
+ document.getElementById('ov-name').textContent=b.name;
+ document.getElementById('ov-desc').textContent=b.desc;
+ document.getElementById('ov-min').textContent=b.name==='Repertoire'?'stay on the hard bars':'remaining';
+ document.getElementById('ov-time').textContent=fmt(run.left);
+ var frac=run.left/(b.min*60);
+ document.getElementById('ov-arc').setAttribute('stroke-dashoffset',String(CIRC*(1-frac)));
+ var seg=document.getElementById('ov-seg');seg.innerHTML='';
+ run.blocks.forEach(function(x,j){var i2=document.createElement('i');i2.className=j<run.i?'done':j===run.i?'now':'';seg.appendChild(i2);});
+ document.getElementById('ov-lessons').innerHTML=lessonBtns(b.links);
 }
-function beep(n){
-  try{
-    var c=mAC();var t=c.currentTime;
-    for(var i=0;i<n;i++){
-      var o=c.createOscillator(),g=c.createGain();o.frequency.value=880;
-      g.gain.setValueAtTime(0.001,t+i*0.22);g.gain.exponentialRampToValueAtTime(0.4,t+i*0.22+0.01);g.gain.exponentialRampToValueAtTime(0.001,t+i*0.22+0.18);
-      o.connect(g);g.connect(c.destination);o.start(t+i*0.22);o.stop(t+i*0.22+0.2);
-    }
-  }catch(e){}
-}
+function beep(n){try{var c=mAC(),t=c.currentTime;for(var i=0;i<n;i++){var o=c.createOscillator(),g=c.createGain();o.frequency.value=880;g.gain.setValueAtTime(0.001,t+i*0.22);g.gain.exponentialRampToValueAtTime(0.35,t+i*0.22+0.01);g.gain.exponentialRampToValueAtTime(0.001,t+i*0.22+0.18);o.connect(g);g.connect(c.destination);o.start(t+i*0.22);o.stop(t+i*0.22+0.2);}}catch(e){}}
 function tick(){
-  if(run.paused)return;
-  run.left--;
-  if(run.left<=0){
-    if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(2);}
-    else{beep(3);endToForm();return;}
-  }
-  ovRender();
+ if(run.paused)return;
+ run.left--;
+ if(run.left<=0){
+  if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(2);mountTool(run.blocks[run.i].tool);}
+  else{beep(3);openForm(run.startedAt);return;}
+ }
+ ovRender();
 }
 function startSession(){
-  run.blocks=blocksFor(S.week);run.i=0;run.left=run.blocks[0].min*60;run.on=true;run.paused=false;run.startedAt=Date.now();
-  document.getElementById('ov').classList.add('sel');
-  document.getElementById('ov-run').style.display='block';
-  document.getElementById('ov-form').style.display='none';
-  document.getElementById('ov-pause').textContent='Pause';
-  beep(1);
-  ovRender();
-  run.timer=setInterval(tick,1000);
-  if(navigator.wakeLock&&navigator.wakeLock.request){navigator.wakeLock.request('screen').then(function(l){run.lock=l;}).catch(function(){});}
+ run.blocks=blocksFor(S.week);run.i=0;run.left=run.blocks[0].min*60;run.paused=false;run.startedAt=Date.now();
+ document.getElementById('ov').classList.add('sel');
+ document.getElementById('ov-run').style.display='block';
+ document.getElementById('ov-form').style.display='none';
+ document.getElementById('ov-fin').style.display='none';
+ document.getElementById('ov-pause').textContent='Pause';
+ mountTool(run.blocks[0].tool);
+ beep(1);ovRender();
+ clearInterval(run.timer);run.timer=setInterval(tick,1000);
+ if(navigator.wakeLock&&navigator.wakeLock.request){navigator.wakeLock.request('screen').then(function(l){run.lock=l;}).catch(function(){});}
 }
-function endToForm(){
-  clearInterval(run.timer);run.on=false;
-  document.getElementById('ov-run').style.display='none';
-  document.getElementById('ov-form').style.display='block';
+function openForm(startedAt){
+ clearInterval(run.timer);run.startedAt=startedAt;
+ mountTool(null);
+ document.getElementById('ov').classList.add('sel');
+ document.getElementById('ov-run').style.display='none';
+ document.getElementById('ov-fin').style.display='none';
+ document.getElementById('ov-form').style.display='block';
+ document.getElementById('ov-formsub').textContent=startedAt?'Thirty seconds of logging makes tomorrow better.':'Logging a session done away from the timer.';
 }
-document.getElementById('t-start').addEventListener('click',startSession);
 document.getElementById('ov-pause').addEventListener('click',function(){run.paused=!run.paused;this.textContent=run.paused?'Resume':'Pause';});
 document.getElementById('ov-next').addEventListener('click',function(){
-  if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(1);ovRender();}
-  else endToForm();
+ if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(1);mountTool(run.blocks[run.i].tool);ovRender();}
+ else openForm(run.startedAt);
 });
-document.getElementById('ov-end').addEventListener('click',endToForm);
+document.getElementById('ov-end').addEventListener('click',function(){openForm(run.startedAt);});
 document.getElementById('f-save').addEventListener('click',function(){
-  var mins=run.startedAt?Math.max(5,Math.round((Date.now()-run.startedAt)/60000)):30;
-  S.sessions.push({d:todayISO(),w:S.week,min:Math.min(mins,60),
-    tempo:document.getElementById('f-tempo').value.trim(),
-    win:document.getElementById('f-win').value.trim(),
-    next:document.getElementById('f-next').value.trim()});
-  save();
-  document.getElementById('f-tempo').value='';document.getElementById('f-win').value='';document.getElementById('f-next').value='';
-  document.getElementById('ov').classList.remove('sel');
-  if(run.lock){try{run.lock.release();}catch(e){}}
-  renderToday();
+ var mins=run.startedAt?Math.max(5,Math.round((Date.now()-run.startedAt)/60000)):30;
+ S.sessions.push({d:todayISO(),w:S.week,min:Math.min(mins,90),
+  tempo:document.getElementById('f-tempo').value.trim(),
+  win:document.getElementById('f-win').value.trim(),
+  next:document.getElementById('f-next').value.trim()});
+ save();
+ document.getElementById('f-tempo').value='';document.getElementById('f-win').value='';document.getElementById('f-next').value='';
+ document.getElementById('ov-form').style.display='none';
+ document.getElementById('ov-fin').style.display='block';
+ document.getElementById('fin-title').textContent='Session '+S.sessions.length+' complete.';
+ var st=streak();
+ document.getElementById('fin-sub').textContent=st>1?(st+' days in a row. The spacing effect is working for you.'):'Day one of the chain. Come back tomorrow morning.';
+ if(run.lock){try{run.lock.release();}catch(e){}run.lock=null;}
 });
-document.getElementById('t-quick').addEventListener('click',function(){
-  run.startedAt=null;
-  document.getElementById('ov').classList.add('sel');
-  document.getElementById('ov-run').style.display='none';
-  document.getElementById('ov-form').style.display='block';
+document.getElementById('fin-close').addEventListener('click',function(){
+ document.getElementById('ov').classList.remove('sel');renderHome();
 });
 
-/* ================= PLAN ================= */
-function renderPlan(){
-  var host=document.getElementById('plan-list');host.innerHTML='';
-  [[1,12],[13,24],[25,36],[37,48]].forEach(function(rg,pi){
-    var det=document.createElement('details');
-    if(S.week>=rg[0]&&S.week<=rg[1])det.open=true;
-    var sum=document.createElement('summary');
-    var doneCt=S.doneWeeks.filter(function(w){return w>=rg[0]&&w<=rg[1];}).length;
-    sum.textContent=phaseOf(rg[0])+' · weeks '+rg[0]+' to '+rg[1]+' · '+doneCt+'/12 done';
-    det.appendChild(sum);
-    for(var w=rg[0];w<=rg[1];w++){
-      var wk=WEEKS[w-1];
-      var e=document.createElement('div');
-      e.className='wk'+(w===S.week?' cur':'')+(S.doneWeeks.indexOf(w)>-1?' done':'');
-      e.innerHTML='<div class="whead">Week '+w+(wk.m?' <span class="ms">milestone</span>':'')+(w===S.week?' · current':'')+'</div>'
-       +'<div class="body"><b>Technique:</b> '+wk.t+'<br><b>Reading:</b> '+wk.r+'<br><b>Repertoire:</b> '+wk.p+(wk.m?'<br><b style="color:#d97a1a">'+wk.m+'</b>':'')+'</div>'
-       +'<div style="margin-top:6px"><span class="btn small" data-cur="'+w+'">Set current</span>'
-       +'<span class="btn small'+(S.doneWeeks.indexOf(w)>-1?' sel':'')+'" data-done="'+w+'">'+(S.doneWeeks.indexOf(w)>-1?'Completed':'Mark complete')+'</span></div>';
-      det.appendChild(e);
-    }
-    host.appendChild(det);
-  });
-  host.querySelectorAll('[data-cur]').forEach(function(b){b.addEventListener('click',function(){S.week=+b.dataset.cur;save();renderPlan();});});
-  host.querySelectorAll('[data-done]').forEach(function(b){b.addEventListener('click',function(){
-    var w=+b.dataset.done,i=S.doneWeeks.indexOf(w);
-    if(i>-1)S.doneWeeks.splice(i,1);else{S.doneWeeks.push(w);if(S.week===w&&w<48)S.week=w+1;}
-    save();renderPlan();
-  });});
-}
-
-/* ================= LOG ================= */
-function renderLog(){
-  document.getElementById('l-streak').textContent=streak();
-  document.getElementById('l-best').textContent=bestStreak();
-  document.getElementById('l-count').textContent=S.sessions.length;
-  document.getElementById('l-hours').textContent=hours();
-  var g=document.getElementById('l-grid');g.innerHTML='';
-  var s=daySet();var today=todayISO();
-  var start=new Date();start.setDate(start.getDate()-83);
-  for(var i=0;i<84;i++){
-    var d=new Date(start);d.setDate(start.getDate()+i);var iso=dayISO(d);
-    var c=document.createElement('div');c.className='cell'+(s[iso]?' on':'')+(iso===today?' today':'');
-    g.appendChild(c);
+/* ============ JOURNEY ============ */
+function renderJourney(){
+ var host=document.getElementById('j-list');host.innerHTML='';
+ [[1,12],[13,24],[25,36],[37,48]].forEach(function(rg){
+  var doneCt=S.doneWeeks.filter(function(w){return w>=rg[0]&&w<=rg[1];}).length;
+  var ph=document.createElement('div');ph.className='phasehead';
+  ph.innerHTML='<h2>'+phaseOf(rg[0])+'</h2><span>'+doneCt+' of 12</span>';
+  host.appendChild(ph);
+  var pb=document.createElement('div');pb.className='pbar';pb.innerHTML='<i style="width:'+(doneCt/12*100)+'%"></i>';
+  host.appendChild(pb);
+  for(var w=rg[0];w<=rg[1];w++){
+   (function(w){
+    var wk=WKS[w-1];
+    var done=S.doneWeeks.indexOf(w)>-1;
+    var e=document.createElement('div');
+    e.className='wk'+(w===S.week?' cur':'')+(done?' done':'');
+    e.innerHTML='<div class="head"><div class="st">'+(done?'✓':'')+'</div><div style="flex:1"><div class="ttl">Week '+w+' · '+wk.n+(w===S.week?' <span style="color:var(--brass)">· current</span>':'')+'</div><div class="foc">'+(wk.m?'Milestone · ':'')+wk.p.d.split('.')[0]+'</div></div></div>'
+     +'<div class="detail">'
+     +(wk.m?'<p><b style="color:var(--brass)">'+wk.m+'</b></p>':'')
+     +'<p><b>Technique</b> · '+wk.t.d+'</p>'
+     +'<p><b>Reading & harmony</b> · '+wk.r.d+'</p>'
+     +'<p><b>Repertoire</b> · '+wk.p.d+'</p>'
+     +'<div style="margin:8px 0">'+lessonBtns((wk.t.l||[]).concat(wk.r.l||[],wk.p.l||[]).filter(function(v,i,a){return a.indexOf(v)===i;}))+'</div>'
+     +'<span class="btn sm" data-cur="'+w+'">Set current</span>'
+     +'<span class="btn sm'+(done?' sel':'')+'" data-done="'+w+'">'+(done?'Completed ✓':'Mark complete')+'</span>'
+     +'</div>';
+    e.querySelector('.head').addEventListener('click',function(){e.classList.toggle('open');});
+    host.appendChild(e);
+   })(w);
   }
-  var list=document.getElementById('l-list');list.innerHTML='';
-  S.sessions.slice(-40).reverse().forEach(function(x,ri){
-    var idx=S.sessions.length-1-ri;
-    var e=document.createElement('div');e.className='logrow';
-    e.innerHTML='<span class="del" data-i="'+idx+'">×</span><b>'+x.d+'</b> · week '+x.w+' · '+(x.min||30)+' min'
-     +(x.tempo?'<br>Tempo: '+x.tempo:'')+(x.win?'<br>Win: '+x.win:'')+(x.next?'<br>Next: '+x.next:'');
-    list.appendChild(e);
-  });
-  list.querySelectorAll('.del').forEach(function(b){b.addEventListener('click',function(){
-    if(confirm('Delete this entry?')){S.sessions.splice(+b.dataset.i,1);save();renderLog();}
-  });});
-  if(!S.sessions.length)list.innerHTML='<p style="color:#5b6470">No sessions yet. Tomorrow morning, 30 minutes.</p>';
+ });
+ host.querySelectorAll('[data-cur]').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();S.week=+b.dataset.cur;save();renderJourney();});});
+ host.querySelectorAll('[data-done]').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();
+  var w=+b.dataset.done,i=S.doneWeeks.indexOf(w);
+  if(i>-1)S.doneWeeks.splice(i,1);else{S.doneWeeks.push(w);if(S.week===w&&w<48)S.week=w+1;}
+  save();renderJourney();
+ });});
 }
 
-/* ================= MORE ================= */
-document.getElementById('m-export').addEventListener('click',function(){
-  document.getElementById('m-data').value=JSON.stringify(S);
-  document.getElementById('m-data').select();
-  try{document.execCommand('copy');}catch(e){}
-});
-document.getElementById('m-import').addEventListener('click',function(){
-  try{
-    var v=JSON.parse(document.getElementById('m-data').value);
-    if(v&&v.sessions&&v.doneWeeks){S=v;save();alert('Imported. '+S.sessions.length+' sessions restored.');renderToday();}
-    else alert('That does not look like a backup.');
-  }catch(e){alert('Could not read that backup.');}
-});
-document.getElementById('m-setweek').addEventListener('click',function(){
-  var v=+document.getElementById('m-week').value;
-  if(v>=1&&v<=48){S.week=v;save();alert('Current week set to '+v);}
-});
-document.getElementById('m-reset').addEventListener('click',function(){
-  if(confirm('Erase all progress and logs?')&&confirm('Really? This cannot be undone.')){S={week:1,doneWeeks:[],sessions:[]};save();renderToday();}
-});
+/* ============ PROGRESS ============ */
+function renderProgress(){
+ document.getElementById('p-streak').textContent=streak();
+ document.getElementById('p-best').textContent=bestStreak();
+ document.getElementById('p-count').textContent=S.sessions.length;
+ document.getElementById('p-hours').textContent=hours();
+ var g=document.getElementById('p-grid');g.innerHTML='';
+ var s=daySet(),today=todayISO();
+ var start=new Date();start.setDate(start.getDate()-83);
+ for(var i=0;i<84;i++){var d=new Date(start);d.setDate(start.getDate()+i);var iso=dayISO(d);
+  var c=document.createElement('div');c.className='cell'+(s[iso]?' on':'')+(iso===today?' today':'');g.appendChild(c);}
+ var temps=S.sessions.filter(function(x){return x.tempo;}).slice(-8).reverse();
+ document.getElementById('p-tempos').innerHTML=temps.length?temps.map(function(x){return '<div><b style="color:var(--ink)">'+x.d+'</b> · '+x.tempo+'</div>';}).join(''):'Log a top tempo after each session and your speed history appears here.';
+ var list=document.getElementById('p-list');list.innerHTML='';
+ S.sessions.slice(-40).reverse().forEach(function(x,ri){
+  var idx=S.sessions.length-1-ri;
+  var e=document.createElement('div');e.className='logrow';
+  e.innerHTML='<span class="del" data-i="'+idx+'">×</span><b>'+x.d+'</b> · week '+x.w+' · '+(x.min||30)+' min'
+   +(x.tempo?'<br>Tempo: '+x.tempo:'')+(x.win?'<br>Win: '+x.win:'')+(x.next?'<br>Next: '+x.next:'');
+  list.appendChild(e);
+ });
+ list.querySelectorAll('.del').forEach(function(b){b.addEventListener('click',function(){if(confirm('Delete this entry?')){S.sessions.splice(+b.dataset.i,1);save();renderProgress();}});});
+ if(!S.sessions.length)list.innerHTML='<p style="color:var(--dim2)">No sessions yet. Tomorrow morning, 30 minutes, block one is just sitting down well.</p>';
+}
 
-/* ================= SHARED AUDIO ================= */
+/* ============ LIBRARY DATA ============ */
+document.getElementById('m-export').addEventListener('click',function(){var t=document.getElementById('m-data');t.value=JSON.stringify(S);t.select();try{document.execCommand('copy');}catch(e){}});
+document.getElementById('m-import').addEventListener('click',function(){
+ try{var v=JSON.parse(document.getElementById('m-data').value);
+  if(v&&v.sessions&&v.doneWeeks){S=v;save();alert('Imported. '+S.sessions.length+' sessions restored.');renderHome();}
+  else alert('That does not look like a backup.');
+ }catch(e){alert('Could not read that backup.');}
+});
+document.getElementById('m-setweek').addEventListener('click',function(){var v=+document.getElementById('m-week').value;if(v>=1&&v<=48){S.week=v;save();alert('Current week set to '+v+'.');}});
+document.getElementById('m-reset').addEventListener('click',function(){if(confirm('Erase all progress and logs?')&&confirm('Really? This cannot be undone.')){S={week:1,doneWeeks:[],sessions:[]};save();renderHome();}});
+
+/* ============ AUDIO ============ */
 var actx=null;
 function mAC(){if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();return actx;}
 
-/* ================= METRONOME ================= */
+/* ============ METRONOME ============ */
 var tempo=80,bpb=3,mrun=false,nextT=0,mbeat=0,mtimer=null;
 var tnames=[[40,'largo'],[60,'adagio'],[76,'andante'],[108,'moderato'],[120,'allegretto'],[156,'allegro'],[200,'presto']];
-function tname(t){var n='largo';tnames.forEach(function(x){if(t>=x[0])n=x[1];});return n;}
-function showTempo(){document.getElementById('bpm').textContent=tempo;document.getElementById('bpmname').textContent=tname(tempo);document.getElementById('slider').value=tempo;}
+function tnameF(t){var n='largo';tnames.forEach(function(x){if(t>=x[0])n=x[1];});return n;}
+function showTempo(){document.getElementById('bpm').textContent=tempo;document.getElementById('bpmname').textContent=tnameF(tempo);document.getElementById('slider').value=tempo;}
 function makeDots(){var d=document.getElementById('dots');d.innerHTML='';var n=bpb||1;for(var i=0;i<n;i++){var el=document.createElement('div');el.className='dot'+(i===0&&bpb>0?' acc':'');d.appendChild(el);}}
 function flash(i){var ds=document.querySelectorAll('#dots .dot');ds.forEach(function(el){el.classList.remove('on');});if(ds[i])ds[i].classList.add('on');}
 function click2(t,accent){var o=actx.createOscillator(),g=actx.createGain();o.frequency.value=accent?1567:1046;g.gain.setValueAtTime(0.001,t);g.gain.exponentialRampToValueAtTime(0.6,t+0.003);g.gain.exponentialRampToValueAtTime(0.001,t+0.07);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+0.09);}
 function mloop(){while(nextT<actx.currentTime+0.12){var idx=bpb>0?mbeat%bpb:0;click2(nextT,bpb>0&&idx===0);(function(i,tt){setTimeout(function(){if(mrun)flash(i);},Math.max(0,(tt-actx.currentTime)*1000));})(idx,nextT);nextT+=60/tempo;mbeat++;}}
 document.getElementById('startstop').addEventListener('click',function(){
-  if(mrun){mrun=false;clearInterval(mtimer);this.textContent='Start';this.classList.add('go');this.classList.remove('stop');document.querySelectorAll('#dots .dot').forEach(function(el){el.classList.remove('on');});}
-  else{mAC();mrun=true;mbeat=0;nextT=actx.currentTime+0.08;mtimer=setInterval(mloop,25);this.textContent='Stop';this.classList.remove('go');this.classList.add('stop');}
+ if(mrun){mrun=false;clearInterval(mtimer);this.textContent='Start';document.querySelectorAll('#dots .dot').forEach(function(el){el.classList.remove('on');});}
+ else{mAC();mrun=true;mbeat=0;nextT=actx.currentTime+0.08;mtimer=setInterval(mloop,25);this.textContent='Stop';}
 });
 document.getElementById('slider').addEventListener('input',function(){tempo=+this.value;showTempo();});
 document.querySelectorAll('.btn[data-d]').forEach(function(b){b.addEventListener('click',function(){tempo=Math.min(208,Math.max(40,tempo+ +b.dataset.d));showTempo();});});
 document.querySelectorAll('.bpb').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.bpb').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');bpb=+b.dataset.b;makeDots();});});
 showTempo();makeDots();
 
-/* ================= RENDERERS (keyboard + staff) ================= */
+/* ============ RENDERERS ============ */
 var W=['C','D','E','F','G','A','B'];
 var FLAT={'Cb':['B',-1],'Db':['C#',0],'Eb':['D#',0],'Fb':['E',0],'Gb':['F#',0],'Ab':['G#',0],'Bb':['A#',0]};
 function pn(s){var m=/^([A-G])([#b]?)(-?\d)$/.exec(s);if(!m)return null;var name=m[1]+m[2],oct=parseInt(m[3],10);if(m[2]==='b'){var f=FLAT[name];oct+=f[1];name=f[0];}return{n:name,o:oct,letter:m[1],acc:m[2]};}
 function stepOf(p){return p.o*7+W.indexOf(p.letter);}
-function drawKeyboard(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var count=opts.keys||((opts.octaves||2)*7+1);var wW=46,wH=130,bW=27,bH=80;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var s='<svg viewBox="0 0 '+width+' '+(wH+6)+'" style="width:100%;max-width:'+Math.min(width,700)+'px" xmlns="http://www.w3.org/2000/svg">';
-whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#cfe3ff'):'#ffffff')+'" stroke="#8a8f98"/>';if(m&&m.label!=='')s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-10)+'" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2b45">'+(m.label!==undefined?m.label:k.name)+'</text>';});
-whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',m=marks[bn+k.oct];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#2f6fd0'):'#22252b')+'" stroke="#000"/>';if(m&&m.label!=='')s+='<text x="'+(x+bW/2)+'" y="'+(bH-8)+'" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">'+(m.label!==undefined?m.label:bn)+'</text>';});
+function drawKeyboard(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var count=opts.keys||((opts.octaves||2)*7+1);var wW=46,wH=120,bW=27,bH=74;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var s='<svg viewBox="0 0 '+width+' '+(wH+6)+'" style="width:100%;max-width:'+Math.min(width,660)+'px" xmlns="http://www.w3.org/2000/svg">';
+whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#e7d092'):'#f2ede0')+'" stroke="#3a3f47"/>';if(m)s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-10)+'" text-anchor="middle" font-size="14" font-weight="700" fill="#15130c">'+(m.label!==undefined?m.label:k.name)+'</text>';});
+whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',m=marks[bn+k.oct];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#c49a3f'):'#101216')+'" stroke="#000"/>';if(m)s+='<text x="'+(x+bW/2)+'" y="'+(bH-8)+'" text-anchor="middle" font-size="10.5" fill="#15130c" font-weight="700">'+(m.label!==undefined?m.label:bn)+'</text>';});
 s+='</svg>';el.innerHTML=s;}
-var CLEFS={treble:{sym:'𝄞',ref:'E4',size:58},bass:{sym:'𝄢',ref:'G2',size:42}};
-function drawNote(id,clef,note){var el=document.getElementById(id);if(!el)return;var c=CLEFS[clef];var sp=11,top=32,bottom=top+4*sp;var refStep=stepOf(pn(c.ref));var width=210,nx=140;
-var s='<svg viewBox="0 0 '+width+' '+(bottom+34)+'" style="width:100%;max-width:280px" xmlns="http://www.w3.org/2000/svg">';
-for(var li=0;li<5;li++)s+='<line x1="14" y1="'+(top+li*sp)+'" x2="'+(width-14)+'" y2="'+(top+li*sp)+'" stroke="#3a3f47" stroke-width="1.1"/>';
-s+='<text x="20" y="'+bottom+'" font-size="'+c.size+'" fill="#22252b">'+c.sym+'</text>';
+var CLEFS={treble:{sym:'𝄞',ref:'E4',size:56},bass:{sym:'𝄢',ref:'G2',size:40}};
+function drawNote(id,clef,note){var el=document.getElementById(id);if(!el)return;var c=CLEFS[clef];var sp=11,top=30,bottom=top+4*sp;var refStep=stepOf(pn(c.ref));var width=200,nx=132;
+var s='<svg viewBox="0 0 '+width+' '+(bottom+32)+'" style="width:100%;max-width:260px" xmlns="http://www.w3.org/2000/svg">';
+for(var li=0;li<5;li++)s+='<line x1="12" y1="'+(top+li*sp)+'" x2="'+(width-12)+'" y2="'+(top+li*sp)+'" stroke="#98a1ac" stroke-width="1.1"/>';
+s+='<text x="18" y="'+bottom+'" font-size="'+c.size+'" fill="#f0ebe0">'+c.sym+'</text>';
 var p=pn(note),off=stepOf(p)-refStep,ny=bottom-off*(sp/2),lo,ly;
-for(lo=-2;lo>=off;lo-=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#3a3f47" stroke-width="1.1"/>';}
-for(lo=10;lo<=off;lo+=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#3a3f47" stroke-width="1.1"/>';}
-s+='<ellipse cx="'+nx+'" cy="'+ny+'" rx="7.6" ry="5.4" fill="none" stroke="#22252b" stroke-width="2" transform="rotate(-14 '+nx+' '+ny+')"/></svg>';el.innerHTML=s;}
+for(lo=-2;lo>=off;lo-=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#98a1ac" stroke-width="1.1"/>';}
+for(lo=10;lo<=off;lo+=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#98a1ac" stroke-width="1.1"/>';}
+s+='<ellipse cx="'+nx+'" cy="'+ny+'" rx="7.6" ry="5.4" fill="none" stroke="#f0ebe0" stroke-width="2" transform="rotate(-14 '+nx+' '+ny+')"/></svg>';el.innerHTML=s;}
 
-/* ================= FLASHCARDS ================= */
+/* ============ FLASHCARDS ============ */
 var pools={land:[['treble','C4'],['treble','G4'],['treble','C5'],['bass','C3'],['bass','F3'],['bass','C4']],treble:[],bass:[],both:[]};
 ['C4','D4','E4','F4','G4','A4','B4','C5','D5','E5','F5','G5'].forEach(function(n){pools.treble.push(['treble',n]);});
 ['F2','G2','A2','B2','C3','D3','E3','F3','G3','A3','B3','C4'].forEach(function(n){pools.bass.push(['bass',n]);});
@@ -579,11 +664,12 @@ pools.both=pools.treble.concat(pools.bass);
 var fcMode='land',fcCur=null,fcStreak=0,fcOK=0,fcTot=0,fcLock=false;
 function fcNext(){var pool=pools[fcMode];var pick;do{pick=pool[Math.floor(Math.random()*pool.length)];}while(fcCur&&pick[1]===fcCur[1]&&pick[0]===fcCur[0]);fcCur=pick;drawNote('fc-staff',pick[0],pick[1]);var fb=document.getElementById('fc-fb');fb.textContent=' ';fb.className='fb';fcLock=false;}
 function fcScore(){document.getElementById('fc-score').textContent='Streak '+fcStreak+' · Correct '+fcOK+'/'+fcTot;}
-document.querySelectorAll('.fc-mode').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.fc-mode').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');fcMode=b.dataset.m;fcStreak=0;fcNext();fcScore();});});
+function setFcMode(m){fcMode=m;document.querySelectorAll('.fc-mode').forEach(function(x){x.classList.toggle('sel',x.dataset.m===m);});fcStreak=0;fcNext();fcScore();}
+document.querySelectorAll('.fc-mode').forEach(function(b){b.addEventListener('click',function(){setFcMode(b.dataset.m);});});
 document.querySelectorAll('.fc-a').forEach(function(b){b.addEventListener('click',function(){if(fcLock)return;fcLock=true;fcTot++;var ans=fcCur[1].charAt(0);var fb=document.getElementById('fc-fb');if(b.textContent===ans){fcOK++;fcStreak++;fb.textContent='Correct: '+fcCur[1];fb.className='fb good';}else{fcStreak=0;fb.textContent='It was '+fcCur[1];fb.className='fb bad';}fcScore();setTimeout(fcNext,900);});});
 fcNext();fcScore();
 
-/* ================= CHORD BUILDER ================= */
+/* ============ CHORD BUILDER ============ */
 var SEMI=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 var ROOTS={'C':0,'C#':1,'D':2,'Eb':3,'E':4,'F':5,'F#':6,'G':7,'Ab':8,'A':9,'Bb':10,'B':11};
 var FORMS={maj:[0,4,7],min:[0,3,7],dim:[0,3,6],maj7:[0,4,7,11],m7:[0,3,7,10],'7':[0,4,7,10],sus2:[0,2,7],sus4:[0,5,7]};
@@ -596,10 +682,10 @@ document.getElementById('cb-quiz').addEventListener('click',function(){var rs=Ob
 document.getElementById('cb-reveal').addEventListener('click',function(){if(!cbQuiz)return;cbShow(cbQuiz[0],cbQuiz[1]);document.getElementById('cb-reveal').style.display='none';});
 cbShow(cbRoot,cbQ);
 
-/* ================= SW + INIT ================= */
+/* ============ INIT ============ */
 if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(function(){});}
 document.getElementById('m-week').value=S.week;
-renderToday();
+renderHome();
 })();
 </script>
 </body>

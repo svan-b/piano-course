@@ -1,4 +1,4 @@
-var CACHE = 'piano-course-v1';
+var CACHE = 'piano-course-v2';
 var FILES = ['./','./index.html','./Piano_App.html','./00_Start_Here.html','./01_Foundations.html','./02_Reading_Music.html','./03_Technique_Scales_Arpeggios.html','./04_Chords_and_Harmony.html','./05_Repertoire.html','./06_Practice_System.html','./07_Practice_Tools.html','./manifest.webmanifest','./icon-180.png','./icon-512.png'];
 self.addEventListener('install', function(e){
   e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(FILES); }).then(function(){ return self.skipWaiting(); }));
