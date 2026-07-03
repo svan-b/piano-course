@@ -14,171 +14,188 @@
  --bg:#0e1014; --el:#171b22; --el2:#1e242e; --line:#2a313d;
  --ink:#f0ebe0; --dim:#98a1ac; --dim2:#6b7480;
  --brass:#d4a853; --brassd:#b08b3e; --green:#58c084; --red:#e0655a;
+ --tabh: calc(58px + env(safe-area-inset-bottom));
  --serif:ui-serif,'New York',Georgia,'Times New Roman',serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
-.app{max-width:760px;margin:0 auto;padding:20px 18px calc(92px + env(safe-area-inset-bottom))}
-.eyebrow{font-size:12px;letter-spacing:2.2px;font-weight:800;color:var(--brass);text-transform:uppercase}
-h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;margin:6px 0 4px;letter-spacing:.2px}
-h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:28px 0 10px}
-.sub{color:var(--dim);font-size:15px;margin:0 0 14px}
-.card{background:var(--el);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;border-radius:16px;border:none;
- background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;font-size:18px;font-weight:800;cursor:pointer;user-select:none;letter-spacing:.2px}
-.ghost{display:flex;align-items:center;justify-content:center;width:100%;padding:14px;border-radius:16px;background:transparent;
- border:1.5px solid var(--line);color:var(--dim);font-size:15px;font-weight:700;cursor:pointer;user-select:none;margin-top:10px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
+.app{max-width:720px;margin:0 auto;padding:20px 18px calc(var(--tabh) + 30px)}
+.eyebrow{font-size:11.5px;letter-spacing:2.2px;font-weight:800;color:var(--brass);text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.15;margin:6px 0 4px;letter-spacing:.2px}
+h2{font-family:var(--serif);font-weight:600;font-size:21px;margin:26px 0 10px}
+.sub{color:var(--dim);font-size:14.5px;margin:0 0 14px}
+.card{background:var(--el);border:1px solid var(--line);border-radius:18px;padding:17px;margin:12px 0}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:15px;border:none;
+ background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;font-size:17.5px;font-weight:800;cursor:pointer;user-select:none}
+.cta2{display:flex;align-items:center;justify-content:center;width:100%;padding:13px;border-radius:15px;background:var(--el2);
+ border:1px solid var(--line);color:var(--ink);font-size:15.5px;font-weight:800;cursor:pointer;user-select:none;margin-top:9px}
+.ghost{text-align:center;padding:10px;color:var(--dim2);font-size:13.5px;font-weight:700;cursor:pointer;user-select:none}
 .btn{display:inline-block;background:var(--el2);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 15px;font-size:15px;font-weight:700;margin:3px 4px 3px 0;cursor:pointer;user-select:none;text-align:center;text-decoration:none}
 .btn.sel{background:var(--brass);color:#15130c;border-color:var(--brass)}
 .btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
-.btn.link{background:transparent;border-color:var(--brassd);color:var(--brass)}
 .statrow{display:flex;gap:10px}
 .stat{flex:1;background:var(--el);border:1px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center}
-.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink)}
-.stat span{font-size:11.5px;color:var(--dim2);font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.stat b{display:block;font-family:var(--serif);font-size:25px}
+.stat span{font-size:11px;color:var(--dim2);font-weight:700;letter-spacing:.6px;text-transform:uppercase}
 .days{display:flex;gap:8px;justify-content:space-between;margin-top:12px}
 .day{flex:1;text-align:center}
-.day .b{width:30px;height:30px;border-radius:50%;background:var(--el2);border:1px solid var(--line);margin:0 auto 4px}
+.day .b{width:28px;height:28px;border-radius:50%;background:var(--el2);border:1px solid var(--line);margin:0 auto 4px}
 .day.on .b{background:var(--brass);border-color:var(--brass)}
 .day.today .b{outline:2px solid var(--brass);outline-offset:2px}
-.day span{font-size:10.5px;color:var(--dim2);font-weight:700}
-.blockrow{display:flex;align-items:center;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line)}
-.blockrow:last-child{border-bottom:none}
-.blockrow .min{font-family:var(--serif);font-size:17px;color:var(--brass);min-width:52px;font-weight:700}
-.blockrow .bt{font-weight:700;font-size:15.5px}
-.blockrow .bs{color:var(--dim);font-size:13.5px}
-.mile{background:linear-gradient(135deg,#241f12,#1c1a12);border:1px solid #4d4020;border-radius:18px;padding:15px 18px;margin:12px 0}
+.day span{font-size:10px;color:var(--dim2);font-weight:700}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{background:var(--el2);border:1px solid var(--line);border-radius:99px;padding:4px 11px;font-size:12px;font-weight:700;color:var(--dim)}
+.chip b{color:var(--brass)}
+.mile{background:linear-gradient(135deg,#241f12,#1c1a12);border:1px solid #4d4020;border-radius:18px;padding:14px 17px;margin:12px 0;font-size:14.5px;color:var(--dim)}
 .mile b{color:var(--brass)}
-.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(14,16,20,.92);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
-.tab{flex:1;text-align:center;padding:10px 0 8px;color:var(--dim2);cursor:pointer;user-select:none}
-.tab svg{width:24px;height:24px;display:block;margin:0 auto 2px}
-.tab span{font-size:10.5px;font-weight:800;letter-spacing:.4px}
+.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(14,16,20,.94);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;z-index:60;padding-bottom:env(safe-area-inset-bottom)}
+.tab{flex:1;text-align:center;padding:9px 0 7px;color:var(--dim2);cursor:pointer;user-select:none}
+.tab svg{width:23px;height:23px;display:block;margin:0 auto 2px}
+.tab span{font-size:10px;font-weight:800;letter-spacing:.4px}
 .tab.sel{color:var(--brass)}
 .scr{display:none}
 .scr.sel{display:block}
 .wk{border:1px solid var(--line);background:var(--el);border-radius:16px;padding:13px 15px;margin:8px 0;cursor:pointer}
 .wk .head{display:flex;align-items:center;gap:11px}
-.wk .st{width:26px;height:26px;border-radius:50%;border:2px solid var(--dim2);flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;color:#15130c;font-weight:900}
+.wk .st{width:25px;height:25px;border-radius:50%;border:2px solid var(--dim2);flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;color:#15130c;font-weight:900}
 .wk.done .st{background:var(--brass);border-color:var(--brass)}
 .wk.cur{border-color:var(--brassd)}
-.wk.cur .st{border-color:var(--brass)}
-.wk .ttl{font-weight:800;font-size:15.5px}
-.wk .foc{color:var(--dim);font-size:13px}
-.wk .detail{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:10px;font-size:14px;color:var(--dim)}
+.wk .ttl{font-weight:800;font-size:15px}
+.wk .foc{color:var(--dim2);font-size:12.5px}
+.wk .detail{display:none;margin-top:11px;border-top:1px solid var(--line);padding-top:10px;font-size:13.5px;color:var(--dim)}
 .wk.open .detail{display:block}
 .wk .detail b{color:var(--ink)}
-.phasehead{display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 6px}
+.phasehead{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 4px}
 .phasehead h2{margin:0}
-.phasehead span{color:var(--dim2);font-size:13px;font-weight:700}
-.pbar{height:5px;background:var(--el2);border-radius:4px;margin:6px 0 12px;overflow:hidden}
+.phasehead span{color:var(--dim2);font-size:12.5px;font-weight:700}
+.pbar{height:5px;background:var(--el2);border-radius:4px;margin:6px 0 10px;overflow:hidden}
 .pbar i{display:block;height:100%;background:var(--brass);border-radius:4px}
 .grid{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin:10px 0}
 .cell{aspect-ratio:1;border-radius:4px;background:var(--el2)}
 .cell.on{background:var(--brass)}
 .cell.today{outline:1.5px solid var(--ink)}
-.logrow{border-bottom:1px solid var(--line);padding:10px 2px;font-size:14px;color:var(--dim)}
+.logrow{border-bottom:1px solid var(--line);padding:10px 2px;font-size:13.5px;color:var(--dim)}
 .logrow b{color:var(--ink)}
 .logrow .del{float:right;color:var(--red);font-weight:800;cursor:pointer;padding:0 8px}
 input[type=text],textarea,input[type=number]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:16px;font-family:inherit;background:var(--el2);color:var(--ink)}
 input::placeholder,textarea::placeholder{color:var(--dim2)}
-label{font-size:12px;font-weight:800;color:var(--dim);display:block;margin:12px 0 5px;letter-spacing:1px;text-transform:uppercase}
-.volcard{display:block;background:var(--el);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:9px 0;text-decoration:none;color:var(--ink)}
-.volcard b{font-family:var(--serif);font-size:17px}
-.volcard span{display:block;color:var(--dim);font-size:13.5px;margin-top:2px}
-/* metronome + tools */
-.tempo{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--ink);text-align:center;font-variant-numeric:tabular-nums;line-height:1}
-.tlabel{text-align:center;color:var(--dim2);font-size:12px;margin:2px 0 6px;letter-spacing:2px;text-transform:uppercase}
+label{font-size:11.5px;font-weight:800;color:var(--dim);display:block;margin:12px 0 5px;letter-spacing:1px;text-transform:uppercase}
+.volcard{display:block;background:var(--el);border:1px solid var(--line);border-radius:16px;padding:13px 16px;margin:8px 0;text-decoration:none;color:var(--ink)}
+.volcard b{font-family:var(--serif);font-size:16.5px}
+.volcard span{display:block;color:var(--dim2);font-size:13px;margin-top:1px}
+.tempo{font-family:var(--serif);font-size:54px;font-weight:700;text-align:center;font-variant-numeric:tabular-nums;line-height:1}
+.tlabel{text-align:center;color:var(--dim2);font-size:11.5px;margin:2px 0 6px;letter-spacing:2px;text-transform:uppercase}
 input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 .dots{display:flex;gap:10px;justify-content:center;margin:10px 0}
-.dot{width:18px;height:18px;border-radius:50%;background:var(--el2);border:1px solid var(--line)}
+.dot{width:17px;height:17px;border-radius:50%;background:var(--el2);border:1px solid var(--line)}
 .dot.on{background:var(--brass);transform:scale(1.3)}
 .dot.acc.on{background:#e0655a}
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
-.fb{text-align:center;font-size:16px;font-weight:800;min-height:24px;margin-top:4px}
+.fb{text-align:center;font-size:15.5px;font-weight:800;min-height:22px;margin-top:4px}
 .fb.good{color:var(--green)}.fb.bad{color:var(--red)}
-.score{font-size:13px;color:var(--dim2);text-align:center;margin-top:6px}
+.score{font-size:12.5px;color:var(--dim2);text-align:center;margin-top:6px}
 .fig{overflow-x:auto;text-align:center}
-.notelist{text-align:center;font-size:17px;font-weight:800;color:var(--brass);min-height:24px}
-/* session overlay */
-.ov{position:fixed;inset:0;background:linear-gradient(180deg,#101319,#0b0d11);z-index:100;display:none;padding:18px 18px calc(24px + env(safe-area-inset-bottom));overflow-y:auto}
+.notelist{text-align:center;font-size:16px;font-weight:800;color:var(--brass);min-height:22px}
+/* overlays sit ABOVE content but BELOW the tab bar, which never disappears */
+.ov{position:fixed;left:0;right:0;top:0;bottom:var(--tabh);background:linear-gradient(180deg,#101319,#0b0d11);z-index:40;display:none;padding:16px 18px 26px;overflow-y:auto}
 .ov.sel{display:block}
-.ovwrap{max-width:640px;margin:0 auto}
-.seg{display:flex;gap:6px;margin:6px 0 18px}
+.ovwrap{max-width:620px;margin:0 auto}
+.seg{display:flex;gap:6px;margin:8px 0 14px}
 .seg i{flex:1;height:5px;border-radius:4px;background:var(--el2)}
 .seg i.done{background:var(--brassd)}
 .seg i.now{background:var(--brass)}
-.ring{position:relative;width:210px;height:210px;margin:6px auto}
+.ring{position:relative;width:172px;height:172px;margin:2px auto}
 .ring svg{transform:rotate(-90deg)}
 .ring .tm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.ring .tm b{font-family:var(--serif);font-size:52px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
-.ring .tm span{font-size:11px;color:var(--dim2);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
-.ov .bt{font-family:var(--serif);font-size:27px;text-align:center;margin:4px 0 2px}
-.ov .bd{color:var(--dim);font-size:15.5px;text-align:center;max-width:520px;margin:6px auto 4px}
-.ov .lessons{text-align:center;margin:10px 0}
-.toolhost{margin:14px 0}
-.octl{display:flex;gap:10px;justify-content:center;margin-top:16px}
-.ob{background:var(--el2);border:1px solid var(--line);color:var(--ink);border-radius:13px;padding:13px 20px;font-size:15.5px;font-weight:800;cursor:pointer;user-select:none}
+.ring .tm b{font-family:var(--serif);font-size:44px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.ring .tm span{font-size:10px;color:var(--dim2);letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+.ov .bt{font-family:var(--serif);font-size:25px;text-align:center;margin:2px 0 2px}
+.ov .bd{color:var(--dim);font-size:15.5px;text-align:center;max-width:520px;margin:4px auto}
+.figbox{background:var(--el);border:1px solid var(--line);border-radius:16px;padding:12px;margin:12px auto;max-width:560px;text-align:center}
+.figbox .fing{color:var(--dim);font-size:13px;margin-top:6px;font-weight:700}
+.more{max-width:560px;margin:6px auto;text-align:center}
+.more .mtog{color:var(--dim2);font-size:13px;font-weight:800;cursor:pointer;user-select:none;letter-spacing:1px;text-transform:uppercase}
+.more .mbody{display:none;color:var(--dim);font-size:14.5px;text-align:left;background:var(--el);border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-top:8px}
+.more.open .mbody{display:block}
+.toolhost{margin:12px 0}
+.octl{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.ob{background:var(--el2);border:1px solid var(--line);color:var(--ink);border-radius:13px;padding:12px 19px;font-size:15px;font-weight:800;cursor:pointer;user-select:none}
 .ob.gold{background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;border:none}
-.donebig{font-family:var(--serif);font-size:34px;text-align:center;margin:30px 0 8px}
+.donebig{font-family:var(--serif);font-size:32px;text-align:center;margin:26px 0 8px}
 .center{text-align:center}
 .notice{background:var(--el);border:1px solid #4d4020;border-radius:14px;padding:12px 15px;margin:10px 0;font-size:13.5px;color:var(--dim)}
+/* mini player pill */
+.pill{position:fixed;left:14px;right:14px;bottom:calc(var(--tabh) + 10px);z-index:55;background:linear-gradient(135deg,#e6bd63,#bd923a);color:#15130c;border-radius:99px;padding:11px 20px;display:none;align-items:center;justify-content:space-between;font-weight:800;font-size:14.5px;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer;user-select:none}
+.pill.sel{display:flex}
+/* lesson viewer */
+.lvcard{max-width:560px;margin:0 auto;text-align:center}
+.lvcard .ct{font-family:var(--serif);font-size:26px;margin:10px 0 6px}
+.lvcard .cx{color:var(--dim);font-size:16px;max-width:480px;margin:0 auto}
+.lvdots{display:flex;gap:7px;justify-content:center;margin:18px 0 6px}
+.lvdots i{width:8px;height:8px;border-radius:50%;background:var(--el2)}
+.lvdots i.on{background:var(--brass)}
+.xclose{position:absolute;top:14px;right:16px;color:var(--dim2);font-size:26px;font-weight:700;cursor:pointer;padding:4px 10px;user-select:none}
 </style>
 </head>
 <body>
 <div class="app">
 
-<!-- ================= HOME ================= -->
+<!-- ============ HOME ============ -->
 <div class="scr sel" id="scr-home">
-<div class="eyebrow" id="h-eyebrow">WEEK 1 · PHASE 1</div>
+<div class="eyebrow" id="h-eyebrow">WEEK 1 OF 48</div>
 <h1 id="h-greet">Good morning.</h1>
 <p class="sub" id="h-date"></p>
 
+<div class="notice" id="h-resume" style="display:none"></div>
+
 <div class="card" id="h-sessioncard">
 <div id="h-notdone">
-<div style="display:flex;align-items:center;gap:16px">
-<div style="flex:1">
-<div style="font-family:var(--serif);font-size:21px" id="h-focustitle">Today's practice</div>
-<div style="color:var(--dim);font-size:14px;margin-top:2px">30 minutes · 5 blocks · everything you need is inside</div>
-</div>
-</div>
-<button class="cta" id="h-begin" style="margin-top:14px">Begin practice</button>
-<div class="ghost" id="h-quick">Log practice done away from the app</div>
+<div style="font-family:var(--serif);font-size:20px" id="h-focustitle">Practice</div>
+<div style="color:var(--dim2);font-size:13.5px;margin-top:1px">30 minutes, guided. Tools and lessons built in.</div>
+<button class="cta" id="h-begin" style="margin-top:13px">Begin practice</button>
 </div>
 <div id="h-done" style="display:none">
-<div style="font-family:var(--serif);font-size:22px;color:var(--green)">Practiced today.</div>
-<div style="color:var(--dim);font-size:14.5px;margin-top:4px" id="h-donemsg"></div>
-<div class="ghost" id="h-again">Practice again</div>
+<div style="font-family:var(--serif);font-size:21px;color:var(--green)">Practiced today.</div>
+<div style="color:var(--dim);font-size:14px;margin-top:3px" id="h-donemsg"></div>
+<div class="cta2" id="h-again">Practice again</div>
 </div>
+<div class="chips" id="h-chips"></div>
+<div class="ghost" id="h-quick">Practiced away from the app? Log it</div>
+</div>
+
+<div class="card">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:1">
+<div class="eyebrow" id="l-eyebrow">LEARN · 3 MIN</div>
+<div style="font-family:var(--serif);font-size:20px;margin-top:2px" id="l-title">This week’s lesson</div>
+<div style="color:var(--dim2);font-size:13.5px" id="l-sub">Visual cards, one idea at a time</div>
+</div>
+</div>
+<div class="cta2" id="h-learn" style="margin-top:12px">Start lesson</div>
 </div>
 
 <div class="mile" id="h-mile" style="display:none"></div>
 
 <div class="card">
-<div class="eyebrow" style="margin-bottom:6px" id="h-wkname">THIS WEEK</div>
-<div id="h-blocks"></div>
-<div style="margin-top:10px" id="h-lessons"></div>
-</div>
-
-<div class="card">
 <div style="display:flex;justify-content:space-between;align-items:baseline">
 <div class="eyebrow">Streak</div>
-<div style="font-family:var(--serif);font-size:20px"><span id="h-streak">0</span> <span style="font-size:13px;color:var(--dim2)">days</span></div>
+<div style="font-family:var(--serif);font-size:19px"><span id="h-streak">0</span> <span style="font-size:12px;color:var(--dim2)">days</span></div>
 </div>
 <div class="days" id="h-days"></div>
 </div>
 </div>
 
-<!-- ================= JOURNEY ================= -->
+<!-- ============ JOURNEY ============ -->
 <div class="scr" id="scr-journey">
-<div class="eyebrow">The 48 week journey</div>
-<h1>Your path</h1>
-<p class="sub">Tap a week for its full plan and lessons. Weeks are grades of difficulty, not deadlines, repeat any of them freely.</p>
+<div class="eyebrow">48 weeks</div>
+<h1>Journey</h1>
+<p class="sub">Tap a week to see it, learn it, or set it current. Repeat weeks freely, they are grades, not deadlines.</p>
 <div id="j-list"></div>
 </div>
 
-<!-- ================= TOOLS ================= -->
+<!-- ============ TOOLS ============ -->
 <div class="scr" id="scr-tools">
-<div class="eyebrow">Practice tools</div>
+<div class="eyebrow">Always one tap away</div>
 <h1>Tools</h1>
 <div class="card" id="tool-met">
 <div class="tempo" id="bpm">80</div>
@@ -188,19 +205,19 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 <span class="btn" data-d="-4">−4</span><span class="btn" data-d="-1">−1</span><span class="btn" data-d="1">+1</span><span class="btn" data-d="4">+4</span>
 </div>
 <div class="row" style="margin-top:6px">
-<span style="color:var(--dim2);font-size:13px">Beats</span>
+<span style="color:var(--dim2);font-size:12.5px">Beats</span>
 <span class="btn sm bpb" data-b="0">none</span><span class="btn sm bpb" data-b="2">2</span><span class="btn sm bpb sel" data-b="3">3</span><span class="btn sm bpb" data-b="4">4</span><span class="btn sm bpb" data-b="6">6</span>
 </div>
 <div class="dots" id="dots"></div>
 <div class="row"><span class="btn" id="startstop" style="min-width:170px;background:var(--brass);color:#15130c;border-color:var(--brass)">Start</span></div>
-<p style="font-size:12.5px;color:var(--dim2);text-align:center;margin:8px 0 0">Ladder rule: 3 clean reps = +4. Any flaw = −4.</p>
+<p style="font-size:12px;color:var(--dim2);text-align:center;margin:8px 0 0">3 clean reps = +4 · any flaw = −4</p>
 </div>
 <div class="card" id="tool-fc">
 <div class="eyebrow" style="margin-bottom:8px">Note flashcards</div>
 <div class="row">
 <span class="btn sm fc-mode sel" data-m="land">Landmarks</span><span class="btn sm fc-mode" data-m="treble">Treble</span><span class="btn sm fc-mode" data-m="bass">Bass</span><span class="btn sm fc-mode" data-m="both">Both</span>
 </div>
-<div class="fig"><div id="fc-staff" style="max-width:280px;margin:0 auto"></div></div>
+<div class="fig"><div id="fc-staff" style="max-width:270px;margin:0 auto"></div></div>
 <div class="row"><span class="btn fc-a">A</span><span class="btn fc-a">B</span><span class="btn fc-a">C</span><span class="btn fc-a">D</span><span class="btn fc-a">E</span><span class="btn fc-a">F</span><span class="btn fc-a">G</span></div>
 <div class="fb" id="fc-fb">&nbsp;</div>
 <div class="score" id="fc-score"></div>
@@ -220,10 +237,10 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 </div>
 </div>
 
-<!-- ================= PROGRESS ================= -->
+<!-- ============ PROGRESS ============ -->
 <div class="scr" id="scr-progress">
-<div class="eyebrow">Progress</div>
-<h1>The record</h1>
+<div class="eyebrow">The record</div>
+<h1>Progress</h1>
 <div class="statrow">
 <div class="stat"><b id="p-streak">0</b><span>streak</span></div>
 <div class="stat"><b id="p-best">0</b><span>best</span></div>
@@ -233,24 +250,24 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 <h2>Last 12 weeks</h2>
 <div class="grid" id="p-grid"></div>
 <h2>Tempo ladder</h2>
-<div class="card" id="p-tempos" style="font-size:14px;color:var(--dim)"></div>
+<div class="card" id="p-tempos" style="font-size:13.5px;color:var(--dim)"></div>
 <h2>Sessions</h2>
 <div id="p-list"></div>
 </div>
 
-<!-- ================= LIBRARY ================= -->
+<!-- ============ LIBRARY ============ -->
 <div class="scr" id="scr-library">
-<div class="eyebrow">Library</div>
-<h1>The books</h1>
-<p class="sub">The full course text. Lessons open from your sessions too, right where you need them.</p>
-<a class="volcard" href="00_Start_Here.html" target="_blank" rel="noopener"><b>Start Here</b><span>The method, your P-525 setup, the road to the U1</span></a>
-<a class="volcard" href="01_Foundations.html" target="_blank" rel="noopener"><b>Volume 1 · Foundations</b><span>Posture, hands, keyboard geography, first tunes</span></a>
+<div class="eyebrow">Go deeper</div>
+<h1>Library</h1>
+<p class="sub">Daily learning happens in the app. When you want the full story, the six books have every diagram, drill and piece.</p>
+<a class="volcard" href="00_Start_Here.html" target="_blank" rel="noopener"><b>Start Here</b><span>The method, your P-525, the road to the U1</span></a>
+<a class="volcard" href="01_Foundations.html" target="_blank" rel="noopener"><b>Volume 1 · Foundations</b><span>Posture, hands, keyboard, first tunes</span></a>
 <a class="volcard" href="02_Reading_Music.html" target="_blank" rel="noopener"><b>Volume 2 · Reading Music</b><span>Landmarks, intervals, rhythm, sight reading</span></a>
 <a class="volcard" href="03_Technique_Scales_Arpeggios.html" target="_blank" rel="noopener"><b>Volume 3 · Technique</b><span>Every scale and arpeggio, healthy mechanics</span></a>
-<a class="volcard" href="04_Chords_and_Harmony.html" target="_blank" rel="noopener"><b>Volume 4 · Chords and Harmony</b><span>Triads to lead sheets to electronic production</span></a>
-<a class="volcard" href="05_Repertoire.html" target="_blank" rel="noopener"><b>Volume 5 · Repertoire</b><span>Graded pieces, from first tunes to Bach and Satie</span></a>
-<a class="volcard" href="06_Practice_System.html" target="_blank" rel="noopener"><b>Volume 6 · The Practice System</b><span>The written 48 week plan this app runs</span></a>
-<a class="volcard" href="07_Practice_Tools.html" target="_blank" rel="noopener"><b>Practice Tools page</b><span>Browser tools, includes the key name quiz</span></a>
+<a class="volcard" href="04_Chords_and_Harmony.html" target="_blank" rel="noopener"><b>Volume 4 · Chords and Harmony</b><span>Triads to lead sheets to production</span></a>
+<a class="volcard" href="05_Repertoire.html" target="_blank" rel="noopener"><b>Volume 5 · Repertoire</b><span>The scores live here, first tunes to Bach</span></a>
+<a class="volcard" href="06_Practice_System.html" target="_blank" rel="noopener"><b>Volume 6 · Practice System</b><span>The written plan this app runs for you</span></a>
+<a class="volcard" href="07_Practice_Tools.html" target="_blank" rel="noopener"><b>Practice Tools page</b><span>Browser tools plus the key name quiz</span></a>
 <h2>Your data</h2>
 <div class="card">
 <span class="btn" id="m-export">Export backup</span>
@@ -267,22 +284,26 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 
 </div>
 
-<!-- ================= SESSION OVERLAY ================= -->
+<!-- ============ SESSION OVERLAY ============ -->
 <div class="ov" id="ov">
 <div class="ovwrap">
 <div id="ov-run">
 <div class="eyebrow center" id="ov-step">BLOCK 1 OF 5</div>
 <div class="seg" id="ov-seg"></div>
 <div class="ring">
-<svg width="210" height="210" viewBox="0 0 210 210">
-<circle cx="105" cy="105" r="94" fill="none" stroke="#232a35" stroke-width="9"/>
-<circle id="ov-arc" cx="105" cy="105" r="94" fill="none" stroke="#d4a853" stroke-width="9" stroke-linecap="round" stroke-dasharray="590.6" stroke-dashoffset="0"/>
+<svg width="172" height="172" viewBox="0 0 172 172">
+<circle cx="86" cy="86" r="76" fill="none" stroke="#232a35" stroke-width="8"/>
+<circle id="ov-arc" cx="86" cy="86" r="76" fill="none" stroke="#d4a853" stroke-width="8" stroke-linecap="round" stroke-dasharray="477.5" stroke-dashoffset="0"/>
 </svg>
-<div class="tm"><b id="ov-time">2:00</b><span id="ov-min">2 minutes</span></div>
+<div class="tm"><b id="ov-time">2:00</b><span>remaining</span></div>
 </div>
 <div class="bt" id="ov-name">Arrive</div>
 <div class="bd" id="ov-desc"></div>
-<div class="lessons" id="ov-lessons"></div>
+<div class="figbox" id="ov-fig" style="display:none"></div>
+<div class="more" id="ov-more" style="display:none">
+<span class="mtog" id="ov-mtog">Details</span>
+<div class="mbody" id="ov-mbody"></div>
+</div>
 <div class="toolhost" id="ov-tool"></div>
 <div class="octl">
 <span class="ob" id="ov-pause">Pause</span>
@@ -295,19 +316,41 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 <p class="center" style="color:var(--dim)" id="ov-formsub">Thirty seconds of logging makes tomorrow better.</p>
 <label>Top clean tempo today</label>
 <input type="text" id="f-tempo" placeholder="G major, hands together, 76">
-<label>Today's win</label>
+<label>Today’s win</label>
 <input type="text" id="f-win" placeholder="Pedal finally smooth in bar 7">
-<label>Tomorrow's first target</label>
+<label>Tomorrow’s first target</label>
 <input type="text" id="f-next" placeholder="Grace bars 5 to 8, left hand alone">
 <div class="octl"><span class="ob gold" id="f-save">Save session</span></div>
 </div>
 <div id="ov-fin" style="display:none">
 <div class="donebig" id="fin-title">Session 1 complete.</div>
-<p class="center" style="color:var(--dim);font-size:16px" id="fin-sub"></p>
+<p class="center" style="color:var(--dim);font-size:15.5px" id="fin-sub"></p>
 <div class="octl"><span class="ob gold" id="fin-close">Close</span></div>
 </div>
 </div>
 </div>
+
+<!-- ============ LESSON VIEWER ============ -->
+<div class="ov" id="lv">
+<div class="xclose" id="lv-x">×</div>
+<div class="ovwrap">
+<div class="eyebrow center" id="lv-step">CARD 1 OF 5</div>
+<div class="lvcard">
+<div class="ct" id="lv-title"></div>
+<div class="figbox" id="lv-fig" style="display:none"></div>
+<div class="cx" id="lv-text"></div>
+<div id="lv-link" style="margin-top:10px"></div>
+</div>
+<div class="lvdots" id="lv-dots"></div>
+<div class="octl">
+<span class="ob" id="lv-back">Back</span>
+<span class="ob gold" id="lv-next">Next</span>
+</div>
+</div>
+</div>
+
+<!-- mini player -->
+<div class="pill" id="pill"><span id="pill-txt">Session · 12:00</span><span>Resume ▸</span></div>
 
 <div class="tabs">
 <div class="tab sel" data-s="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M6 10v10h12V10"/></svg><span>Home</span></div>
@@ -320,68 +363,132 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brass)}
 <script>
 (function(){
 'use strict';
-/* ============ LESSON LINKS ============ */
-var LFILE={V1:'01_Foundations.html',V2:'02_Reading_Music.html',V3:'03_Technique_Scales_Arpeggios.html',V4:'04_Chords_and_Harmony.html',V5:'05_Repertoire.html',V6:'06_Practice_System.html'};
-var LNAME={V1:'Vol 1',V2:'Vol 2',V3:'Vol 3',V4:'Vol 4',V5:'Vol 5',V6:'Vol 6'};
-function lessonBtns(links,dark){
- if(!links||!links.length)return '';
- return links.map(function(lk){
-   var f=lk.split('#')[0],a=lk.split('#')[1];
-   return '<a class="btn sm link" target="_blank" rel="noopener" href="'+LFILE[f]+'#'+a+'">Open lesson · '+LNAME[f]+'</a>';
- }).join(' ');
+/* ============ SHARED MUSIC DATA ============ */
+var SEMI=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+var NAMEF=['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+var ROOTS={'C':0,'C#':1,'Db':1,'D':2,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'Ab':8,'A':9,'Bb':10,'B':11};
+var FLATKEY={'F':1,'Bb':1,'Eb':1,'Ab':1,'Db':1};
+var MAJ=[0,2,4,5,7,9,11,12], MINH=[0,2,3,5,7,8,11,12];
+var FING={
+ 'C/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','G/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','D/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','A/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','E/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1',
+ 'F/maj':'RH 1 2 3 4 · 1 2 3 4 — LH 5 4 3 2 1 · 3 2 1','B/maj':'RH 1 2 3 · 1 2 3 4 5 — LH 4 3 2 1 · 4 3 2 1','Bb/maj':'RH 4 1 2 3 · 1 2 3 4 — LH 3 2 1 · 4 3 2 1 · 3','Eb/maj':'RH 3 1 2 3 · 4 1 2 3 — LH 3 2 1 · 4 3 2 1 · 3','Ab/maj':'RH 3 4 1 2 3 · 1 2 3 — LH 3 2 1 · 4 3 2 1 · 3','Db/maj':'RH 2 3 1 2 3 4 · 1 2 — LH 3 2 1 · 4 3 2 1 · 3','F#/maj':'RH 2 3 4 · 1 2 3 · 1 2 — LH 4 3 2 1 · 3 2 1 · 4',
+ 'A/min':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','E/min':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','D/min':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','G/min':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','C/min':'RH 1 2 3 · 1 2 3 4 5 — LH 5 4 3 2 1 · 3 2 1','B/min':'RH 1 2 3 · 1 2 3 4 5 — LH 4 3 2 1 · 4 3 2 1'
+};
+var FORMS={maj:[0,4,7],min:[0,3,7],dim:[0,3,6],maj7:[0,4,7,11],m7:[0,3,7,10],'7':[0,4,7,10],sus2:[0,2,7],sus4:[0,5,7]};
+var QNAME={maj:'major',min:'minor',dim:'diminished',maj7:'maj7',m7:'m7','7':'7',sus2:'sus2',sus4:'sus4'};
+function noteName(s,flat){return (flat?NAMEF:SEMI)[((s%12)+12)%12];}
+function scaleMarks(root,mode){
+ var base=ROOTS[root],ints=(mode==='min')?MINH:MAJ,flat=FLATKEY[root];
+ return ints.map(function(iv){var s=base+iv;var nm=noteName(s,flat);return {note:nm+(4+Math.floor(s/12)),label:nm};});
 }
+function pentaMarks(root){return scaleMarks(root,'maj').slice(0,5).map(function(m,i){m.label=m.label;return m;});}
+function chordMarks(root,q){
+ var base=ROOTS[root],flat=FLATKEY[root];
+ return FORMS[q].map(function(iv){var s=base+iv;var nm=noteName(s,flat&&q!=='maj7'?true:flat);return {note:noteName(s,false)+(4+Math.floor(s/12)),label:noteName(s,flat)};});
+}
+
+/* ============ LESSON CARD LIBRARY ============ */
+var CARDS={
+posture:{t:'Sit like a pianist',x:'Front half of the bench, forearms level with the floor, shoulders heavy. Feet flat. That is the whole setup.'},
+drops:{t:'The arm makes the sound',x:'Lift the whole arm, let it fall onto one curved fingertip. Gravity plays the note. Full, warm, effortless.'},
+fingernums:{t:'Fingers have numbers',x:'Thumb is 1, pinky is 5, on both hands. Every piece of piano music uses these.',fig:{hand:1}},
+geography:{t:'One pattern, repeated',fig:{kb:{start:'C4',octaves:1,labelAll:true}},x:'The keyboard is a 12 key pattern repeating. C sits left of every group of 2 black keys.'},
+cposition:{t:'Home position',fig:{kb:{start:'C4',octaves:1,marks:[{note:'C4',label:'1'},{note:'D4',label:'2'},{note:'E4',label:'3'},{note:'F4',label:'4'},{note:'G4',label:'5'}]}},x:'RH thumb on middle C, one finger per key. LH mirrors an octave below, pinky on C.'},
+legato:{t:'Connect the notes',x:'The next finger lands exactly as the last one lifts. One unbroken line of sound.'},
+evenness:{t:'Every finger equal',x:'Finger 4 is everyone’s weak one. Where a note dips, give that finger more arm weight, never force.'},
+skips:{t:'Skip a finger',x:'Play 1 3 5 3 1. Skipping fingers is how independence starts.'},
+pentascale:{t:'Five notes, any key',x:'The first five notes of a major scale. Same hand shape you already know, moved to a new home.'},
+contrary:{t:'Mirror hands',x:'Both thumbs on middle C, hands walk outward in mirror image. Easier than parallel, and your brain loves it.'},
+accents:{t:'Shift the accent',x:'Same five notes, but accent every 2nd note. Then every 3rd. Every finger learns strong and light.'},
+counting:{t:'Count out loud',x:'1 2 3 4 for quarters. 1 and 2 and for eighths. Out loud is not optional, it is the trick.'},
+thumbpivot:{t:'The thumb travels',fig:{kb:{start:'C4',octaves:1,marks:[{note:'E4',label:'3'},{note:'F4',label:'1'}]}},x:'Finger 3 plays, the thumb passes under to the next key while the elbow drifts along. This move makes scales possible.'},
+ladder:{t:'The speed ladder',x:'Three clean reps in a row earns +4 bpm. One flaw drops you −4. Speed is earned, never forced.'},
+landmarks:{t:'Three anchor notes',x:'Middle C, Treble G, Bass F. Know these instantly and every other note is a step or a skip away.'},
+intervals2:{t:'Read shapes, not letters',x:'Same spot = repeat. Next spot = step. Spot after = skip. Fluent readers see distance, not names.'},
+sightread:{t:'One line, once',x:'Scan it, count a silent bar, play it without ever stopping. Tomorrow, a new line. This builds the skill that makes everything else fast.'},
+triads:{t:'The basic chord',fig:{ch:['C','maj']},x:'Root, 3rd, 5th. Major is bright. Drop the middle note a half step and it turns minor.'},
+inversions:{t:'Flip the chord',fig:{kb:{start:'C4',octaves:1,marks:[{note:'E4',label:'E'},{note:'G4',label:'G'},{note:'C5',label:'C'}]}},x:'Same three notes, new bottom. C major with E on the bottom is still C major, just softer edged.'},
+voicelead:{t:'Barely move',x:'Change chords using the nearest inversion. Great progressions move fingers by steps, not leaps.'},
+romans:{t:'Chords by number',x:'In any major key: I IV V are major, ii iii vi are minor. Numbers work in every key, that is their power.'},
+popprog:{t:'The pop engine',x:'I V vi IV. In C: C G Am F. Half the songs you know run on this loop.'},
+patterns:{t:'Four left hands',x:'Blocked chord, broken chord, Alberti bass, root-5th-octave. These four patterns cover most music ever written.'},
+pedal:{t:'Pedal after the note',x:'Press just after the note sounds, lift and re-press exactly on the change. Your ear is the referee: no smear, no gap.'},
+sevenths:{t:'Add one more third',fig:{ch:['C','maj7']},x:'maj7 floats, m7 mellows, dominant 7 leans forward and wants to move. The colors of modern harmony.'},
+sus:{t:'Suspended',fig:{ch:['C','sus4']},x:'Swap the 3rd for a 4th or 2nd. Open, unresolved, beautiful going home to major.'},
+circle:{t:'The circle of fifths',x:'All 12 keys arranged so neighbors share 6 of 7 notes. Your I, IV and V are always next door to each other.'},
+leadsheet:{t:'Melody plus symbols',x:'A lead sheet trusts you with the accompaniment. Level 1: roots. Level 2: triads. Level 3: patterns.'},
+arpeggio:{t:'A chord, one note at a time',fig:{kb:{start:'C4',octaves:2,marks:[{note:'C4',label:'1'},{note:'E4',label:'2'},{note:'G4',label:'3'},{note:'C5',label:'1'},{note:'E5',label:'2'},{note:'G5',label:'3'},{note:'C6',label:'5'}]}},x:'RH 1 2 3 then thumb under. Every synth arp preset is doing exactly this.'},
+minor3:{t:'Three minors',x:'Natural minor is the relative major’s notes. Harmonic raises the 7th, the dramatic one you practice. Melodic raises 6 and 7 on the way up.'},
+chromatic:{t:'Every key in order',x:'3 on every black key, thumb on whites, 1 2 where two whites touch. Great for closeness and control.'},
+sixteenths:{t:'1 e and a',x:'Four sounds per beat. Clap it before you play it, always.'},
+sync:{t:'Accent the and',x:'Syncopation puts weight between the beats. It is where groove lives, from ragtime to house.'},
+spread:{t:'The producer voicing',fig:{kb:{start:'A2',keys:18,marks:[{note:'A2',label:'A'},{note:'E3',label:'E'},{note:'A3',label:'A'},{note:'C4',label:'C'},{note:'E4',label:'E'}]}},x:'Wide intervals low, close intervals high. This A minor pad fills a room. Thirds stay out of the basement.'},
+dorian:{t:'The bright minor',fig:{kb:{start:'D4',keys:8,labelAll:true}},x:'D to D on white keys. Minor with a raised 6th. Deep house and Daft Punk live here.'},
+melmin:{t:'Melodic minor',x:'Raise the 6th and 7th going up, let them fall back down. The smoothest minor for melodies.'},
+slashchords:{t:'Slash chords',x:'C/E means C major with E in the bass. Lead sheet language for inversions.'},
+ear:{t:'Train the ear',x:'Play a chord eyes closed: major or minor? Ten guesses a week and it becomes obvious for life.'},
+improv:{t:'Improvise safely',x:'Any scale tone works over your loop. Start and end phrases on chord notes and it sounds intentional.'},
+recital:{t:'The one take rule',x:'Phone on the rest, play it once, no stopping. Wrong notes are forgotten in a second, stops are remembered forever.'},
+canon:{t:'Chase yourself',x:'Start the tune in one hand, the other hand starts the same tune two bars later. Instant counterpoint.'},
+blocking:{t:'Block it first',x:'Learn chord pieces as solid chords first, one per bar. Then unroll the pattern. Days become hours.'},
+spotlight:{t:'The spotlight rule',x:'Your time goes to the hardest two bars plus their joins, not the comfortable opening.'},
+hs:{t:'Hands separate first',x:'RH alone until easy. LH alone until easy. Together at half speed. Every piece, forever.'}
+};
+
 /* ============ 48 WEEKS ============ */
 var WKS=[
-{n:'First contact',t:{d:'Posture reset, then ten arm weight drops per hand on finger 3, then fingers 2 and 4. Full warm tone, zero effort. Then geography: find and name every C, D and F on the piano. Eyes closed for the D drill.',l:['V1#s6','V1#s5']},r:{d:'Finger numbers until instant: call a number out loud, press that finger, both hands.',l:['V1#s4']},p:{d:'Hot Cross Buns by finger numbers: 3 2 1, 3 2 1. Right hand, then left.',l:['V1#s8']}},
-{n:'Home position',t:{d:'Five finger walks in C position, each hand alone: up, down, then the skips exercise. Listen for a weak finger 4 and feed it more arm weight.',l:['V1#s7']},r:{d:'Meet the staff and your three landmarks: Middle C, Treble G, Bass F. Then three minutes of flashcards below, landmarks mode.',l:['V2#s2'],tool:'fc:land'},p:{d:'Mary Had a Little Lamb, RH. From the numbers first, then following the notation as you play.',l:['V1#s8']}},
-{n:'Hands together',t:{d:'Walks hands together, embarrassingly slow, both hands mirroring. Then skips: 1 3 5 3 1.',l:['V1#s7']},r:{d:'Read by shape: repeat, step, or skip. Work drill 1 until you read it cold.',l:['V2#s3'],tool:'fc:land'},p:{d:'Ode to Joy, right hand. Shape the phrase so it rises and falls like a sentence.',l:['V1#s8']}},
-{n:'Milestone: foundations',m:'Milestone week: pass the Volume 1 exit checklist, every box, honestly.',t:{d:'Review week. Drops, walks, geography, all relaxed and even.',l:['V1#s10']},r:{d:'Landmarks under one second each. Twenty in a row.',l:['V2#s2'],tool:'fc:land'},p:{d:'Ode to Joy with LH held notes: C3 for two bars, G3, then C3.',l:['V1#s8']}},
-{n:'New territories',t:{d:'Pentascales C and G, hands separate: up, down, then broken 1 3 5 3 1. Then contrary motion from middle C, both thumbs sharing the same start.',l:['V3#s3']},r:{d:'Add the secondary landmarks: Treble C and Bass C. Then drill 2 with skips.',l:['V2#s2'],tool:'fc:land'},p:{d:'Frère Jacques, right hand. The G A G F run in bar 5 is your first four note run, keep it even.',l:['V5#s2']}},
-{n:'First black key',t:{d:'Pentascales D and A. Reach F sharp and C sharp with a relaxed hand drifting slightly into the black key area, wrist level.',l:['V3#s3']},r:{d:'Counting drills: clap and count bars of quarters, halves and dotted halves, out loud, no piano.',l:['V2#s5']},p:{d:'Frère Jacques plus a held LH open fifth: C3 and G3 together, once per two bars.',l:['V5#s2']}},
-{n:'Subdividing',t:{d:'Pentascale E, then accent shifting on C: accent every 2nd note, then every 3rd. Every finger learns to be strong and light.',l:['V3#s3','V3#s10']},r:{d:'Eighth notes: count "1 and 2 and" out loud. Drill 5, tap the rhythm on your knee before playing it.',l:['V2#s5'],tool:'fc:land'},p:{d:'Jingle Bells. Loose wrist on the repeated notes, one relaxed impulse each, no grabbing.',l:['V5#s2']}},
-{n:'Milestone: five keys',m:'Milestone week: pentascales C G D A E from memory, and drills 1 and 2 read cold.',t:{d:'Pentascale tour: all five keys, one flowing take each, hands separate.',l:['V3#s3']},r:{d:'Note values review, then flashcards.',l:['V2#s5'],tool:'fc:land'},p:{d:'Au Clair de la Lune, hands together from the notation, counting out loud.',l:['V2#s6']}},
-{n:'The thumb travels',t:{d:'Thumb pivot drill: 3 1 3 1 on E and F, ten slow reps per hand, elbow drifting to help. Then C major scale, hands separate.',l:['V3#s5','V3#s6']},r:{d:'The sight reading habit starts today: one new line, once, no stopping, eyes ahead. Bass drills 3 and 4 this week.',l:['V2#s8'],tool:'fc:both'},p:{d:'When the Saints, right hand. The rests are played too: count them.',l:['V5#s2']}},
-{n:'Scaling up',t:{d:'C major hands separate with the metronome at 60, quarter notes. Contrary motion scale as dessert.',l:['V3#s6']},r:{d:'Flashcards across the full staff, both clefs. Then one line of sight reading.',l:['V2#s8'],tool:'fc:both'},p:{d:'Saints with LH roots: C3 on the downbeats, G3 where your ear asks for it.',l:['V5#s2']}},
-{n:'First chords',t:{d:'C major hands together, one octave, painfully slow, perfectly even. Three clean takes.',l:['V3#s6']},r:{d:'Build C, F and G major triads. Shape in the air first, then one soft relaxed drop per chord.',l:['V4#s2'],tool:'cb'},p:{d:'Saints, polish. Record a phone take and listen back once.',l:['V5#s2']}},
-{n:'Milestone: you read music',m:'Phase 1 complete: C major hands together, Volume 2 exit checklist, and recital 1.',t:{d:'C major HT, three clean consecutive takes.',l:['V3#s6']},r:{d:'The Volume 2 exit checklist, box by box.',l:['V2#s10'],tool:'fc:both'},p:{d:'Recital 1: three tunes, one take each, no stopping. Phone on the music rest.',l:['V5#s7']}},
-{n:'Second key',t:{d:'G major scale, hands separate then together. Identical fingering to C.',l:['V3#s6']},r:{d:'Build all seven white key triads, naming each out loud: C major, D minor, E minor...',l:['V4#s2'],tool:'cb'},p:{d:'Frère Jacques as a canon: LH starts the tune two bars after the RH. Your first counterpoint.',l:['V5#s2']}},
-{n:'Turning chords over',t:{d:'G major HT on the ladder: three clean reps earns +4 bpm. Log your top tempo tonight.',l:['V3#s6']},r:{d:'Inversions of C: root, first, second, root on top. Feel how little the hand moves.',l:['V4#s3'],tool:'cb'},p:{d:'Amazing Grace level 1: RH melody, LH plays just the chord roots.',l:['V5#s3']}},
-{n:'The pedal',t:{d:'D major hands separate. Then the pedal drill: press just after the note sounds, change cleanly on the join. Ear is the referee.',l:['V3#s11','V3#s6']},r:{d:'Inversion drill on C and F. Small moves, smooth connections.',l:['V4#s3'],tool:'cb'},p:{d:'Amazing Grace level 2: LH triads, pedal change per chord.',l:['V5#s3']}},
-{n:'Milestone: twelve homes',m:'Milestone week: C and G hands together at 72, and all 12 major pentascales.',t:{d:'C and G at 72. Pentascale tour through all twelve keys across the week.',l:['V3#s3']},r:{d:'Inversions eyes closed on C major.',l:['V4#s3'],tool:'cb'},p:{d:'Grace with seamless pedal. Listen hard for smears and gaps.',l:['V5#s3']}},
-{n:'Progressions begin',t:{d:'D major hands together. A major hands separate.',l:['V3#s6']},r:{d:'I IV V I in C: blocked first, then voice led so no finger moves more than a step.',l:['V4#s4'],tool:'cb'},p:{d:'Grace with broken chord accompaniment, pattern 2.',l:['V5#s3','V4#s5']}},
-{n:'The pop engine',t:{d:'A major hands together.',l:['V3#s6']},r:{d:'I V vi IV in C. Loop it until it stops being homework and starts being a song.',l:['V4#s4'],tool:'cb'},p:{d:'House of the Rising Sun: the LH broken shape on Am and C, slow and hypnotic.',l:['V5#s3']}},
-{n:'Minor colors',t:{d:'E major hands separate.',l:['V3#s6']},r:{d:'Progressions in G. Then the ear game: eyes closed, major or minor, ten chords.',l:['V4#s4','V4#s10'],tool:'cb'},p:{d:'Rising Sun: assemble both hands at half speed.',l:['V5#s3']}},
-{n:'Milestone: arpeggios',m:'Milestone week: C G D A hands together, and the C arpeggio.',t:{d:'C major arpeggio: block C E G C, feel the spacing, then break it. RH 1 2 3 5, LH 5 4 2 1.',l:['V3#s9']},r:{d:'Progression review in two keys.',l:['V4#s4'],tool:'cb'},p:{d:'Rising Sun flowing with pedal.',l:['V5#s3']}},
-{n:'Recording artist',t:{d:'E major hands together. C arpeggio daily.',l:['V3#s6','V3#s9']},r:{d:'vi IV I V, then i VI III VII in A minor. Feel the mood flip between them.',l:['V4#s4'],tool:'cb'},p:{d:'Rising Sun: polish it and record it. This one is for playing to people.',l:['V5#s3']}},
-{n:'New fingering',t:{d:'F major hands separate: RH 1234 1234, finger 4 lands on B flat.',l:['V3#s6']},r:{d:'G arpeggio. Then run patterns 1 and 2 through I V vi IV.',l:['V4#s5'],tool:'cb'},p:{d:'Greensleeves begins: 6/8 time, two big pulses per bar.',l:['V5#s3']}},
-{n:'Lead sheets',t:{d:'F major hands together.',l:['V3#s6']},r:{d:'The practice lead sheet at level 2, then level 3. Then transpose the whole loop to G.',l:['V4#s8'],tool:'cb'},p:{d:'Greensleeves, first half smooth.',l:['V5#s3']}},
-{n:'Milestone: producer',m:'Phase 2 complete: six scales hands together, a lead sheet at level 3, your first loop in the DAW, recital 2.',t:{d:'Six scales, one clean take each.',l:['V3#s6']},r:{d:'Record your first 8 bar loop: minor key, four chords, LH roots, RH voiced with inversions.',l:['V4#s9']},p:{d:'Recital 2: Grace or Rising Sun, plus one more.',l:['V5#s7']}},
-{n:'The minor mode',t:{d:'A minor scale, natural then harmonic, hands separate. Same fingering as C major.',l:['V3#s7']},r:{d:'maj7 and m7 chords on white roots. Dreamy versus mellow: listen for it.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet in G: right hand only, bars 1 to 8. Elegant, unhurried.',l:['V5#s4']}},
-{n:'Bach’s left hand',t:{d:'A minor hands together.',l:['V3#s7']},r:{d:'Dominant sevenths: build G7, C7, D7 and hear how each one leans forward.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet: left hand alone, bars 1 to 8, from the score.',l:['V5#s4']}},
-{n:'Counterpoint',t:{d:'E minor, hands separate then together.',l:['V3#s7']},r:{d:'ii V I with sevenths in C and G. The engine of jazz under your fingers.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet hands together, bars 1 to 8, half speed, counting.',l:['V5#s4']}},
-{n:'Milestone: minor keys',m:'Milestone week: A and E harmonic minor hands together, Minuet section one solid.',t:{d:'Minor scale review on the ladder.',l:['V3#s7']},r:{d:'sus2 and sus4: build them, resolve them, enjoy them.',l:['V4#s6'],tool:'cb'},p:{d:'Minuet, bars 9 to 16.',l:['V5#s4']}},
-{n:'Sixteenths',t:{d:'D minor scales. Two octave C major, hands together.',l:['V3#s7','V3#s6']},r:{d:'Sixteenth notes: count "1 e and a", clap before you play.',l:['V2#s5']},p:{d:'Minuet, keep building sections.',l:['V5#s4']}},
-{n:'Two octaves',t:{d:'D minor hands together. Two octave G major.',l:['V3#s6']},r:{d:'Syncopation: clap the offbeats, accent the "and".',l:['V2#s5']},p:{d:'Minuet: full piece draft, slow.',l:['V5#s4']}},
-{n:'Flat keys',t:{d:'B flat major: thumbs on white keys only. Then the chromatic scale, one octave, fingers close.',l:['V3#s6','V3#s8']},r:{d:'Sight reading doubles: two lines daily from here on.',l:['V2#s8'],tool:'fc:both'},p:{d:'Burgmüller La Candeur begins: singing legato tone.',l:['V5#s4']}},
-{n:'Milestone: Minuet lives',m:'Milestone week: Minuet end to end slowly, two octave C and G at 69.',t:{d:'Two octave C and G on the ladder.',l:['V3#s6']},r:{d:'Light review week for the eyes.',l:['V2#s8'],tool:'fc:both'},p:{d:'Minuet end to end, every day, tempo rising gently.',l:['V5#s4']}},
-{n:'Painting with pads',t:{d:'E flat major. Arpeggios two octaves, C and G, hands separate.',l:['V3#s6','V3#s9']},r:{d:'Spread voicings: build the A minor pad, root and fifth low, triad above. Sustain it with pedal.',l:['V4#s9'],tool:'cb'},p:{d:'Gymnopédie: left hand alone until the bass-chord swing is calm and automatic.',l:['V5#s4']}},
-{n:'The floating melody',t:{d:'E flat hands together. A minor arpeggio.',l:['V3#s9']},r:{d:'Minor progressions in Am and Em. Today, spot the IV and V chords in songs you hear.',l:['V4#s10'],tool:'cb'},p:{d:'Gymnopédie: float the melody over the LH, melody louder than accompaniment.',l:['V5#s4']}},
-{n:'Modes',t:{d:'Two octaves D, A and E, hands together.',l:['V3#s6']},r:{d:'Dorian: D to D on white keys. Improvise over a held D minor chord, land on chord tones.',l:['V4#s9']},p:{d:'Gymnopédie assembled, deep pedal, no hurry at all.',l:['V5#s4']}},
-{n:'Milestone: performer',m:'Phase 3 complete: recital 3, and a second loop with spread voicings and a bassline.',t:{d:'Phase standards check against Volume 3.',l:['V3#s12']},r:{d:'Loop 2 in the DAW: spread voicings plus a root-fifth-octave bassline.',l:['V4#s9']},p:{d:'Recital 3: the Minuet plus one. Record it.',l:['V5#s7']}},
-{n:'The prelude as chords',t:{d:'A flat major scale.',l:['V3#s6']},r:{d:'Circle of fifths: play I IV V I in one key daily, moving clockwise.',l:['V4#s7'],tool:'cb'},p:{d:'Prelude in C: block every bar into one chord. Whole piece as chords first.',l:['V5#s5']}},
-{n:'The comfortable key',t:{d:'B major: Chopin taught it early because the hand fits it best. Enjoy.',l:['V3#s6']},r:{d:'Melodic minor: raised 6 and 7 going up, natural coming down.',l:['V3#s7']},p:{d:'Prelude: unroll the ripple, bars 1 to 8.',l:['V5#s5']}},
-{n:'Five flats',t:{d:'D flat major: mostly black keys, easier than it looks.',l:['V3#s6']},r:{d:'Slash chords: C/E, G/B. Rebuild both your loops using them.',l:['V4#s8'],tool:'cb'},p:{d:'Prelude continues. Calm, even, let the harmony do the emoting.',l:['V5#s5']}},
-{n:'Milestone: nine keys',m:'Milestone week: nine major scales hands together, two octaves. B minor joins.',t:{d:'B minor scale. Rotate all nine majors this week.',l:['V3#s7']},r:{d:'Review and breathe.',l:['V4#s7'],tool:'cb'},p:{d:'Arabesque begins. Prelude reaches halfway.',l:['V5#s4','V5#s5']}},
-{n:'Full circle',t:{d:'G flat major: thumbs on the two white keys. Minor arpeggios, Am and Em.',l:['V3#s6','V3#s9']},r:{d:'Transpose one loop to three keys around the circle.',l:['V4#s7']},p:{d:'Arabesque: drama, staccato chords, A minor runs.',l:['V5#s4']}},
-{n:'Dark keys',t:{d:'G minor and C minor scales.',l:['V3#s7']},r:{d:'Ear training: name I, IV, V or vi in three songs you hear today.',l:['V4#s10']},p:{d:'Prelude full draft. Arabesque continues.',l:['V5#s5']}},
-{n:'Chopin',t:{d:'All twelve majors in rotation: three keys per day.',l:['V3#s6']},r:{d:'Chopin E minor prelude, LH only: read it as a chord chart, name every chord.',l:['V5#s5'],tool:'cb'},p:{d:'Chopin prelude begins: the lament over sinking chords.',l:['V5#s5']}},
-{n:'Milestone: every key',m:'Milestone week: full major rotation from memory. Clementi begins.',t:{d:'Rotation from memory, no chart on the stand.',l:['V3#s6']},r:{d:'Chopin LH fluent, chords named as you play.',l:['V5#s5'],tool:'cb'},p:{d:'Clementi Sonatina: survey it, then the RH exposition.',l:['V5#s5']}},
-{n:'Velocity',t:{d:'Speed ladders: scales climbing toward eighth notes at 80.',l:['V3#s10']},r:{d:'Improvise: RH melody over your LH loop. Scale tones, land on chord notes.',l:['V4#s9']},p:{d:'Clementi: the Alberti bass sections, slow then sparkling.',l:['V5#s5']}},
-{n:'Weak spots',t:{d:'Your two weakest keys get the whole slot. The log knows which they are.',l:['V3#s6']},r:{d:'Improvisation with dorian color. One loop, one solo, daily.',l:['V4#s9']},p:{d:'Clementi hands together. Gymnopédie repolish for the recital.',l:['V5#s5']}},
-{n:'Dress rehearsal',t:{d:'Maintenance rotation, light and clean, nothing forced.',l:['V3#s6']},r:{d:'Any chord, any key, on demand. Quiz yourself with the builder below.',l:['V4#s6'],tool:'cb'},p:{d:'Program run throughs. Record practice takes, watch your wrists.',l:['V5#s7']}},
-{n:'The recital',m:'Final milestone: recital 4, the exit checklists, and then Year Two begins.',t:{d:'Final standards: Volume 3, phase 4 list.',l:['V3#s12']},r:{d:'Exit checklists for Volumes 4 and 5.',l:['V4#s11']},p:{d:'Recital 4: Minuet, Gymnopédie, Prelude in C, and the Chopin if it is ready. One year. Listen back to recital 1.',l:['V5#s7']}}
+{n:'First contact',t:'Posture reset, then ten arm weight drops per hand on finger 3, then fingers 2 and 4. Then find and name every C, D and F, eyes closed for D.',r:'Finger numbers until instant: call a number out loud, press that finger, both hands.',p:'Hot Cross Buns by finger numbers: 3 2 1, 3 2 1. Right hand, then left.',pl:'V1#s8',deck:['c:posture','c:drops','c:fingernums','c:geography','pc:Hot Cross Buns|Play 3 2 1, 3 2 1 and say the numbers out loud.|V1#s8']},
+{n:'Home position',t:'Five finger walks in C position, each hand alone: up, down, then skips. Feed the weak finger 4 more arm weight.',r:'Learn the three landmarks, then three minutes of flashcards, landmarks mode.',rt:'fc:land',p:'Mary Had a Little Lamb, RH. Numbers first, then follow the notation as you play.',pl:'V1#s8',deck:['c:cposition','c:legato','c:landmarks','pc:Mary Had a Little Lamb|Numbers first, then follow the shape of the notation.|V1#s8']},
+{n:'Hands together',t:'Walks hands together, embarrassingly slow, mirroring. Then skips: 1 3 5 3 1.',r:'Read by shape: repeat, step, skip. Drill 1 until cold.',rt:'fc:land',p:'Ode to Joy, right hand. Shape the phrase so it rises and falls.',pl:'V1#s8',deck:['c:evenness','c:skips','c:intervals2','pc:Ode to Joy|Right hand. Make the line breathe, rise and fall.|V1#s8']},
+{n:'Milestone: foundations',m:'Pass the Volume 1 exit checklist, every box, honestly.',t:'Review week: drops, walks, geography, all relaxed and even.',r:'Landmarks under one second. Twenty in a row.',rt:'fc:land',p:'Ode to Joy with LH held notes: C, C, G, C.',pl:'V1#s8',deck:['c:posture','c:landmarks','c:evenness','pc:Ode to Joy, both hands|Hold long LH notes under the melody: C, C, G, C.|V1#s8']},
+{n:'New territories',t:'Pentascales C and G, hands separate: up, down, broken. Then contrary motion from middle C.',r:'Add Treble C and Bass C landmarks. Drill 2.',rt:'fc:land',p:'Frère Jacques, RH. Keep the four note run even.',pl:'V5#s2',deck:['c:pentascale','pe:C','pe:G','c:contrary','pc:Frère Jacques|The G A G F run is your first four note run. Even, unhurried.|V5#s2']},
+{n:'First black key',t:'Pentascales D and A. Reach the black keys with a relaxed hand drifting slightly forward, wrist level.',r:'Counting drills: clap and count quarters, halves, dotted halves. Out loud, no piano.',p:'Frère Jacques plus a held LH open fifth, C3 and G3.',pl:'V5#s2',deck:['pe:D','pe:A','c:counting','pc:Frère Jacques + fifth|Hold C3 and G3 together under the tune, changing once per two bars.|V5#s2']},
+{n:'Subdividing',t:'Pentascale E, then accent shifting on C: every 2nd note, then every 3rd.',r:'Eighth notes: count 1 and 2 and. Drill 5, tap it on your knee first.',rt:'fc:land',p:'Jingle Bells. Loose wrist on the repeated notes.',pl:'V5#s2',deck:['pe:E','c:accents','c:counting','pc:Jingle Bells|Repeated notes want a loose bouncing wrist, one impulse each.|V5#s2']},
+{n:'Milestone: five keys',m:'Pentascales C G D A E from memory, drills 1 and 2 read cold.',t:'Pentascale tour: all five keys, one flowing take each.',r:'Note values review, then flashcards.',rt:'fc:land',p:'Au Clair de la Lune, hands together, counting aloud.',pl:'V2#s6',deck:['c:pentascale','c:landmarks','c:counting','pc:Au Clair de la Lune|Your first fully notated two hand piece. Count out loud.|V2#s6']},
+{n:'The thumb travels',t:'Thumb pivot drill, ten slow reps per hand. Then C major scale, hands separate.',r:'Sight reading habit starts: one new line daily, never repeated. Bass drills 3 and 4.',rt:'fc:both',p:'When the Saints, RH. Count the rests, they are part of the music.',pl:'V5#s2',deck:['c:thumbpivot','sc:C/maj','c:sightread','pc:When the Saints|The rests are notes you do not play. Count them out loud.|V5#s2']},
+{n:'Scaling up',t:'C major hands separate at 60 on the metronome. Contrary motion scale as dessert.',r:'Flashcards, full staff, both clefs. One line of sight reading.',rt:'fc:both',p:'Saints with LH roots: C3 on downbeats, G3 where the ear asks.',pl:'V5#s2',deck:['sc:C/maj','c:ladder','c:sightread','pc:Saints + roots|LH plays C3 on the downbeats. Let your ear place the G3 bars.|V5#s2']},
+{n:'First chords',t:'C major hands together, one octave, painfully slow, perfectly even.',r:'Build C, F and G triads. Shape in the air, then one soft drop.',rt:'cb',p:'Saints, polish. Record one phone take, listen back once.',pl:'V5#s2',deck:['sc:C/maj','ch:C/maj','ch:F/maj','ch:G/maj','pc:Saints, polished|Record one take. Listening back is a lesson in itself.|V5#s2']},
+{n:'Milestone: you read music',m:'Phase 1 complete: C major hands together, Volume 2 checklist, recital 1.',t:'C major HT, three clean consecutive takes.',r:'Volume 2 exit checklist, box by box.',rt:'fc:both',p:'Recital 1: three tunes, one take each, no stopping.',pl:'V5#s7',deck:['c:recital','sc:C/maj','c:landmarks','pc:Recital 1|Three tunes, one take each. You have earned this.|V5#s7']},
+{n:'Second key',t:'G major scale, hands separate then together. Same fingering as C.',r:'Build all seven white key triads, naming each aloud.',rt:'cb',p:'Frère Jacques as a canon: LH enters two bars late.',pl:'V5#s2',deck:['sc:G/maj','c:triads','c:canon','pc:Frère Jacques, canon|LH starts the tune two bars after RH. Your first counterpoint.|V5#s2']},
+{n:'Turning chords over',t:'G major HT on the ladder: three clean reps earns +4. Log your top tempo.',r:'Inversions of C: root, first, second, root on top.',rt:'cb',p:'Amazing Grace level 1: RH melody, LH roots.',pl:'V5#s3',deck:['c:ladder','c:inversions','c:voicelead','pc:Amazing Grace|Level 1: melody in the right hand, chord roots in the left.|V5#s3']},
+{n:'The pedal',t:'D major hands separate. Then pedal drill: press after the note, change on the join.',r:'Inversion drill on C and F, feel the small moves.',rt:'cb',p:'Amazing Grace level 2: triads plus pedal.',pl:'V5#s3',deck:['sc:D/maj','c:pedal','pc:Amazing Grace, level 2|LH triads on beat one, pedal changing with each chord.|V5#s3']},
+{n:'Milestone: twelve homes',m:'C and G hands together at 72. All 12 major pentascales.',t:'C and G at 72. Pentascale tour through all twelve keys this week.',r:'Inversions eyes closed on C.',rt:'cb',p:'Grace with seamless pedal. Listen for smears.',pl:'V5#s3',deck:['c:inversions','c:pedal','c:evenness','pc:Grace, seamless|No smear, no gap. The pedal is played by the ear.|V5#s3']},
+{n:'Progressions begin',t:'D major hands together. A major hands separate.',r:'I IV V I in C, blocked then voice led.',rt:'cb',p:'Grace with broken chord accompaniment, pattern 2.',pl:'V5#s3',deck:['sc:A/maj','c:romans','c:voicelead','pc:Grace, pattern 2|Broken chords flowing under the melody.|V5#s3']},
+{n:'The pop engine',t:'A major hands together.',r:'I V vi IV in C. Loop until it sounds like a song.',rt:'cb',p:'House of the Rising Sun: LH broken shape on Am and C.',pl:'V5#s3',deck:['c:popprog','ch:A/min','ch:F/maj','pc:House of the Rising Sun|The LH broken shape, slow and hypnotic. Am, then C.|V5#s3']},
+{n:'Minor colors',t:'E major hands separate.',r:'Progressions in G. Ear game: major or minor, eyes closed, ten chords.',rt:'cb',p:'Rising Sun: assemble both hands at half speed.',pl:'V5#s3',deck:['sc:E/maj','c:ear','c:romans','pc:Rising Sun|Both hands now, half speed. Let it swing gently.|V5#s3']},
+{n:'Milestone: arpeggios',m:'C G D A hands together. C arpeggio one octave.',t:'C arpeggio: block it, then break it. RH 1 2 3 5, LH 5 4 2 1.',r:'Progression review in two keys.',rt:'cb',p:'Rising Sun flowing with pedal.',pl:'V5#s3',deck:['c:arpeggio','ch:C/maj','c:ladder','pc:Rising Sun + pedal|One pedal change per chord. Wash, not mud.|V5#s3']},
+{n:'Recording artist',t:'E major hands together. C arpeggio daily.',r:'vi IV I V, then i VI III VII in A minor. Feel the flip.',rt:'cb',p:'Rising Sun: polish and record.',pl:'V5#s3',deck:['c:popprog','c:ear','pc:Rising Sun, recorded|Polish it, record it, play it for someone. It is ready.|V5#s3']},
+{n:'New fingering',t:'F major hands separate: RH 1 2 3 4, watch finger 4 on B flat.',r:'G arpeggio. Patterns 1 and 2 through I V vi IV.',rt:'cb',p:'Greensleeves begins: 6/8, two big pulses per bar.',pl:'V5#s3',deck:['sc:F/maj','c:patterns','pc:Greensleeves|6/8 time: feel two big pulses per bar, not six small ones.|V5#s3']},
+{n:'Lead sheets',t:'F major hands together.',r:'The lead sheet loop at level 2, then 3. Transpose to G.',rt:'cb',p:'Greensleeves, first half smooth.',pl:'V5#s3',deck:['c:leadsheet','c:voicelead','pc:Greensleeves|First half smooth. The G sharp is harmonic minor visiting.|V5#s3']},
+{n:'Milestone: producer',m:'Phase 2 complete: six scales HT, lead sheet level 3, first loop in the DAW, recital 2.',t:'Six scales, one clean take each.',r:'Record your first 8 bar loop: minor key, LH roots, RH inversions.',p:'Recital 2: Grace or Rising Sun, plus one.',pl:'V5#s7',deck:['c:recital','c:leadsheet','c:popprog','pc:Recital 2 + loop 1|Record 8 bars in the DAW. Your two worlds just met.|V5#s7']},
+{n:'The minor mode',t:'A minor, natural then harmonic, hands separate. Same fingering as C.',r:'maj7 and m7 on white roots. Dreamy versus mellow.',rt:'cb',p:'Minuet in G: RH bars 1 to 8 only.',pl:'V5#s4',deck:['sc:A/min','c:minor3','ch:C/maj7','pc:Minuet in G|Right hand only, bars 1 to 8. Elegant, like a dance.|V5#s4']},
+{n:'Bach’s left hand',t:'A minor hands together.',r:'Dominant sevenths: G7, C7, D7. Hear the lean.',rt:'cb',p:'Minuet: LH alone, bars 1 to 8, from the score.',pl:'V5#s4',deck:['ch:G/7','c:sevenths','pc:Minuet, left hand|The LH is its own melody. Learn it like one, from the score.|V5#s4']},
+{n:'Counterpoint',t:'E minor, hands separate then together.',r:'ii V I with sevenths in C and G.',rt:'cb',p:'Minuet hands together, bars 1 to 8, half speed.',pl:'V5#s4',deck:['sc:E/min','c:hs','pc:Minuet, together|Two independent voices. Half speed, counting, patient.|V5#s4']},
+{n:'Milestone: minor keys',m:'Am and Em harmonic hands together. Minuet section one solid.',t:'Minor scale review on the ladder.',r:'sus2 and sus4: build, resolve, enjoy.',rt:'cb',p:'Minuet bars 9 to 16.',pl:'V5#s4',deck:['c:sus','ch:C/sus4','c:spotlight','pc:Minuet, bars 9 to 16|New section, same system: hands separate, then together.|V5#s4']},
+{n:'Sixteenths',t:'D minor scales. Two octave C major hands together.',r:'Sixteenth counting: 1 e and a, clap first.',p:'Minuet, keep building.',pl:'V5#s4',deck:['sc:D/min','c:sixteenths','pc:Minuet|Section by section. The joins get spotlight treatment.|V5#s4']},
+{n:'Two octaves',t:'D minor HT. Two octave G major.',r:'Syncopation: clap offbeats, accent the and.',p:'Minuet: full draft, slow.',pl:'V5#s4',deck:['c:sync','c:ladder','pc:Minuet, full draft|End to end, slowly. Completeness before speed.|V5#s4']},
+{n:'Flat keys',t:'B flat major: thumbs on white keys. Chromatic scale, one octave.',r:'Sight reading doubles: two lines daily.',rt:'fc:both',p:'Burgmüller La Candeur begins.',pl:'V5#s4',deck:['sc:Bb/maj','c:chromatic','c:sightread','pc:La Candeur|A study in singing legato. Let the melody pour.|V5#s4']},
+{n:'Milestone: Minuet lives',m:'Minuet end to end slowly. Two octave C and G at 69.',t:'Two octave C and G on the ladder.',r:'Light review week.',rt:'fc:both',p:'Minuet end to end, daily, tempo rising gently.',pl:'V5#s4',deck:['c:spotlight','c:ladder','pc:Minuet, end to end|Daily complete runs. The tempo rises on its own.|V5#s4']},
+{n:'Painting with pads',t:'E flat major. Arpeggios two octaves, C and G, hands separate.',r:'Spread voicings: the Am pad, root and fifth low, triad above.',rt:'cb',p:'Gymnopédie: LH alone until calm.',pl:'V5#s4',deck:['sc:Eb/maj','c:arpeggio','c:spread','pc:Gymnopédie, left hand|Bass, then chord. A slow calm swing, nothing else.|V5#s4']},
+{n:'The floating melody',t:'E flat hands together. A minor arpeggio.',r:'Minor progressions in Am and Em. Spot IV and V in songs today.',rt:'cb',p:'Gymnopédie: melody floats above.',pl:'V5#s4',deck:['ch:A/min','c:ear','c:spread','pc:Gymnopédie, melody|The melody floats louder than everything beneath it.|V5#s4']},
+{n:'Modes',t:'Two octaves D, A and E hands together.',r:'Dorian: D to D on whites. Improvise over a Dm drone.',p:'Gymnopédie assembled, deep pedal.',pl:'V5#s4',deck:['c:dorian','c:improv','pc:Gymnopédie, assembled|Deep pedal, zero hurry. Best tone workout of the year.|V5#s4']},
+{n:'Milestone: performer',m:'Phase 3 complete: recital 3, loop 2 with voicings and bassline.',t:'Phase standards check, Volume 3.',r:'Loop 2: spread voicings plus a root-fifth-octave bassline.',p:'Recital 3: Minuet plus one.',pl:'V5#s7',deck:['c:recital','c:spread','pc:Recital 3 + loop 2|Voicings and a bassline in the DAW. Then two pieces, one take.|V5#s7']},
+{n:'The prelude as chords',t:'A flat major scale.',r:'Circle of fifths: I IV V I in one key daily, clockwise.',rt:'cb',p:'Prelude in C: block every bar as a chord.',pl:'V5#s5',deck:['sc:Ab/maj','c:circle','c:blocking','pc:Prelude in C|Play the whole piece as blocked chords first. One day, whole harmony.|V5#s5']},
+{n:'The comfortable key',t:'B major: the hand’s most natural fit. Enjoy it.',r:'Melodic minor: raised 6 and 7 up, natural down.',p:'Prelude: unroll the ripple, bars 1 to 8.',pl:'V5#s5',deck:['sc:B/maj','c:melmin','pc:Prelude, bars 1 to 8|Unroll each chord into the ripple. Steady as breathing.|V5#s5']},
+{n:'Five flats',t:'D flat major: mostly black keys, easier than it looks.',r:'Slash chords: C/E, G/B. Rebuild your loops with them.',rt:'cb',p:'Prelude continues, calm and even.',pl:'V5#s5',deck:['sc:Db/maj','c:slashchords','pc:Prelude, continuing|Calm and even. The harmony does the emoting, not you.|V5#s5']},
+{n:'Milestone: nine keys',m:'Nine majors hands together, two octaves. B minor joins.',t:'B minor scale. Rotate all nine majors.',r:'Review and breathe.',rt:'cb',p:'Arabesque begins. Prelude halfway.',pl:'V5#s4',deck:['sc:B/min','c:spotlight','pc:Arabesque|Drama and staccato. Crisp, light, theatrical.|V5#s4']},
+{n:'Full circle',t:'G flat major: thumbs on the two white keys. Minor arpeggios.',r:'Transpose a loop to three keys around the circle.',p:'Arabesque: A minor runs with a light wrist.',pl:'V5#s4',deck:['sc:F#/maj','c:arpeggio','c:circle','pc:Arabesque, runs|Fast five finger runs stay light. Wrist floats, fingers close.|V5#s4']},
+{n:'Dark keys',t:'G minor and C minor scales.',r:'Ear: name I, IV, V or vi in three songs today.',p:'Prelude full draft. Arabesque continues.',pl:'V5#s5',deck:['sc:G/min','sc:C/min','c:ear','pc:Prelude, full draft|Complete and calm. Record a practice take.|V5#s5']},
+{n:'Chopin',t:'All twelve majors: rotation, three keys per day.',r:'Chopin E minor prelude LH: read it as a chord chart.',rt:'cb',p:'Chopin prelude begins: lament over sinking chords.',pl:'V5#s5',deck:['c:circle','c:blocking','pc:Chopin, E minor prelude|The LH is a chord chart that sinks by half steps. Name each chord.|V5#s5']},
+{n:'Milestone: every key',m:'Full major rotation from memory. Clementi begun.',t:'Rotation from memory, no chart.',r:'Chopin LH fluent, chords named as you play.',rt:'cb',p:'Clementi Sonatina: survey, then RH exposition.',pl:'V5#s5',deck:['c:ladder','c:voicelead','pc:Clementi Sonatina|Survey the whole movement first. Then the RH exposition.|V5#s5']},
+{n:'Velocity',t:'Speed ladders: scales toward eighths at 80.',r:'Improvise: RH melody over your LH loop.',p:'Clementi: Alberti bass sections.',pl:'V5#s5',deck:['c:improv','c:patterns','pc:Clementi, Alberti|The Alberti bass stays quiet and even under the sparkle.|V5#s5']},
+{n:'Weak spots',t:'Your two weakest keys get the whole slot.',r:'Improvisation with dorian color, one loop one solo daily.',p:'Clementi hands together. Gymnopédie repolish.',pl:'V5#s5',deck:['c:dorian','c:improv','pc:Clementi + Gymnopédie|One builds velocity, the other rebuilds tone. Perfect pair.|V5#s5']},
+{n:'Dress rehearsal',t:'Maintenance rotation, light and clean.',r:'Any chord, any key, on demand. Quiz with the builder.',rt:'cb',p:'Program run throughs, record takes.',pl:'V5#s7',deck:['c:recital','c:ear','pc:Run throughs|Full program, one take, daily. Watch the wrists on video.|V5#s7']},
+{n:'The recital',m:'Recital 4, exit checklists, then Year Two.',t:'Final standards: Volume 3, phase 4.',r:'Exit checklists, Volumes 4 and 5.',p:'Recital 4: Minuet, Gymnopédie, Prelude, optional Chopin.',pl:'V5#s7',deck:['c:recital','c:circle','pc:Recital 4|One year. Play the program, then listen back to recital 1.|V5#s7']}
 ];
 function phaseOf(w){return w<=12?'Phase 1 · Foundations':w<=24?'Phase 2 · Building':w<=36?'Phase 3 · Expanding':'Phase 4 · Consolidating';}
+var LFILE={V1:'01_Foundations.html',V2:'02_Reading_Music.html',V3:'03_Technique_Scales_Arpeggios.html',V4:'04_Chords_and_Harmony.html',V5:'05_Repertoire.html',V6:'06_Practice_System.html'};
+function bookHref(lk){var p=lk.split('#');return LFILE[p[0]]+'#'+p[1];}
 
 /* ============ STATE ============ */
 var mem={};var storeOK=true;
@@ -389,13 +496,18 @@ try{localStorage.setItem('pc_t','1');localStorage.removeItem('pc_t');}catch(e){s
 function load(){if(!storeOK)return mem.s||null;try{return JSON.parse(localStorage.getItem('pc_state'));}catch(e){return null;}}
 var S=load()||{week:1,doneWeeks:[],sessions:[]};
 function save(){if(!storeOK){mem.s=S;return;}try{localStorage.setItem('pc_state',JSON.stringify(S));}catch(e){}}
-if(!storeOK){var wEl=document.createElement('div');wEl.className='notice';wEl.textContent='This viewer cannot keep data between opens. Use the hosted version for reliable tracking, or export a backup from Library before closing.';document.querySelector('.app').prepend(wEl);}
+function persistRun(){try{localStorage.setItem('pc_run',JSON.stringify({a:1,w:run.week||S.week,i:run.i,left:run.left,st:run.startedAt,ts:Date.now()}));}catch(e){}}
+function clearRun(){try{localStorage.removeItem('pc_run');}catch(e){}}
+function readRun(){try{return JSON.parse(localStorage.getItem('pc_run'));}catch(e){return null;}}
+if(!storeOK){var wEl=document.createElement('div');wEl.className='notice';wEl.textContent='This viewer cannot keep data between opens. Use the hosted version for tracking, and export a backup from Library before closing.';document.querySelector('.app').prepend(wEl);}
 function dayISO(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function todayISO(){return dayISO(new Date());}
 function daySet(){var s={};S.sessions.forEach(function(x){s[x.d]=1;});return s;}
 function streak(){var s=daySet(),n=0,d=new Date();if(!s[dayISO(d)])d.setDate(d.getDate()-1);while(s[dayISO(d)]){n++;d.setDate(d.getDate()-1);}return n;}
-function bestStreak(){var days=Object.keys(daySet()).sort(),best=0,run=0,prev=null;days.forEach(function(ds){if(prev){var a=new Date(prev),b=new Date(ds);run=((b-a)/86400000===1)?run+1:1;}else run=1;if(run>best)best=run;prev=ds;});return best;}
+function bestStreak(){var days=Object.keys(daySet()).sort(),best=0,run2=0,prev=null;days.forEach(function(ds){if(prev){var a=new Date(prev),b=new Date(ds);run2=((b-a)/86400000===1)?run2+1:1;}else run2=1;if(run2>best)best=run2;prev=ds;});return best;}
 function hours(){var m=0;S.sessions.forEach(function(x){m+=x.min||30;});return Math.round(m/6)/10;}
+function firstSentence(s){var i=s.indexOf('. ');return i<0?s:s.slice(0,i+1);}
+function restSentence(s){var i=s.indexOf('. ');return i<0?'':s.slice(i+2);}
 
 /* ============ NAV ============ */
 function show(s){
@@ -403,112 +515,181 @@ function show(s){
  document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('sel');});
  document.getElementById('scr-'+s).classList.add('sel');
  document.querySelector('.tab[data-s="'+s+'"]').classList.add('sel');
+ document.getElementById('ov').classList.remove('sel');
+ document.getElementById('lv').classList.remove('sel');
+ if(run.active)mountTool(null);
+ pillCheck();
  if(s==='home')renderHome();if(s==='journey')renderJourney();if(s==='progress')renderProgress();
  window.scrollTo(0,0);
 }
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){show(t.dataset.s);});});
 
-/* ============ SESSION BLOCKS ============ */
+/* ============ FIG RENDER ============ */
+var figSeq=0;
+function renderFig(host,spec){
+ host.innerHTML='';host.style.display='block';
+ var id='fig'+(++figSeq);var d=document.createElement('div');d.id=id;host.appendChild(d);
+ if(spec.kb)drawKeyboard(id,spec.kb);
+ else if(spec.sc){var mode=spec.sc[1];var marks=scaleMarks(spec.sc[0],mode);drawKeyboard(id,{start:'C4',octaves:2,marks:marks});
+  var f=FING[spec.sc[0]+'/'+mode];if(f){var fi=document.createElement('div');fi.className='fing';fi.textContent=f;host.appendChild(fi);}}
+ else if(spec.pe){drawKeyboard(id,{start:'C4',octaves:2,marks:pentaMarks(spec.pe)});var fi2=document.createElement('div');fi2.className='fing';fi2.textContent='RH 1 2 3 4 5 — LH 5 4 3 2 1';host.appendChild(fi2);}
+ else if(spec.ch){drawKeyboard(id,{start:'C4',octaves:2,marks:chordMarks(spec.ch[0],spec.ch[1])});}
+ else if(spec.tune){renderTune(host,spec.tune);}
+ else if(spec.hand){host.innerHTML=HANDSVG;}
+ else host.style.display='none';
+}
+
+/* ============ LESSON DECKS ============ */
+function buildDeck(w){
+ var wk=WKS[w-1],cards=[];
+ (wk.deck||[]).forEach(function(it){
+  var kind=it.slice(0,2);
+  if(it.indexOf('c:')===0){var c=CARDS[it.slice(2)];if(c)cards.push({t:c.t,x:c.x,fig:c.fig||null});}
+  else if(it.indexOf('pe:')===0){var r=it.slice(3);cards.push({t:r+' major pentascale',x:'Five notes, fingers 1 to 5. Up, down, then broken: 1 3 5 3 1.',fig:{pe:r}});}
+  else if(it.indexOf('sc:')===0){var p=it.slice(3).split('/');cards.push({t:p[0]+(p[1]==='min'?' harmonic minor':' major')+' scale',x:'Play it hands separate first. The fingering below is forever.',fig:{sc:[p[0],p[1]]}});}
+  else if(it.indexOf('ch:')===0){var q=it.slice(3).split('/');cards.push({t:q[0]+' '+QNAME[q[1]],x:'Shape it in the air above the keys, then land all notes together with one relaxed drop.',fig:{ch:[q[0],q[1]]}});}
+  else if(it.indexOf('pc:')===0){var s=it.slice(3).split('|');cards.push({t:s[0],x:s[1],link:s[2]||null,piece:true,fig:tuneOf(w)?{tune:tuneOf(w)}:null});}
+ });
+ cards.push({t:'That’s the idea.',x:'Now play it. The practice session builds it into your hands.',last:true});
+ return cards;
+}
+var lv={cards:[],i:0,week:1};
+function openLesson(w){
+ lv.cards=buildDeck(w);lv.i=0;lv.week=w;
+ document.getElementById('ov').classList.remove('sel');
+ document.getElementById('lv').classList.add('sel');
+ pillCheck();lvRender();window.scrollTo(0,0);
+}
+function lvRender(){
+ var c=lv.cards[lv.i];
+ document.getElementById('lv-step').textContent='WEEK '+lv.week+' · CARD '+(lv.i+1)+' OF '+lv.cards.length;
+ document.getElementById('lv-title').textContent=c.t;
+ document.getElementById('lv-text').textContent=c.x;
+ var fig=document.getElementById('lv-fig');
+ if(c.fig)renderFig(fig,c.fig);else{fig.style.display='none';fig.innerHTML='';}
+ var lk=document.getElementById('lv-link');
+ lk.innerHTML=(c.piece&&c.link)?'<a class="btn sm" target="_blank" rel="noopener" href="'+bookHref(c.link)+'">Open the score ↗</a>':'';
+ var dots=document.getElementById('lv-dots');dots.innerHTML='';
+ lv.cards.forEach(function(x,j){var i2=document.createElement('i');if(j===lv.i)i2.className='on';dots.appendChild(i2);});
+ document.getElementById('lv-back').style.visibility=lv.i===0?'hidden':'visible';
+ document.getElementById('lv-next').textContent=c.last?'Begin practice':'Next';
+}
+document.getElementById('lv-next').addEventListener('click',function(){
+ if(lv.cards[lv.i].last){document.getElementById('lv').classList.remove('sel');startSession();}
+ else{lv.i++;lvRender();}
+});
+document.getElementById('lv-back').addEventListener('click',function(){if(lv.i>0){lv.i--;lvRender();}});
+document.getElementById('lv-x').addEventListener('click',function(){document.getElementById('lv').classList.remove('sel');pillCheck();});
+
+/* ============ SESSION ============ */
 function blocksFor(w){
  var wk=WKS[w-1];
+ var techFig=null,readFig=null;
+ (wk.deck||[]).forEach(function(it){
+  if(!techFig&&(it.indexOf('sc:')===0)){var p=it.slice(3).split('/');techFig={sc:[p[0],p[1]]};}
+  if(!techFig&&(it.indexOf('pe:')===0)){techFig={pe:it.slice(3)};}
+  if(!readFig&&it.indexOf('ch:')===0){var q=it.slice(3).split('/');readFig={ch:[q[0],q[1]]};}
+ });
+ var tune=tuneOf(w);
+ var closeDesc=w<=12?'Play today’s tune once more, purely for fun.':'Play anything you love. End on music.';
+ var closeMore=w<=12?'Ending on music you can already play is what your brain remembers about practice. Then save the log.':'Any piece, any standard, any scrappiness. Then save the log so tomorrow starts itself.';
  return [
-  {min:2,name:'Arrive',desc:'Sit tall, shoulders up to your ears and drop them heavy. Six arm weight drops per hand, listening for a full round tone.',links:['V1#s6'],tool:null},
-  {min:8,name:'Technique',desc:wk.t.d,links:wk.t.l,tool:'met'},
-  {min:6,name:'Reading & harmony',desc:wk.r.d,links:wk.r.l,tool:wk.r.tool||null},
-  {min:12,name:'Repertoire',desc:wk.p.d,links:wk.p.l,tool:'met'},
-  {min:2,name:'Close',desc:'Play anything you love, any standard. End on music, not on work.',links:[],tool:null}
+  {min:2,name:'Arrive',desc:'Shoulders up, drop them heavy. Six arm drops per hand.',more:'Sit on the front half of the bench, forearms level, feet flat. Let each drop land on a curved fingertip and listen for a full round tone.',fig:null,tool:null},
+  {min:8,name:'Technique',desc:firstSentence(wk.t),more:restSentence(wk.t),fig:techFig,tool:'met'},
+  {min:6,name:'Reading & harmony',desc:firstSentence(wk.r),more:restSentence(wk.r),fig:readFig,tool:wk.rt||null},
+  {min:12,name:'Repertoire',desc:firstSentence(wk.p),more:restSentence(wk.p),fig:tune?{tune:tune}:null,tool:'met',score:wk.pl||null},
+  {min:2,name:'Close',desc:closeDesc,more:closeMore,fig:null,tool:null}
  ];
 }
-
-/* ============ HOME ============ */
-function greet(){var h=new Date().getHours();return h<12?'Good morning.':h<18?'Good afternoon.':'Good evening.';}
-function renderHome(){
- var wk=WKS[S.week-1];
- document.getElementById('h-eyebrow').textContent='WEEK '+S.week+' OF 48 · '+phaseOf(S.week).toUpperCase();
- document.getElementById('h-greet').textContent=greet();
- document.getElementById('h-date').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
- document.getElementById('h-focustitle').textContent='Week '+S.week+' · '+wk.n;
- var mile=document.getElementById('h-mile');
- if(wk.m){mile.style.display='block';mile.innerHTML='<b>Milestone week.</b> <span style="color:var(--dim)">'+wk.m+'</span>';}else mile.style.display='none';
- document.getElementById('h-wkname').textContent='THIS WEEK · '+wk.n.toUpperCase();
- var bl=document.getElementById('h-blocks');bl.innerHTML='';
- blocksFor(S.week).forEach(function(b){
-  var e=document.createElement('div');e.className='blockrow';
-  e.innerHTML='<div class="min">'+b.min+'′</div><div><div class="bt">'+b.name+'</div><div class="bs">'+b.desc+'</div></div>';
-  bl.appendChild(e);
- });
- var seen={},ls='';(wk.t.l||[]).concat(wk.r.l||[],wk.p.l||[]).forEach(function(lk){if(!seen[lk]){seen[lk]=1;}});
- ls=lessonBtns(Object.keys(seen));
- document.getElementById('h-lessons').innerHTML=ls?'<div class="eyebrow" style="margin-bottom:4px">This week’s lessons</div>'+ls:'';
- var done=daySet()[todayISO()];
- document.getElementById('h-notdone').style.display=done?'none':'block';
- document.getElementById('h-done').style.display=done?'block':'none';
- if(done){var last=S.sessions[S.sessions.length-1];document.getElementById('h-donemsg').textContent=(last&&last.next)?('Tomorrow’s first target: '+last.next):'Rest well. Tomorrow builds on today.';}
- document.getElementById('h-streak').textContent=streak();
- var days=document.getElementById('h-days');days.innerHTML='';
- var s=daySet();var names=['S','M','T','W','T','F','S'];
- for(var i=6;i>=0;i--){
-  var d=new Date();d.setDate(d.getDate()-i);var iso=dayISO(d);
-  var e=document.createElement('div');e.className='day'+(s[iso]?' on':'')+(i===0?' today':'');
-  e.innerHTML='<div class="b"></div><span>'+names[d.getDay()]+'</span>';
-  days.appendChild(e);
- }
-}
-document.getElementById('h-begin').addEventListener('click',startSession);
-document.getElementById('h-again').addEventListener('click',startSession);
-document.getElementById('h-quick').addEventListener('click',function(){openForm(null);});
-
-/* ============ SESSION RUNNER ============ */
-var run={blocks:[],i:0,left:0,total:0,timer:null,paused:false,startedAt:null,lock:null};
-var CIRC=590.6;
+var run={active:false,blocks:[],i:0,left:0,timer:null,paused:false,startedAt:null,lock:null};
+var CIRC=477.5;
 function fmt(sec){return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');}
 function mountTool(tool){
- var host=document.getElementById('ov-tool');
- // return all tools to library first
- ['tool-met','tool-fc','tool-cb'].forEach(function(id){var lib=document.getElementById('scr-tools');var el=document.getElementById(id);if(el&&el.parentNode===host)lib.appendChild(el);});
+ var host=document.getElementById('ov-tool');var lib=document.getElementById('scr-tools');
+ ['tool-met','tool-fc','tool-cb'].forEach(function(id){var el=document.getElementById(id);if(el&&el.parentNode===host){if(id==='tool-met')stopMet();lib.appendChild(el);}});
  if(!tool)return;
  if(tool==='met')host.appendChild(document.getElementById('tool-met'));
- else if(tool.indexOf('fc')===0){host.appendChild(document.getElementById('tool-fc'));var mode=tool.split(':')[1]||'land';setFcMode(mode);}
+ else if(tool.indexOf('fc')===0){host.appendChild(document.getElementById('tool-fc'));setFcMode(tool.split(':')[1]||'land');}
  else if(tool==='cb')host.appendChild(document.getElementById('tool-cb'));
 }
 function ovRender(){
  var b=run.blocks[run.i];
- document.getElementById('ov-step').textContent='BLOCK '+(run.i+1)+' OF '+run.blocks.length+' · '+b.min+' MIN';
+ document.getElementById('ov-step').textContent='BLOCK '+(run.i+1)+' OF 5 · '+b.min+' MIN';
  document.getElementById('ov-name').textContent=b.name;
  document.getElementById('ov-desc').textContent=b.desc;
- document.getElementById('ov-min').textContent=b.name==='Repertoire'?'stay on the hard bars':'remaining';
  document.getElementById('ov-time').textContent=fmt(run.left);
- var frac=run.left/(b.min*60);
- document.getElementById('ov-arc').setAttribute('stroke-dashoffset',String(CIRC*(1-frac)));
+ document.getElementById('ov-arc').setAttribute('stroke-dashoffset',String(CIRC*(1-run.left/(b.min*60))));
  var seg=document.getElementById('ov-seg');seg.innerHTML='';
  run.blocks.forEach(function(x,j){var i2=document.createElement('i');i2.className=j<run.i?'done':j===run.i?'now':'';seg.appendChild(i2);});
- document.getElementById('ov-lessons').innerHTML=lessonBtns(b.links);
+ var fig=document.getElementById('ov-fig');
+ if(b.fig)renderFig(fig,b.fig);else{fig.style.display='none';fig.innerHTML='';}
+ var more=document.getElementById('ov-more');
+ var extra=b.more||'';
+ if(b.score)extra+=(extra?' ':'')+'<div style="margin-top:8px"><a class="btn sm" target="_blank" rel="noopener" href="'+bookHref(b.score)+'">Open the score ↗</a></div>';
+ if(extra){more.style.display='block';more.classList.remove('open');document.getElementById('ov-mbody').innerHTML=extra;}
+ else more.style.display='none';
 }
+document.getElementById('ov-mtog').addEventListener('click',function(){document.getElementById('ov-more').classList.toggle('open');});
 function beep(n){try{var c=mAC(),t=c.currentTime;for(var i=0;i<n;i++){var o=c.createOscillator(),g=c.createGain();o.frequency.value=880;g.gain.setValueAtTime(0.001,t+i*0.22);g.gain.exponentialRampToValueAtTime(0.35,t+i*0.22+0.01);g.gain.exponentialRampToValueAtTime(0.001,t+i*0.22+0.18);o.connect(g);g.connect(c.destination);o.start(t+i*0.22);o.stop(t+i*0.22+0.2);}}catch(e){}}
+function pillCheck(){
+ var p=document.getElementById('pill');
+ var ovOpen=document.getElementById('ov').classList.contains('sel');
+ if(run.active&&!ovOpen){p.classList.add('sel');pillText();}
+ else p.classList.remove('sel');
+}
+function pillText(){
+ if(!run.active)return;
+ var b=run.blocks[run.i];
+ document.getElementById('pill-txt').textContent=b.name+' · '+fmt(run.left);
+}
+document.getElementById('pill').addEventListener('click',function(){
+ document.getElementById('lv').classList.remove('sel');
+ document.getElementById('ov').classList.add('sel');
+ mountTool(run.blocks[run.i].tool);
+ pillCheck();ovRender();
+});
 function tick(){
- if(run.paused)return;
+ if(run.paused||!run.active)return;
  run.left--;
+ if(run.left%5===0)persistRun();
  if(run.left<=0){
-  if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(2);mountTool(run.blocks[run.i].tool);}
+  if(run.i<run.blocks.length-1){run.i++;run.left=run.blocks[run.i].min*60;beep(2);mountTool(document.getElementById('ov').classList.contains('sel')?run.blocks[run.i].tool:null);persistRun();}
   else{beep(3);openForm(run.startedAt);return;}
  }
- ovRender();
+ if(document.getElementById('ov').classList.contains('sel'))ovRender();else pillText();
 }
 function startSession(){
- run.blocks=blocksFor(S.week);run.i=0;run.left=run.blocks[0].min*60;run.paused=false;run.startedAt=Date.now();
+ run.blocks=blocksFor(S.week);run.week=S.week;run.i=0;run.left=run.blocks[0].min*60;run.paused=false;run.active=true;run.startedAt=Date.now();persistRun();
+ document.getElementById('lv').classList.remove('sel');
  document.getElementById('ov').classList.add('sel');
  document.getElementById('ov-run').style.display='block';
  document.getElementById('ov-form').style.display='none';
  document.getElementById('ov-fin').style.display='none';
  document.getElementById('ov-pause').textContent='Pause';
  mountTool(run.blocks[0].tool);
- beep(1);ovRender();
+ beep(1);ovRender();pillCheck();
  clearInterval(run.timer);run.timer=setInterval(tick,1000);
  if(navigator.wakeLock&&navigator.wakeLock.request){navigator.wakeLock.request('screen').then(function(l){run.lock=l;}).catch(function(){});}
+ window.scrollTo(0,0);
+}
+function resumeRun(pr){
+ var w=Math.min(Math.max(pr.w||S.week,1),48);
+ run.blocks=blocksFor(w);run.week=w;run.i=Math.min(pr.i||0,4);run.left=Math.max(5,pr.left||60);run.paused=false;run.active=true;run.startedAt=pr.st||Date.now();
+ document.getElementById('h-resume').style.display='none';
+ document.getElementById('lv').classList.remove('sel');
+ document.getElementById('ov').classList.add('sel');
+ document.getElementById('ov-run').style.display='block';
+ document.getElementById('ov-form').style.display='none';
+ document.getElementById('ov-fin').style.display='none';
+ document.getElementById('ov-pause').textContent='Pause';
+ mountTool(run.blocks[run.i].tool);
+ ovRender();pillCheck();
+ clearInterval(run.timer);run.timer=setInterval(tick,1000);
+ window.scrollTo(0,0);
 }
 function openForm(startedAt){
- clearInterval(run.timer);run.startedAt=startedAt;
- mountTool(null);
+ clearInterval(run.timer);run.active=false;run.startedAt=startedAt;clearRun();
+ mountTool(null);pillCheck();
  document.getElementById('ov').classList.add('sel');
  document.getElementById('ov-run').style.display='none';
  document.getElementById('ov-fin').style.display='none';
@@ -523,7 +704,7 @@ document.getElementById('ov-next').addEventListener('click',function(){
 document.getElementById('ov-end').addEventListener('click',function(){openForm(run.startedAt);});
 document.getElementById('f-save').addEventListener('click',function(){
  var mins=run.startedAt?Math.max(5,Math.round((Date.now()-run.startedAt)/60000)):30;
- S.sessions.push({d:todayISO(),w:S.week,min:Math.min(mins,90),
+ S.sessions.push({d:todayISO(),w:run.week||S.week,min:Math.min(mins,90),
   tempo:document.getElementById('f-tempo').value.trim(),
   win:document.getElementById('f-win').value.trim(),
   next:document.getElementById('f-next').value.trim()});
@@ -536,9 +717,53 @@ document.getElementById('f-save').addEventListener('click',function(){
  document.getElementById('fin-sub').textContent=st>1?(st+' days in a row. The spacing effect is working for you.'):'Day one of the chain. Come back tomorrow morning.';
  if(run.lock){try{run.lock.release();}catch(e){}run.lock=null;}
 });
-document.getElementById('fin-close').addEventListener('click',function(){
- document.getElementById('ov').classList.remove('sel');renderHome();
-});
+document.getElementById('fin-close').addEventListener('click',function(){document.getElementById('ov').classList.remove('sel');pillCheck();renderHome();});
+
+/* ============ HOME ============ */
+function greet(){var h=new Date().getHours();return h<12?'Good morning.':h<18?'Good afternoon.':'Good evening.';}
+function renderHome(){
+ var wk=WKS[S.week-1];
+ document.getElementById('h-eyebrow').textContent='WEEK '+S.week+' OF 48 · '+phaseOf(S.week).toUpperCase();
+ document.getElementById('h-greet').textContent=greet();
+ document.getElementById('h-date').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+ document.getElementById('h-focustitle').textContent='Week '+S.week+' · '+wk.n;
+ var chips=document.getElementById('h-chips');
+ chips.innerHTML='';
+ blocksFor(S.week).forEach(function(b){var c=document.createElement('div');c.className='chip';c.innerHTML='<b>'+b.min+'′</b> '+b.name;chips.appendChild(c);});
+ document.getElementById('l-eyebrow').textContent='LEARN · '+(buildDeck(S.week).length)+' CARDS · ~3 MIN';
+ document.getElementById('l-title').textContent=wk.n;
+ document.getElementById('l-sub').textContent='This week’s ideas, one card at a time';
+ var mile=document.getElementById('h-mile');
+ if(wk.m){mile.style.display='block';mile.innerHTML='<b>Milestone week.</b> '+wk.m;}else mile.style.display='none';
+ var done=daySet()[todayISO()];
+ document.getElementById('h-notdone').style.display=done?'none':'block';
+ document.getElementById('h-done').style.display=done?'block':'none';
+ if(done){var last=S.sessions[S.sessions.length-1];document.getElementById('h-donemsg').textContent=(last&&last.next)?('Tomorrow: '+last.next):'Rest well. Tomorrow builds on today.';}
+ document.getElementById('h-streak').textContent=streak();
+ var days=document.getElementById('h-days');days.innerHTML='';
+ var s=daySet();var names=['S','M','T','W','T','F','S'];
+ for(var i=6;i>=0;i--){
+  var d=new Date();d.setDate(d.getDate()-i);var iso=dayISO(d);
+  var e=document.createElement('div');e.className='day'+(s[iso]?' on':'')+(i===0?' today':'');
+  e.innerHTML='<div class="b"></div><span>'+names[d.getDay()]+'</span>';
+  days.appendChild(e);
+ }
+ var rb=document.getElementById('h-resume');
+ var pr=readRun();
+ if(pr&&pr.a&&!run.active&&(Date.now()-(pr.ts||0))<10800000){
+  rb.style.display='block';
+  rb.innerHTML='A practice session was interrupted: block '+((pr.i||0)+1)+' of 5, '+fmt(pr.left||0)+' left. ';
+  var ry=document.createElement('span');ry.className='btn sm';ry.style.cssText='background:var(--brass);color:#15130c;border-color:var(--brass)';ry.textContent='Resume';
+  var rn=document.createElement('span');rn.className='btn sm';rn.textContent='Discard';
+  rb.appendChild(ry);rb.appendChild(rn);
+  ry.addEventListener('click',function(){resumeRun(pr);});
+  rn.addEventListener('click',function(){clearRun();rb.style.display='none';});
+ } else rb.style.display='none';
+}
+document.getElementById('h-begin').addEventListener('click',startSession);
+document.getElementById('h-again').addEventListener('click',startSession);
+document.getElementById('h-learn').addEventListener('click',function(){openLesson(S.week);});
+document.getElementById('h-quick').addEventListener('click',function(){openForm(null);});
 
 /* ============ JOURNEY ============ */
 function renderJourney(){
@@ -556,21 +781,24 @@ function renderJourney(){
     var done=S.doneWeeks.indexOf(w)>-1;
     var e=document.createElement('div');
     e.className='wk'+(w===S.week?' cur':'')+(done?' done':'');
-    e.innerHTML='<div class="head"><div class="st">'+(done?'✓':'')+'</div><div style="flex:1"><div class="ttl">Week '+w+' · '+wk.n+(w===S.week?' <span style="color:var(--brass)">· current</span>':'')+'</div><div class="foc">'+(wk.m?'Milestone · ':'')+wk.p.d.split('.')[0]+'</div></div></div>'
+    e.innerHTML='<div class="head"><div class="st">'+(done?'✓':'')+'</div><div style="flex:1"><div class="ttl">Week '+w+' · '+wk.n+(w===S.week?' <span style="color:var(--brass)">· current</span>':'')+'</div><div class="foc">'+(wk.m?'Milestone · ':'')+firstSentence(wk.p)+'</div></div></div>'
      +'<div class="detail">'
      +(wk.m?'<p><b style="color:var(--brass)">'+wk.m+'</b></p>':'')
-     +'<p><b>Technique</b> · '+wk.t.d+'</p>'
-     +'<p><b>Reading & harmony</b> · '+wk.r.d+'</p>'
-     +'<p><b>Repertoire</b> · '+wk.p.d+'</p>'
-     +'<div style="margin:8px 0">'+lessonBtns((wk.t.l||[]).concat(wk.r.l||[],wk.p.l||[]).filter(function(v,i,a){return a.indexOf(v)===i;}))+'</div>'
+     +'<p><b>Technique</b> · '+firstSentence(wk.t)+'</p>'
+     +'<p><b>Reading</b> · '+firstSentence(wk.r)+'</p>'
+     +'<p><b>Repertoire</b> · '+firstSentence(wk.p)+'</p>'
+     +'<div style="margin:9px 0 2px">'
+     +'<span class="btn sm" data-learn="'+w+'" style="background:var(--brass);color:#15130c;border-color:var(--brass)">Learn</span>'
      +'<span class="btn sm" data-cur="'+w+'">Set current</span>'
      +'<span class="btn sm'+(done?' sel':'')+'" data-done="'+w+'">'+(done?'Completed ✓':'Mark complete')+'</span>'
-     +'</div>';
+     +(wk.pl?' <a class="btn sm" style="color:var(--dim2)" target="_blank" rel="noopener" href="'+bookHref(wk.pl)+'">Book ↗</a>':'')
+     +'</div></div>';
     e.querySelector('.head').addEventListener('click',function(){e.classList.toggle('open');});
     host.appendChild(e);
    })(w);
   }
  });
+ host.querySelectorAll('[data-learn]').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();openLesson(+b.dataset.learn);});});
  host.querySelectorAll('[data-cur]').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();S.week=+b.dataset.cur;save();renderJourney();});});
  host.querySelectorAll('[data-done]').forEach(function(b){b.addEventListener('click',function(ev){ev.stopPropagation();
   var w=+b.dataset.done,i=S.doneWeeks.indexOf(w);
@@ -601,7 +829,7 @@ function renderProgress(){
   list.appendChild(e);
  });
  list.querySelectorAll('.del').forEach(function(b){b.addEventListener('click',function(){if(confirm('Delete this entry?')){S.sessions.splice(+b.dataset.i,1);save();renderProgress();}});});
- if(!S.sessions.length)list.innerHTML='<p style="color:var(--dim2)">No sessions yet. Tomorrow morning, 30 minutes, block one is just sitting down well.</p>';
+ if(!S.sessions.length)list.innerHTML='<p style="color:var(--dim2)">No sessions yet. Tomorrow morning, block one is just sitting down well.</p>';
 }
 
 /* ============ LIBRARY DATA ============ */
@@ -612,7 +840,7 @@ document.getElementById('m-import').addEventListener('click',function(){
   else alert('That does not look like a backup.');
  }catch(e){alert('Could not read that backup.');}
 });
-document.getElementById('m-setweek').addEventListener('click',function(){var v=+document.getElementById('m-week').value;if(v>=1&&v<=48){S.week=v;save();alert('Current week set to '+v+'.');}});
+document.getElementById('m-setweek').addEventListener('click',function(){var v=+document.getElementById('m-week').value;if(v>=1&&v<=48){S.week=v;save();alert('Current week set to '+v+'.');renderHome();}});
 document.getElementById('m-reset').addEventListener('click',function(){if(confirm('Erase all progress and logs?')&&confirm('Really? This cannot be undone.')){S={week:1,doneWeeks:[],sessions:[]};save();renderHome();}});
 
 /* ============ AUDIO ============ */
@@ -628,8 +856,9 @@ function makeDots(){var d=document.getElementById('dots');d.innerHTML='';var n=b
 function flash(i){var ds=document.querySelectorAll('#dots .dot');ds.forEach(function(el){el.classList.remove('on');});if(ds[i])ds[i].classList.add('on');}
 function click2(t,accent){var o=actx.createOscillator(),g=actx.createGain();o.frequency.value=accent?1567:1046;g.gain.setValueAtTime(0.001,t);g.gain.exponentialRampToValueAtTime(0.6,t+0.003);g.gain.exponentialRampToValueAtTime(0.001,t+0.07);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+0.09);}
 function mloop(){while(nextT<actx.currentTime+0.12){var idx=bpb>0?mbeat%bpb:0;click2(nextT,bpb>0&&idx===0);(function(i,tt){setTimeout(function(){if(mrun)flash(i);},Math.max(0,(tt-actx.currentTime)*1000));})(idx,nextT);nextT+=60/tempo;mbeat++;}}
+function stopMet(){if(!mrun)return;mrun=false;clearInterval(mtimer);var b=document.getElementById('startstop');if(b)b.textContent='Start';document.querySelectorAll('#dots .dot').forEach(function(el){el.classList.remove('on');});}
 document.getElementById('startstop').addEventListener('click',function(){
- if(mrun){mrun=false;clearInterval(mtimer);this.textContent='Start';document.querySelectorAll('#dots .dot').forEach(function(el){el.classList.remove('on');});}
+ if(mrun){stopMet();}
  else{mAC();mrun=true;mbeat=0;nextT=actx.currentTime+0.08;mtimer=setInterval(mloop,25);this.textContent='Stop';}
 });
 document.getElementById('slider').addEventListener('input',function(){tempo=+this.value;showTempo();});
@@ -642,19 +871,132 @@ var W=['C','D','E','F','G','A','B'];
 var FLAT={'Cb':['B',-1],'Db':['C#',0],'Eb':['D#',0],'Fb':['E',0],'Gb':['F#',0],'Ab':['G#',0],'Bb':['A#',0]};
 function pn(s){var m=/^([A-G])([#b]?)(-?\d)$/.exec(s);if(!m)return null;var name=m[1]+m[2],oct=parseInt(m[3],10);if(m[2]==='b'){var f=FLAT[name];oct+=f[1];name=f[0];}return{n:name,o:oct,letter:m[1],acc:m[2]};}
 function stepOf(p){return p.o*7+W.indexOf(p.letter);}
-function drawKeyboard(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var count=opts.keys||((opts.octaves||2)*7+1);var wW=46,wH=120,bW=27,bH=74;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var s='<svg viewBox="0 0 '+width+' '+(wH+6)+'" style="width:100%;max-width:'+Math.min(width,660)+'px" xmlns="http://www.w3.org/2000/svg">';
-whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#e7d092'):'#f2ede0')+'" stroke="#3a3f47"/>';if(m)s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-10)+'" text-anchor="middle" font-size="14" font-weight="700" fill="#15130c">'+(m.label!==undefined?m.label:k.name)+'</text>';});
-whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',m=marks[bn+k.oct];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#c49a3f'):'#101216')+'" stroke="#000"/>';if(m)s+='<text x="'+(x+bW/2)+'" y="'+(bH-8)+'" text-anchor="middle" font-size="10.5" fill="#15130c" font-weight="700">'+(m.label!==undefined?m.label:bn)+'</text>';});
+function drawKeyboard(id,opts){opts=opts||{};var el=document.getElementById(id);if(!el)return;var start=pn(opts.start||'C4');var count=opts.keys||((opts.octaves||2)*7+1);var wW=46,wH=112,bW=27,bH=68;var whites=[],wi=W.indexOf(start.n),o=start.o,i;for(i=0;i<count;i++){whites.push({name:W[wi],oct:o,x:i*wW});wi++;if(wi===7){wi=0;o++;}}var marks={};(opts.marks||[]).forEach(function(m){var p=pn(m.note);if(p)marks[p.n+p.o]=m;});var width=whites.length*wW;var s='<svg viewBox="0 0 '+width+' '+(wH+6)+'" style="width:100%;max-width:'+Math.min(width,600)+'px" xmlns="http://www.w3.org/2000/svg">';
+whites.forEach(function(k){var m=marks[k.name+k.oct];s+='<rect x="'+k.x+'" y="0" width="'+wW+'" height="'+wH+'" rx="3" fill="'+(m?(m.color||'#e7d092'):'#f2ede0')+'" stroke="#3a3f47"/>';if(m)s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-9)+'" text-anchor="middle" font-size="14" font-weight="700" fill="#15130c">'+(m.label!==undefined?m.label:k.name)+'</text>';else if(opts.labelAll)s+='<text x="'+(k.x+wW/2)+'" y="'+(wH-9)+'" text-anchor="middle" font-size="12.5" fill="#8a8f98">'+k.name+'</text>';});
+whites.forEach(function(k,idx){if(idx===whites.length-1)return;if(['C','D','F','G','A'].indexOf(k.name)<0)return;var bn=k.name+'#',m=marks[bn+k.oct];var x=k.x+wW-bW/2;s+='<rect x="'+x+'" y="0" width="'+bW+'" height="'+bH+'" rx="3" fill="'+(m?(m.color||'#c49a3f'):'#101216')+'" stroke="#000"/>';if(m)s+='<text x="'+(x+bW/2)+'" y="'+(bH-7)+'" text-anchor="middle" font-size="10.5" fill="#15130c" font-weight="700">'+(m.label!==undefined?m.label:bn)+'</text>';});
 s+='</svg>';el.innerHTML=s;}
 var CLEFS={treble:{sym:'𝄞',ref:'E4',size:56},bass:{sym:'𝄢',ref:'G2',size:40}};
 function drawNote(id,clef,note){var el=document.getElementById(id);if(!el)return;var c=CLEFS[clef];var sp=11,top=30,bottom=top+4*sp;var refStep=stepOf(pn(c.ref));var width=200,nx=132;
-var s='<svg viewBox="0 0 '+width+' '+(bottom+32)+'" style="width:100%;max-width:260px" xmlns="http://www.w3.org/2000/svg">';
+var s='<svg viewBox="0 0 '+width+' '+(bottom+32)+'" style="width:100%;max-width:250px" xmlns="http://www.w3.org/2000/svg">';
 for(var li=0;li<5;li++)s+='<line x1="12" y1="'+(top+li*sp)+'" x2="'+(width-12)+'" y2="'+(top+li*sp)+'" stroke="#98a1ac" stroke-width="1.1"/>';
 s+='<text x="18" y="'+bottom+'" font-size="'+c.size+'" fill="#f0ebe0">'+c.sym+'</text>';
 var p=pn(note),off=stepOf(p)-refStep,ny=bottom-off*(sp/2),lo,ly;
 for(lo=-2;lo>=off;lo-=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#98a1ac" stroke-width="1.1"/>';}
 for(lo=10;lo<=off;lo+=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-11)+'" y1="'+ly+'" x2="'+(nx+11)+'" y2="'+ly+'" stroke="#98a1ac" stroke-width="1.1"/>';}
 s+='<ellipse cx="'+nx+'" cy="'+ny+'" rx="7.6" ry="5.4" fill="none" stroke="#f0ebe0" stroke-width="2" transform="rotate(-14 '+nx+' '+ny+')"/></svg>';el.innerHTML=s;}
+
+/* ============ FULL NOTATION ENGINE (dark) ============ */
+function beatsOf(n){var b={1:4,2:2,4:1,8:0.5}[n.d||4]||1;if(n.dot)b*=1.5;return b;}
+function drawStaff(id,opts){var el=document.getElementById(id);if(!el)return;var clef=CLEFS[opts.clef||'treble'];var sp=10,top=30,bottom=top+4*sp,midY=top+2*sp;var refStep=stepOf(pn(clef.ref));var notes=opts.notes||[];var nw=opts.noteWidth||44;var beatsPerBar=0;if(opts.time){beatsPerBar=parseInt(opts.time.split('/')[0],10)*(4/parseInt(opts.time.split('/')[1],10));}var x=56+(opts.time?30:0);var elems=[],barX=[],acc=0;notes.forEach(function(nt,i){elems.push({nt:nt,x:x});x+=nw*(nt.wide?1.5:1);if(beatsPerBar){acc+=beatsOf(nt);if(acc>=beatsPerBar-0.001&&i<notes.length-1){barX.push(x-nw*0.32);x+=12;acc=0;}}});var width=x+24;var height=bottom+48;
+var LN='#5d6673',IN='#f0ebe0',BR='#d4a853',DM='#98a1ac';
+var s='<svg viewBox="0 0 '+width+' '+height+'" style="width:100%;max-width:'+Math.min(width,640)+'px" xmlns="http://www.w3.org/2000/svg">';var li;
+for(li=0;li<5;li++)s+='<line x1="12" y1="'+(top+li*sp)+'" x2="'+(width-12)+'" y2="'+(top+li*sp)+'" stroke="'+LN+'" stroke-width="1.1"/>';
+s+='<line x1="12" y1="'+top+'" x2="12" y2="'+bottom+'" stroke="'+LN+'" stroke-width="1.3"/>';
+s+='<text x="17" y="'+bottom+'" font-size="'+(clef.size-6)+'" fill="'+IN+'">'+clef.sym+'</text>';
+if(opts.time){var tp=opts.time.split('/');s+='<text x="62" y="'+(top+2*sp-2)+'" font-size="21" font-weight="700" text-anchor="middle" fill="'+IN+'">'+tp[0]+'</text><text x="62" y="'+(top+4*sp-2)+'" font-size="21" font-weight="700" text-anchor="middle" fill="'+IN+'">'+tp[1]+'</text>';}
+barX.forEach(function(bx){s+='<line x1="'+bx+'" y1="'+top+'" x2="'+bx+'" y2="'+bottom+'" stroke="'+LN+'" stroke-width="1.2"/>';});
+s+='<line x1="'+(width-20)+'" y1="'+top+'" x2="'+(width-20)+'" y2="'+bottom+'" stroke="'+LN+'" stroke-width="1.2"/><line x1="'+(width-14)+'" y1="'+top+'" x2="'+(width-14)+'" y2="'+bottom+'" stroke="'+LN+'" stroke-width="3"/>';
+elems.forEach(function(e,ei){var nt=e.nt,nx=e.x;
+if(nt.r){if(nt.d===1)s+='<rect x="'+(nx-7)+'" y="'+(top+sp)+'" width="14" height="5.5" fill="'+IN+'"/>';else if(nt.d===2)s+='<rect x="'+(nx-7)+'" y="'+(midY-5.5)+'" width="14" height="5.5" fill="'+IN+'"/>';else s+='<path d="M '+(nx-4)+' '+(top+6)+' l 6 8 q -7 2 -3 10 q -8 -4 -4 -10 l -5 -7 z" fill="'+IN+'"/>';return;}
+var ps=Array.isArray(nt.p)?nt.p:[nt.p];var parsed=ps.map(pn);var offs=parsed.map(function(p){return stepOf(p)-refStep;});var minOff=Math.min.apply(null,offs),maxOff=Math.max.apply(null,offs);var stemUp=(minOff+maxOff)/2<4;var lo,ly;
+for(lo=-2;lo>=minOff;lo-=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-10)+'" y1="'+ly+'" x2="'+(nx+10)+'" y2="'+ly+'" stroke="'+LN+'" stroke-width="1.1"/>';}
+for(lo=10;lo<=maxOff;lo+=2){ly=bottom-lo*(sp/2);s+='<line x1="'+(nx-10)+'" y1="'+ly+'" x2="'+(nx+10)+'" y2="'+ly+'" stroke="'+LN+'" stroke-width="1.1"/>';}
+parsed.forEach(function(p,pi){var off=offs[pi];var ny=bottom-off*(sp/2);var filled=(nt.d===4||nt.d===8);var rx=(nt.d===1)?7:5.9,ry=(nt.d===1)?5:4.6;
+s+='<ellipse cx="'+nx+'" cy="'+ny+'" rx="'+rx+'" ry="'+ry+'" fill="'+(filled?IN:'none')+'" stroke="'+IN+'" stroke-width="1.9" transform="rotate(-14 '+nx+' '+ny+')"/>';
+if(nt.dot)s+='<circle cx="'+(nx+11)+'" cy="'+ny+'" r="2.2" fill="'+IN+'"/>';
+if(p.acc==='#')s+='<text x="'+(nx-17)+'" y="'+(ny+5)+'" font-size="15" fill="'+IN+'">♯</text>';
+if(p.acc==='b')s+='<text x="'+(nx-16)+'" y="'+(ny+4)+'" font-size="15" fill="'+IN+'">♭</text>';});
+if(nt.tie&&ei<elems.length-1){var nx2=elems[ei+1].x;var ty=bottom-minOff*(sp/2)+12;s+='<path d="M '+(nx+7)+' '+ty+' Q '+((nx+nx2)/2)+' '+(ty+8)+' '+(nx2-7)+' '+ty+'" fill="none" stroke="'+IN+'" stroke-width="1.5"/>';}
+if(nt.d!==1){var stemLen=3*sp;var yA=bottom-minOff*(sp/2),yB=bottom-maxOff*(sp/2);var sx,sy1,sy2;
+if(stemUp){sx=nx+5.7;sy1=yA-1;sy2=yB-stemLen;}else{sx=nx-5.7;sy1=yB+1;sy2=yA+stemLen;}
+s+='<line x1="'+sx+'" y1="'+sy1+'" x2="'+sx+'" y2="'+sy2+'" stroke="'+IN+'" stroke-width="1.7"/>';
+if(nt.d===8){var dir=stemUp?1:-1;s+='<path d="M '+sx+' '+sy2+' q 11 '+(5*dir)+' 6.5 '+(20*dir)+' q 3 -11 -6.5 -14 z" fill="'+IN+'"/>';}}
+var topOff=Math.max.apply(null,offs),topY=bottom-topOff*(sp/2);
+if(nt.f!==undefined)s+='<text x="'+nx+'" y="'+(Math.min(topY,top)-8)+'" text-anchor="middle" font-size="12.5" fill="'+BR+'" font-weight="700">'+nt.f+'</text>';
+if(nt.t!==undefined)s+='<text x="'+nx+'" y="'+(bottom+20)+'" text-anchor="middle" font-size="12.5" fill="'+DM+'" font-weight="600">'+nt.t+'</text>';});
+if(opts.label)s+='<text x="12" y="14" font-size="12.5" fill="'+DM+'" font-weight="700">'+opts.label+'</text>';
+s+='</svg>';el.innerHTML=s;}
+
+/* ============ HANDS DIAGRAM ============ */
+var HANDSVG='<svg viewBox="0 0 700 210" style="width:100%;max-width:420px" xmlns="http://www.w3.org/2000/svg">'
++'<text x="175" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#98a1ac">Left hand</text>'
++'<text x="525" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#98a1ac">Right hand</text>'
++'<g stroke="#6b7480" stroke-width="2" fill="#232b37">'
++'<path d="M 95 190 q -12 -50 5 -95 q 8 -20 18 -2 q 6 30 4 55 z"/><path d="M 122 190 q -8 -70 2 -120 q 8 -22 18 0 q 6 55 4 85 z"/><path d="M 146 190 q -6 -80 4 -135 q 9 -24 18 0 q 5 62 2 100 z"/><path d="M 170 190 q -4 -72 6 -122 q 9 -22 17 0 q 4 55 1 88 z"/><path d="M 196 190 q 0 -40 14 -68 q 14 -18 20 4 q -4 28 -16 50 z"/><path d="M 90 188 q 60 26 118 0 l 22 -18 q -80 22 -140 0 z" fill="#1c222c"/>'
++'<path d="M 605 190 q 12 -50 -5 -95 q -8 -20 -18 -2 q -6 30 -4 55 z"/><path d="M 578 190 q 8 -70 -2 -120 q -8 -22 -18 0 q -6 55 -4 85 z"/><path d="M 554 190 q 6 -80 -4 -135 q -9 -24 -18 0 q -5 62 -2 100 z"/><path d="M 530 190 q 4 -72 -6 -122 q -9 -22 -17 0 q -4 55 -1 88 z"/><path d="M 504 190 q 0 -40 -14 -68 q -14 -18 -20 4 q 4 28 16 50 z"/><path d="M 610 188 q -60 26 -118 0 l -22 -18 q 80 22 140 0 z" fill="#1c222c"/></g>'
++'<g font-size="15" font-weight="800" fill="#15130c">'
++'<circle cx="108" cy="82" r="13" fill="#d4a853"/><text x="108" y="87" text-anchor="middle">5</text>'
++'<circle cx="133" cy="58" r="13" fill="#d4a853"/><text x="133" y="63" text-anchor="middle">4</text>'
++'<circle cx="158" cy="42" r="13" fill="#d4a853"/><text x="158" y="47" text-anchor="middle">3</text>'
++'<circle cx="184" cy="56" r="13" fill="#d4a853"/><text x="184" y="61" text-anchor="middle">2</text>'
++'<circle cx="215" cy="112" r="13" fill="#d4a853"/><text x="215" y="117" text-anchor="middle">1</text>'
++'<circle cx="592" cy="82" r="13" fill="#d4a853"/><text x="592" y="87" text-anchor="middle">5</text>'
++'<circle cx="567" cy="58" r="13" fill="#d4a853"/><text x="567" y="63" text-anchor="middle">4</text>'
++'<circle cx="542" cy="42" r="13" fill="#d4a853"/><text x="542" y="47" text-anchor="middle">3</text>'
++'<circle cx="516" cy="56" r="13" fill="#d4a853"/><text x="516" y="61" text-anchor="middle">2</text>'
++'<circle cx="485" cy="112" r="13" fill="#d4a853"/><text x="485" y="117" text-anchor="middle">1</text></g></svg>';
+
+/* ============ IN-APP SHEET MUSIC ============ */
+var TUNES={
+hotcross:{nums:'3 2 1 ·  3 2 1 ·  1 1 1 1  2 2 2 2 ·  3 2 1',
+ kbs:[{start:'C4',octaves:1,marks:[{note:'C4',label:'1'},{note:'D4',label:'2'},{note:'E4',label:'3'}]}],
+ lines:[{clef:'treble',time:'4/4',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'D4',d:4,f:2,t:'D'},{p:'C4',d:2,f:1,t:'C'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:2,t:'C'}]},
+  {clef:'treble',time:'4/4',notes:[{p:'C4',d:8,f:1,t:'C'},{p:'C4',d:8},{p:'C4',d:8},{p:'C4',d:8},{p:'D4',d:8,f:2,t:'D'},{p:'D4',d:8},{p:'D4',d:8},{p:'D4',d:8},{p:'E4',d:4,f:3,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:2,t:'C'}]}],
+ cap:'RH in C position. The numbers above the notes are your fingers.'},
+mary:{lines:[
+ {clef:'treble',time:'4/4',label:'Bars 1 to 4',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'D4',d:4,f:2,t:'D'},{p:'C4',d:4,f:1,t:'C'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:2,t:'E'},{p:'D4',d:4,t:'D'},{p:'D4',d:4,t:'D'},{p:'D4',d:2,t:'D'},{p:'E4',d:4,t:'E'},{p:'G4',d:4,f:5,t:'G'},{p:'G4',d:2,t:'G'}]},
+ {clef:'treble',time:'4/4',label:'Bars 5 to 8',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:4,t:'C'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:1,t:'C'}]}],
+ cap:'RH in C position, thumb on middle C.'},
+ode:{lines:[
+ {clef:'treble',time:'4/4',label:'Bars 1 to 4',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'E4',d:4,t:'E'},{p:'F4',d:4,f:4,t:'F'},{p:'G4',d:4,f:5,t:'G'},{p:'G4',d:4,t:'G'},{p:'F4',d:4,t:'F'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,f:2,t:'D'},{p:'C4',d:4,f:1,t:'C'},{p:'C4',d:4,t:'C'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,dot:true,t:'E'},{p:'D4',d:8,t:'D'},{p:'D4',d:2,t:'D'}]},
+ {clef:'treble',time:'4/4',label:'Bars 5 to 8',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'E4',d:4,t:'E'},{p:'F4',d:4,t:'F'},{p:'G4',d:4,t:'G'},{p:'G4',d:4,t:'G'},{p:'F4',d:4,t:'F'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:4,t:'C'},{p:'C4',d:4,t:'C'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,dot:true,t:'D'},{p:'C4',d:8,t:'C'},{p:'C4',d:2,t:'C'}]}],
+ cap:'The dotted note gets 1.5 beats, its short partner half a beat. You know this tune, trust your ear.'},
+frere:{lines:[
+ {clef:'treble',time:'4/4',label:'Bars 1 to 4',notes:[{p:'C4',d:4,f:1,t:'C'},{p:'D4',d:4,f:2,t:'D'},{p:'E4',d:4,f:3,t:'E'},{p:'C4',d:4,f:1,t:'C'},{p:'C4',d:4,t:'C'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'C4',d:4,t:'C'},{p:'E4',d:4,f:3,t:'E'},{p:'F4',d:4,f:4,t:'F'},{p:'G4',d:2,f:5,t:'G'},{p:'E4',d:4,t:'E'},{p:'F4',d:4,t:'F'},{p:'G4',d:2,t:'G'}]},
+ {clef:'treble',time:'4/4',label:'Bars 5 to 8',notes:[{p:'G4',d:8,f:5,t:'G'},{p:'A4',d:8,t:'A'},{p:'G4',d:8,t:'G'},{p:'F4',d:8,t:'F'},{p:'E4',d:4,f:3,t:'E'},{p:'C4',d:4,f:1,t:'C'},{p:'G4',d:8,t:'G'},{p:'A4',d:8,t:'A'},{p:'G4',d:8,t:'G'},{p:'F4',d:8,t:'F'},{p:'E4',d:4,t:'E'},{p:'C4',d:4,t:'C'},{p:'C4',d:4,f:1,t:'C'},{p:'G3',d:4,t:'G3'},{p:'C4',d:2,t:'C'},{p:'C4',d:4,t:'C'},{p:'G3',d:4,t:'G3'},{p:'C4',d:2,t:'C'}]}],
+ cap:'Finger 5 stretches to A in the running bar. G3 is below middle C, reach down with the thumb side.'},
+jingle:{lines:[
+ {clef:'treble',time:'4/4',label:'Bars 1 to 4',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:2,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:2,t:'E'},{p:'E4',d:4,t:'E'},{p:'G4',d:4,f:5,t:'G'},{p:'C4',d:4,dot:true,f:1,t:'C'},{p:'D4',d:8,f:2,t:'D'},{p:'E4',d:1,t:'E'}]},
+ {clef:'treble',time:'4/4',label:'Bars 5 to 8',notes:[{p:'F4',d:4,f:4,t:'F'},{p:'F4',d:4,t:'F'},{p:'F4',d:4,dot:true,t:'F'},{p:'F4',d:8,t:'F'},{p:'F4',d:4,t:'F'},{p:'E4',d:4,t:'E'},{p:'E4',d:4,t:'E'},{p:'E4',d:8,t:'E'},{p:'E4',d:8,t:'E'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'D4',d:4,t:'D'},{p:'E4',d:4,t:'E'},{p:'D4',d:2,t:'D'},{p:'G4',d:2,t:'G'}]}],
+ cap:'Loose wrist on the repeated notes, one relaxed bounce each.'},
+auclair:{lines:[
+ {clef:'treble',time:'4/4',label:'Right hand',notes:[{p:'C4',d:4,f:1,t:'C'},{p:'C4',d:4,t:'C'},{p:'C4',d:4,t:'C'},{p:'D4',d:4,f:2,t:'D'},{p:'E4',d:2,f:3,t:'E'},{p:'D4',d:2,t:'D'},{p:'C4',d:4,t:'C'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'D4',d:4,t:'D'},{p:'C4',d:1,t:'C'}]},
+ {clef:'bass',time:'4/4',label:'Left hand, held notes',notes:[{p:'C3',d:1,f:5,t:'C'},{p:'G2',d:1,t:'G'},{p:'C3',d:2,t:'C'},{p:'G2',d:2,t:'G'},{p:'C3',d:1,t:'C'}]}],
+ cap:'LH plays its note on beat 1 and holds while RH sings the melody. Count out loud.'},
+saints:{lines:[
+ {clef:'treble',time:'4/4',label:'Bars 1 to 4 (start counting 1, play on 2)',notes:[{r:true,d:4},{p:'C4',d:4,f:1,t:'C'},{p:'E4',d:4,f:3,t:'E'},{p:'F4',d:4,f:4,t:'F'},{p:'G4',d:1,f:5,t:'G'},{r:true,d:4},{p:'C4',d:4,t:'C'},{p:'E4',d:4,t:'E'},{p:'F4',d:4,t:'F'},{p:'G4',d:1,t:'G'}]},
+ {clef:'treble',time:'4/4',label:'Bars 5 to 8',notes:[{r:true,d:4},{p:'C4',d:4,t:'C'},{p:'E4',d:4,t:'E'},{p:'F4',d:4,t:'F'},{p:'G4',d:2,f:5,t:'G'},{p:'E4',d:2,f:3,t:'E'},{p:'C4',d:2,f:1,t:'C'},{p:'E4',d:2,t:'E'},{p:'D4',d:1,f:2,t:'D'}]},
+ {clef:'treble',time:'4/4',label:'Bars 9 to 12',notes:[{p:'E4',d:4,f:3,t:'E'},{p:'E4',d:4,t:'E'},{p:'D4',d:2,f:2,t:'D'},{p:'C4',d:2,dot:true,f:1,t:'C'},{p:'E4',d:4,t:'E'},{p:'G4',d:4,f:5,t:'G'},{p:'G4',d:4,t:'G'},{p:'F4',d:2,f:4,t:'F'},{p:'E4',d:4,t:'E'},{p:'D4',d:4,t:'D'},{p:'C4',d:2,t:'C'}]}],
+ cap:'The rests are played too: your hands release, the counting never stops.'},
+grace:{lines:[
+ {clef:'treble',time:'3/4',label:'Bars 1 to 4, begin on beat 3',notes:[{r:true,d:2},{p:'G4',d:4,f:2,t:'G'},{p:'C5',d:2,f:'C',t:'C'},{p:'E5',d:8,t:'E'},{p:'C5',d:8,t:'C'},{p:'E5',d:2,f:'C',t:'E'},{p:'D5',d:4,t:'D'},{p:'C5',d:2,f:'F',t:'C'},{p:'A4',d:4,t:'A'}]},
+ {clef:'treble',time:'3/4',label:'Bars 5 to 8',notes:[{p:'G4',d:2,f:'C',t:'G'},{p:'G4',d:4,t:'G'},{p:'C5',d:2,f:'C',t:'C'},{p:'E5',d:8,t:'E'},{p:'C5',d:8,t:'C'},{p:'E5',d:2,f:'G',t:'E'},{p:'D5',d:4,t:'D'},{p:'G5',d:2,dot:true,f:'C',t:'G'}]}],
+ cap:'Gold letters above are the LH chords: roots at level 1, triads at level 2, broken at level 3.'},
+rising:{lines:[
+ {clef:'bass',time:'4/4',label:'LH pattern: Am, then C. Same shape for D, F, Am, E',notes:[{p:'A2',d:4,f:5,t:'A'},{p:'E3',d:4,f:2,t:'E'},{p:'A3',d:4,f:1,t:'A'},{p:'E3',d:4,f:2,t:'E'},{p:'C3',d:4,f:5,t:'C'},{p:'G3',d:4,f:2,t:'G'},{p:'C4',d:4,f:1,t:'C'},{p:'G3',d:4,f:2,t:'G'}]}],
+ cap:'One chord per bar: Am, C, D, F, Am, E, Am, E. Pedal changes with each chord.'},
+minuet:{lines:[
+ {clef:'treble',time:'3/4',label:'Bars 1 to 4, RH',notes:[{p:'D5',d:4,f:5,t:'D'},{p:'G4',d:8,f:1,t:'G'},{p:'A4',d:8,t:'A'},{p:'B4',d:8,t:'B'},{p:'C5',d:8,t:'C'},{p:'D5',d:4,f:5,t:'D'},{p:'G4',d:4,f:1,t:'G'},{p:'G4',d:4,t:'G'},{p:'E5',d:4,f:5,t:'E'},{p:'C5',d:8,f:3,t:'C'},{p:'D5',d:8,t:'D'},{p:'E5',d:8,t:'E'},{p:'F#5',d:8,t:'F#'},{p:'G5',d:4,f:5,t:'G'},{p:'G4',d:4,f:1,t:'G'},{p:'G4',d:4,t:'G'}]},
+ {clef:'treble',time:'3/4',label:'Bars 5 to 8, RH',notes:[{p:'C5',d:4,f:4,t:'C'},{p:'D5',d:8,f:5,t:'D'},{p:'C5',d:8,t:'C'},{p:'B4',d:8,t:'B'},{p:'A4',d:8,t:'A'},{p:'B4',d:4,f:3,t:'B'},{p:'C5',d:8,t:'C'},{p:'B4',d:8,t:'B'},{p:'A4',d:8,t:'A'},{p:'G4',d:8,t:'G'},{p:'F#4',d:4,f:2,t:'F#'},{p:'G4',d:8,f:3,t:'G'},{p:'A4',d:8,t:'A'},{p:'B4',d:8,t:'B'},{p:'G4',d:8,t:'G'},{p:'A4',d:2,dot:true,f:2,t:'A'}]}],
+ cap:'The LH part lives in the score (tap Details for the link). Learn RH here first, section by section.'},
+prelude:{lines:[
+ {clef:'treble',label:'Bar 1 pattern, simplified rhythm',notes:[{p:'C4',d:8,f:'LH',t:'C'},{p:'E4',d:8,f:'LH',t:'E'},{p:'G4',d:8,f:'RH',t:'G'},{p:'C5',d:8,t:'C'},{p:'E5',d:8,t:'E'},{p:'G4',d:8,t:'G'},{p:'C5',d:8,t:'C'},{p:'E5',d:8,t:'E'}]}],
+ cap:'One ripple per chord, twice per bar, for the whole piece. First chords: C, Dm7/C, G7/B, C.'},
+gym:{kbs:[
+ {start:'G2',keys:15,marks:[{note:'G2',label:'G',color:'#e7a94f'},{note:'B3',label:'B'},{note:'D4',label:'D'},{note:'F#4',label:'F#'}]},
+ {start:'D2',keys:18,marks:[{note:'D2',label:'D',color:'#e7a94f'},{note:'A3',label:'A'},{note:'C#4',label:'C#'},{note:'F#4',label:'F#'}]}],
+ cap:'The two LH shapes that carry the whole piece: bass note on beat 1, chord on beats 2 and 3. Alternate them.'}
+};
+var TUNEMAP={1:'hotcross',2:'mary',3:'ode',4:'ode',5:'frere',6:'frere',7:'jingle',8:'auclair',9:'saints',10:'saints',11:'saints',12:'saints',13:'frere',14:'grace',15:'grace',16:'grace',17:'grace',18:'rising',19:'rising',20:'rising',21:'rising',25:'minuet',26:'minuet',27:'minuet',28:'minuet',29:'minuet',30:'minuet',32:'minuet',33:'gym',34:'gym',35:'gym',37:'prelude',38:'prelude',39:'prelude',42:'prelude'};
+function tuneOf(w){return TUNEMAP[w]||null;}
+function renderTune(host,id){
+ var t=TUNES[id];if(!t){host.style.display='none';return;}
+ host.innerHTML='';host.style.display='block';
+ if(t.nums){var n=document.createElement('div');n.style.cssText='font-size:19px;font-weight:800;letter-spacing:3px;margin:4px 0 8px';n.textContent=t.nums;host.appendChild(n);}
+ (t.kbs||[]).forEach(function(k){var d=document.createElement('div');d.id='fig'+(++figSeq);host.appendChild(d);drawKeyboard(d.id,k);});
+ (t.lines||[]).forEach(function(ln){var d=document.createElement('div');d.id='fig'+(++figSeq);host.appendChild(d);drawStaff(d.id,ln);});
+ if(t.cap){var c=document.createElement('div');c.className='fing';c.textContent=t.cap;host.appendChild(c);}
+}
 
 /* ============ FLASHCARDS ============ */
 var pools={land:[['treble','C4'],['treble','G4'],['treble','C5'],['bass','C3'],['bass','F3'],['bass','C4']],treble:[],bass:[],both:[]};
@@ -670,15 +1012,11 @@ document.querySelectorAll('.fc-a').forEach(function(b){b.addEventListener('click
 fcNext();fcScore();
 
 /* ============ CHORD BUILDER ============ */
-var SEMI=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-var ROOTS={'C':0,'C#':1,'D':2,'Eb':3,'E':4,'F':5,'F#':6,'G':7,'Ab':8,'A':9,'Bb':10,'B':11};
-var FORMS={maj:[0,4,7],min:[0,3,7],dim:[0,3,6],maj7:[0,4,7,11],m7:[0,3,7,10],'7':[0,4,7,10],sus2:[0,2,7],sus4:[0,5,7]};
-var QNAME={maj:'major',min:'minor',dim:'diminished',maj7:'maj7',m7:'m7','7':'7 (dominant)',sus2:'sus2',sus4:'sus4'};
 var cbRoot='C',cbQ='maj',cbQuiz=null;
-function cbShow(root,q){var base=ROOTS[root];var marks=[],names=[];FORMS[q].forEach(function(iv){var s2=base+iv;var oct=4+Math.floor(s2/12);var nm=SEMI[s2%12];marks.push({note:nm+oct,label:nm});names.push(nm);});drawKeyboard('cb-kb',{start:'C4',octaves:2,marks:marks});document.getElementById('cb-notes').textContent=root+' '+QNAME[q]+' = '+names.join(' ');}
+function cbShow(root,q){var marks=chordMarks(root,q);var names=marks.map(function(m){return m.label;});drawKeyboard('cb-kb',{start:'C4',octaves:2,marks:marks});document.getElementById('cb-notes').textContent=root+' '+QNAME[q]+' = '+names.join(' ');}
 document.querySelectorAll('.cb-root').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.cb-root').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');cbRoot=b.textContent;cbQuiz=null;document.getElementById('cb-reveal').style.display='none';document.getElementById('cb-fb').textContent=' ';cbShow(cbRoot,cbQ);});});
 document.querySelectorAll('.cb-q').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.cb-q').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');cbQ=b.dataset.q;cbQuiz=null;document.getElementById('cb-reveal').style.display='none';document.getElementById('cb-fb').textContent=' ';cbShow(cbRoot,cbQ);});});
-document.getElementById('cb-quiz').addEventListener('click',function(){var rs=Object.keys(ROOTS),qs=Object.keys(FORMS);cbQuiz=[rs[Math.floor(Math.random()*rs.length)],qs[Math.floor(Math.random()*qs.length)]];var fb=document.getElementById('cb-fb');fb.textContent='Build: '+cbQuiz[0]+' '+QNAME[cbQuiz[1]];fb.className='fb';document.getElementById('cb-notes').textContent='';drawKeyboard('cb-kb',{start:'C4',octaves:2,marks:[]});document.getElementById('cb-reveal').style.display='inline-block';});
+document.getElementById('cb-quiz').addEventListener('click',function(){var rs=['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'],qs=Object.keys(FORMS);cbQuiz=[rs[Math.floor(Math.random()*rs.length)],qs[Math.floor(Math.random()*qs.length)]];var fb=document.getElementById('cb-fb');fb.textContent='Build: '+cbQuiz[0]+' '+QNAME[cbQuiz[1]];fb.className='fb';document.getElementById('cb-notes').textContent='';drawKeyboard('cb-kb',{start:'C4',octaves:2,marks:[]});document.getElementById('cb-reveal').style.display='inline-block';});
 document.getElementById('cb-reveal').addEventListener('click',function(){if(!cbQuiz)return;cbShow(cbQuiz[0],cbQuiz[1]);document.getElementById('cb-reveal').style.display='none';});
 cbShow(cbRoot,cbQ);
 
